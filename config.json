@@ -1,45 +1,32 @@
 {
-    "name": "GRU",
-    "wandb": true,
+    "name": "Mnist_LeNet",
     "n_gpu": 1,
-    "device_id": 3,
-    "hparam": {
-        "class_num": 10
-    },
+
     "arch": {
-        "type": "GRU",
-            "args":{
-                "embed_dim": 128,
-                "class_num": 10,
-                "hidden_dim": 64,
-                "rnn_layer_num": 3,
-                "dropout": 0.2
-            }
+        "type": "MnistModel",
+        "args": {}
     },
     "data_loader": {
-        "type": "SkillDataLoader",
+        "type": "MnistDataLoader",
         "args":{
-            "data_dir": "./data/skill_inflow_outflow/",
-            "graph_dir": "./data/myGraph.gpickle",
-            "skill_num": 7447,
-            "max_length": 18,
-            "batch_size": 512,
+            "data_dir": "data/",
+            "batch_size": 128,
             "shuffle": true,
-            "validation_split": 0.16,
-            "num_workers": 0
+            "validation_split": 0.1,
+            "num_workers": 2
         }
     },
     "optimizer": {
         "type": "Adam",
         "args":{
             "lr": 0.001,
-            "weight_decay": 1e-5,
+            "weight_decay": 0,
             "amsgrad": true
         }
     },
     "loss": "nll_loss",
     "metrics": [
-        "accuracy_metric", "f1_metric", "aucroc_metric"
+        "accuracy", "top_k_acc"
     ],
     "lr_scheduler": {
         "type": "StepLR",
@@ -52,11 +39,11 @@
         "epochs": 100,
 
         "save_dir": "saved/",
-        "save_period": 10,
+        "save_period": 1,
         "verbosity": 2,
         
         "monitor": "min val_loss",
-        "early_stop": 30,
+        "early_stop": 10,
 
         "tensorboard": true
     }

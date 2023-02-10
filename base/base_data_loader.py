@@ -33,7 +33,7 @@ class BaseDataLoader(DataLoader):
         idx_full = np.arange(self.n_samples)
 
         np.random.seed(0)
-        # np.random.shuffle(idx_full)
+        np.random.shuffle(idx_full)
 
         if isinstance(split, int):
             assert split > 0
@@ -42,8 +42,8 @@ class BaseDataLoader(DataLoader):
         else:
             len_valid = int(self.n_samples * split)
 
-        valid_idx = idx_full[-1*len_valid:]
-        train_idx = np.delete(idx_full, valid_idx)
+        valid_idx = idx_full[0:len_valid]
+        train_idx = np.delete(idx_full, np.arange(0, len_valid))
 
         train_sampler = SubsetRandomSampler(train_idx)
         valid_sampler = SubsetRandomSampler(valid_idx)
