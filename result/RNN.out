@@ -1,0 +1,2824 @@
+Loading data...
+tensor([0.0218, 0.0086, 0.0078,  ..., 0.1089, 0.0023, 0.0502])
+tensor([0.0218, 0.1370, 0.1415,  ..., 0.1400, 0.1826, 0.1525])
+Constructing model...
+RNN(
+  (criterion): NLLLoss()
+  (demand_amplifier): Linear(in_features=1, out_features=128, bias=True)
+  (supply_amplifier): Linear(in_features=1, out_features=128, bias=True)
+  (demand_encoder): RNN(128, 128, num_layers=3, batch_first=True)
+  (supply_encoder): RNN(128, 128, num_layers=3, batch_first=True)
+  (demand_decoder): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): Dropout(p=0.2, inplace=False)
+    (2): ReLU(inplace=True)
+    (3): Linear(in_features=64, out_features=10, bias=True)
+  )
+  (supply_decoder): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): Dropout(p=0.2, inplace=False)
+    (2): ReLU(inplace=True)
+    (3): Linear(in_features=64, out_features=10, bias=True)
+  )
+)
+Start Training...
+Train Epoch: 1 [0/100088 (0%)] Loss: 4.633343
+Train Epoch: 1 [11264/100088 (11%)] Loss: 4.411263
+Train Epoch: 1 [22528/100088 (23%)] Loss: 4.264224
+Train Epoch: 1 [33792/100088 (34%)] Loss: 4.065044
+Train Epoch: 1 [45056/100088 (45%)] Loss: 4.153567
+Train Epoch: 1 [56320/100088 (56%)] Loss: 4.004650
+Train Epoch: 1 [67584/100088 (68%)] Loss: 4.005814
+Train Epoch: 1 [78848/100088 (79%)] Loss: 3.843656
+Train Epoch: 1 [90112/100088 (90%)] Loss: 3.739566
+    epoch          : 1
+    loss           : 4.061711121578606
+    inflow_loss    : 2.0210553261698507
+    outflow_loss   : 2.040655799058019
+    inflow_accuracy_metric: 0.24889646470546722
+    inflow_f1_metric: 0.20097695291042328
+    inflow_aucroc_metric: 0.6765819191932678
+    outflow_accuracy_metric: 0.22142508625984192
+    outflow_f1_metric: 0.18027371168136597
+    outflow_aucroc_metric: 0.6833906769752502
+    val_loss       : 4.406006913436086
+    val_inflow_loss: 1.9368926223955656
+    val_outflow_loss: 2.4691143098630404
+    val_inflow_accuracy_metric: 0.2608586847782135
+    val_inflow_f1_metric: 0.2154194712638855
+    val_inflow_aucroc_metric: 0.6633638739585876
+    val_outflow_accuracy_metric: 0.10179208219051361
+    val_outflow_f1_metric: 0.06430716067552567
+    val_outflow_aucroc_metric: 0.4043588638305664
+Train Epoch: 2 [0/100088 (0%)] Loss: 3.707967
+Train Epoch: 2 [11264/100088 (11%)] Loss: 3.830632
+Train Epoch: 2 [22528/100088 (23%)] Loss: 3.691733
+Train Epoch: 2 [33792/100088 (34%)] Loss: 3.729119
+Train Epoch: 2 [45056/100088 (45%)] Loss: 3.692297
+Train Epoch: 2 [56320/100088 (56%)] Loss: 3.662915
+Train Epoch: 2 [67584/100088 (68%)] Loss: 3.704368
+Train Epoch: 2 [78848/100088 (79%)] Loss: 3.765533
+Train Epoch: 2 [90112/100088 (90%)] Loss: 3.746632
+    epoch          : 2
+    loss           : 3.718379723782442
+    inflow_loss    : 1.8492218827714726
+    outflow_loss   : 1.869157845876655
+    inflow_accuracy_metric: 0.30648568272590637
+    inflow_f1_metric: 0.277874231338501
+    inflow_aucroc_metric: 0.7528809309005737
+    outflow_accuracy_metric: 0.28177201747894287
+    outflow_f1_metric: 0.25402918457984924
+    outflow_aucroc_metric: 0.7617671489715576
+    val_loss       : 4.246533745213559
+    val_inflow_loss: 1.8774390157900358
+    val_outflow_loss: 2.369094735697696
+    val_inflow_accuracy_metric: 0.3159162700176239
+    val_inflow_f1_metric: 0.2828792929649353
+    val_inflow_aucroc_metric: 0.6916151642799377
+    val_outflow_accuracy_metric: 0.1086554303765297
+    val_outflow_f1_metric: 0.07657729834318161
+    val_outflow_aucroc_metric: 0.4257250726222992
+Train Epoch: 3 [0/100088 (0%)] Loss: 3.649407
+Train Epoch: 3 [11264/100088 (11%)] Loss: 3.729168
+Train Epoch: 3 [22528/100088 (23%)] Loss: 3.708469
+Train Epoch: 3 [33792/100088 (34%)] Loss: 3.659683
+Train Epoch: 3 [45056/100088 (45%)] Loss: 3.556126
+Train Epoch: 3 [56320/100088 (56%)] Loss: 3.678893
+Train Epoch: 3 [67584/100088 (68%)] Loss: 3.666085
+Train Epoch: 3 [78848/100088 (79%)] Loss: 3.663154
+Train Epoch: 3 [90112/100088 (90%)] Loss: 3.669854
+    epoch          : 3
+    loss           : 3.6531831682944786
+    inflow_loss    : 1.7988308242389135
+    outflow_loss   : 1.854352345880197
+    inflow_accuracy_metric: 0.32924747467041016
+    inflow_f1_metric: 0.30199626088142395
+    inflow_aucroc_metric: 0.7693303823471069
+    outflow_accuracy_metric: 0.28826239705085754
+    outflow_f1_metric: 0.25969916582107544
+    outflow_aucroc_metric: 0.7656717896461487
+    val_loss       : 4.301506331092433
+    val_inflow_loss: 1.8411407533444857
+    val_outflow_loss: 2.460365558925428
+    val_inflow_accuracy_metric: 0.3420504331588745
+    val_inflow_f1_metric: 0.3249530792236328
+    val_inflow_aucroc_metric: 0.7075037360191345
+    val_outflow_accuracy_metric: 0.09435992687940598
+    val_outflow_f1_metric: 0.06169135496020317
+    val_outflow_aucroc_metric: 0.4369816482067108
+Train Epoch: 4 [0/100088 (0%)] Loss: 3.588518
+Train Epoch: 4 [11264/100088 (11%)] Loss: 3.706111
+Train Epoch: 4 [22528/100088 (23%)] Loss: 3.700515
+Train Epoch: 4 [33792/100088 (34%)] Loss: 3.644474
+Train Epoch: 4 [45056/100088 (45%)] Loss: 3.582471
+Train Epoch: 4 [56320/100088 (56%)] Loss: 3.558299
+Train Epoch: 4 [67584/100088 (68%)] Loss: 3.565942
+Train Epoch: 4 [78848/100088 (79%)] Loss: 3.591594
+Train Epoch: 4 [90112/100088 (90%)] Loss: 3.551353
+    epoch          : 4
+    loss           : 3.6081529807071298
+    inflow_loss    : 1.7666324212843059
+    outflow_loss   : 1.8415205636802985
+    inflow_accuracy_metric: 0.34606796503067017
+    inflow_f1_metric: 0.3192468285560608
+    inflow_aucroc_metric: 0.7777202725410461
+    outflow_accuracy_metric: 0.29685407876968384
+    outflow_f1_metric: 0.269948810338974
+    outflow_aucroc_metric: 0.7701159119606018
+    val_loss       : 4.2993466352161605
+    val_inflow_loss: 1.7825247708119845
+    val_outflow_loss: 2.5168218298962244
+    val_inflow_accuracy_metric: 0.3411903977394104
+    val_inflow_f1_metric: 0.3124827742576599
+    val_inflow_aucroc_metric: 0.7351896166801453
+    val_outflow_accuracy_metric: 0.09644325822591782
+    val_outflow_f1_metric: 0.049952391535043716
+    val_outflow_aucroc_metric: 0.4770309627056122
+Train Epoch: 5 [0/100088 (0%)] Loss: 3.593727
+Train Epoch: 5 [11264/100088 (11%)] Loss: 3.574179
+Train Epoch: 5 [22528/100088 (23%)] Loss: 3.605856
+Train Epoch: 5 [33792/100088 (34%)] Loss: 3.591857
+Train Epoch: 5 [45056/100088 (45%)] Loss: 3.542745
+Train Epoch: 5 [56320/100088 (56%)] Loss: 3.526968
+Train Epoch: 5 [67584/100088 (68%)] Loss: 3.581909
+Train Epoch: 5 [78848/100088 (79%)] Loss: 3.418677
+Train Epoch: 5 [90112/100088 (90%)] Loss: 3.486002
+    epoch          : 5
+    loss           : 3.546799724199334
+    inflow_loss    : 1.7444813306234321
+    outflow_loss   : 1.8023184014826406
+    inflow_accuracy_metric: 0.3544137477874756
+    inflow_f1_metric: 0.3274579346179962
+    inflow_aucroc_metric: 0.783769965171814
+    outflow_accuracy_metric: 0.32373273372650146
+    outflow_f1_metric: 0.29870808124542236
+    outflow_aucroc_metric: 0.7815028429031372
+    val_loss       : 4.3815124160365055
+    val_inflow_loss: 1.7764192254919755
+    val_outflow_loss: 2.6050931654478373
+    val_inflow_accuracy_metric: 0.3583298921585083
+    val_inflow_f1_metric: 0.3453529179096222
+    val_inflow_aucroc_metric: 0.7434354424476624
+    val_outflow_accuracy_metric: 0.09628221392631531
+    val_outflow_f1_metric: 0.053542885929346085
+    val_outflow_aucroc_metric: 0.504499077796936
+Train Epoch: 6 [0/100088 (0%)] Loss: 3.637206
+Train Epoch: 6 [11264/100088 (11%)] Loss: 3.427145
+Train Epoch: 6 [22528/100088 (23%)] Loss: 3.453963
+Train Epoch: 6 [33792/100088 (34%)] Loss: 3.599170
+Train Epoch: 6 [45056/100088 (45%)] Loss: 3.386510
+Train Epoch: 6 [56320/100088 (56%)] Loss: 3.428915
+Train Epoch: 6 [67584/100088 (68%)] Loss: 3.420572
+Train Epoch: 6 [78848/100088 (79%)] Loss: 3.320072
+Train Epoch: 6 [90112/100088 (90%)] Loss: 3.433216
+    epoch          : 6
+    loss           : 3.4743260656084334
+    inflow_loss    : 1.7245808347147338
+    outflow_loss   : 1.7497452418414914
+    inflow_accuracy_metric: 0.3650437593460083
+    inflow_f1_metric: 0.3390621840953827
+    inflow_aucroc_metric: 0.789435088634491
+    outflow_accuracy_metric: 0.3450441360473633
+    outflow_f1_metric: 0.324342280626297
+    outflow_aucroc_metric: 0.7964377999305725
+    val_loss       : 4.287073336149517
+    val_inflow_loss: 1.7286028328694796
+    val_outflow_loss: 2.558470525239643
+    val_inflow_accuracy_metric: 0.3683045506477356
+    val_inflow_f1_metric: 0.34804776310920715
+    val_inflow_aucroc_metric: 0.7538660764694214
+    val_outflow_accuracy_metric: 0.16991502046585083
+    val_outflow_f1_metric: 0.10858020186424255
+    val_outflow_aucroc_metric: 0.5674821734428406
+Train Epoch: 7 [0/100088 (0%)] Loss: 3.413916
+Train Epoch: 7 [11264/100088 (11%)] Loss: 3.404683
+Train Epoch: 7 [22528/100088 (23%)] Loss: 3.397398
+Train Epoch: 7 [33792/100088 (34%)] Loss: 3.562298
+Train Epoch: 7 [45056/100088 (45%)] Loss: 3.455835
+Train Epoch: 7 [56320/100088 (56%)] Loss: 3.312570
+Train Epoch: 7 [67584/100088 (68%)] Loss: 3.338235
+Train Epoch: 7 [78848/100088 (79%)] Loss: 3.438876
+Train Epoch: 7 [90112/100088 (90%)] Loss: 3.295443
+    epoch          : 7
+    loss           : 3.3984746920819187
+    inflow_loss    : 1.7150285183166971
+    outflow_loss   : 1.68344618167196
+    inflow_accuracy_metric: 0.3691640794277191
+    inflow_f1_metric: 0.3442273437976837
+    inflow_aucroc_metric: 0.7915886044502258
+    outflow_accuracy_metric: 0.3706842064857483
+    outflow_f1_metric: 0.35787099599838257
+    outflow_aucroc_metric: 0.8144526481628418
+    val_loss       : 4.097660980726543
+    val_inflow_loss: 1.6860720672105487
+    val_outflow_loss: 2.411588926064341
+    val_inflow_accuracy_metric: 0.37885141372680664
+    val_inflow_f1_metric: 0.38826125860214233
+    val_inflow_aucroc_metric: 0.7627848386764526
+    val_outflow_accuracy_metric: 0.19283854961395264
+    val_outflow_f1_metric: 0.1320781409740448
+    val_outflow_aucroc_metric: 0.5822489261627197
+Train Epoch: 8 [0/100088 (0%)] Loss: 3.446906
+Train Epoch: 8 [11264/100088 (11%)] Loss: 3.516613
+Train Epoch: 8 [22528/100088 (23%)] Loss: 3.506506
+Train Epoch: 8 [33792/100088 (34%)] Loss: 3.361187
+Train Epoch: 8 [45056/100088 (45%)] Loss: 3.295504
+Train Epoch: 8 [56320/100088 (56%)] Loss: 3.229903
+Train Epoch: 8 [67584/100088 (68%)] Loss: 3.266786
+Train Epoch: 8 [78848/100088 (79%)] Loss: 3.466054
+Train Epoch: 8 [90112/100088 (90%)] Loss: 3.325137
+    epoch          : 8
+    loss           : 3.351029313340479
+    inflow_loss    : 1.7046792872098027
+    outflow_loss   : 1.6463500291717297
+    inflow_accuracy_metric: 0.37271320819854736
+    inflow_f1_metric: 0.34845849871635437
+    inflow_aucroc_metric: 0.7941985726356506
+    outflow_accuracy_metric: 0.3834470212459564
+    outflow_f1_metric: 0.37035685777664185
+    outflow_aucroc_metric: 0.8243428468704224
+    val_loss       : 3.904541153656809
+    val_inflow_loss: 1.6685699538180703
+    val_outflow_loss: 2.2359711747420463
+    val_inflow_accuracy_metric: 0.39556264877319336
+    val_inflow_f1_metric: 0.3983897864818573
+    val_inflow_aucroc_metric: 0.7733410596847534
+    val_outflow_accuracy_metric: 0.19999657571315765
+    val_outflow_f1_metric: 0.14159387350082397
+    val_outflow_aucroc_metric: 0.6135360598564148
+Train Epoch: 9 [0/100088 (0%)] Loss: 3.260789
+Train Epoch: 9 [11264/100088 (11%)] Loss: 3.196959
+Train Epoch: 9 [22528/100088 (23%)] Loss: 3.305595
+Train Epoch: 9 [33792/100088 (34%)] Loss: 3.368942
+Train Epoch: 9 [45056/100088 (45%)] Loss: 3.272673
+Train Epoch: 9 [56320/100088 (56%)] Loss: 3.267699
+Train Epoch: 9 [67584/100088 (68%)] Loss: 3.327145
+Train Epoch: 9 [78848/100088 (79%)] Loss: 3.220342
+Train Epoch: 9 [90112/100088 (90%)] Loss: 3.350242
+    epoch          : 9
+    loss           : 3.310272901642079
+    inflow_loss    : 1.6972051135131292
+    outflow_loss   : 1.6130677844796861
+    inflow_accuracy_metric: 0.3752002716064453
+    inflow_f1_metric: 0.3507927656173706
+    inflow_aucroc_metric: 0.7965524196624756
+    outflow_accuracy_metric: 0.3933601975440979
+    outflow_f1_metric: 0.38107800483703613
+    outflow_aucroc_metric: 0.8322193026542664
+    val_loss       : 4.195890991311324
+    val_inflow_loss: 1.6718565727535046
+    val_outflow_loss: 2.5240344248319926
+    val_inflow_accuracy_metric: 0.3899705410003662
+    val_inflow_f1_metric: 0.3779568076133728
+    val_inflow_aucroc_metric: 0.7697133421897888
+    val_outflow_accuracy_metric: 0.19827988743782043
+    val_outflow_f1_metric: 0.12427394092082977
+    val_outflow_aucroc_metric: 0.6342708468437195
+Train Epoch: 10 [0/100088 (0%)] Loss: 3.455446
+Train Epoch: 10 [11264/100088 (11%)] Loss: 3.172454
+Train Epoch: 10 [22528/100088 (23%)] Loss: 3.372950
+Train Epoch: 10 [33792/100088 (34%)] Loss: 3.257886
+Train Epoch: 10 [45056/100088 (45%)] Loss: 3.345302
+Train Epoch: 10 [56320/100088 (56%)] Loss: 3.281105
+Train Epoch: 10 [67584/100088 (68%)] Loss: 3.268446
+Train Epoch: 10 [78848/100088 (79%)] Loss: 3.321966
+Train Epoch: 10 [90112/100088 (90%)] Loss: 3.278320
+    epoch          : 10
+    loss           : 3.285771976928322
+    inflow_loss    : 1.683269748274161
+    outflow_loss   : 1.6025022280459502
+    inflow_accuracy_metric: 0.3816533386707306
+    inflow_f1_metric: 0.3584434986114502
+    inflow_aucroc_metric: 0.799706757068634
+    outflow_accuracy_metric: 0.3956511616706848
+    outflow_f1_metric: 0.3823481798171997
+    outflow_aucroc_metric: 0.8345608711242676
+    val_loss       : 3.8518654359014413
+    val_inflow_loss: 1.6272204800655967
+    val_outflow_loss: 2.2246449558358443
+    val_inflow_accuracy_metric: 0.3957887887954712
+    val_inflow_f1_metric: 0.39952701330184937
+    val_inflow_aucroc_metric: 0.7856502532958984
+    val_outflow_accuracy_metric: 0.21044407784938812
+    val_outflow_f1_metric: 0.15639087557792664
+    val_outflow_aucroc_metric: 0.6397022008895874
+Train Epoch: 11 [0/100088 (0%)] Loss: 3.217804
+Train Epoch: 11 [11264/100088 (11%)] Loss: 3.281291
+Train Epoch: 11 [22528/100088 (23%)] Loss: 3.305943
+Train Epoch: 11 [33792/100088 (34%)] Loss: 3.276367
+Train Epoch: 11 [45056/100088 (45%)] Loss: 3.297288
+Train Epoch: 11 [56320/100088 (56%)] Loss: 3.286056
+Train Epoch: 11 [67584/100088 (68%)] Loss: 3.243444
+Train Epoch: 11 [78848/100088 (79%)] Loss: 3.307193
+Train Epoch: 11 [90112/100088 (90%)] Loss: 3.195816
+    epoch          : 11
+    loss           : 3.2660532338278636
+    inflow_loss    : 1.6804012096658045
+    outflow_loss   : 1.5856520253784803
+    inflow_accuracy_metric: 0.3824344873428345
+    inflow_f1_metric: 0.35919830203056335
+    inflow_aucroc_metric: 0.8005985021591187
+    outflow_accuracy_metric: 0.4016246795654297
+    outflow_f1_metric: 0.3887142241001129
+    outflow_aucroc_metric: 0.8383241891860962
+    val_loss       : 3.811934414662813
+    val_inflow_loss: 1.6567935818120052
+    val_outflow_loss: 2.1551408265766345
+    val_inflow_accuracy_metric: 0.3954598605632782
+    val_inflow_f1_metric: 0.384617418050766
+    val_inflow_aucroc_metric: 0.7800050377845764
+    val_outflow_accuracy_metric: 0.2319592982530594
+    val_outflow_f1_metric: 0.176205575466156
+    val_outflow_aucroc_metric: 0.6599081754684448
+Train Epoch: 12 [0/100088 (0%)] Loss: 3.218312
+Train Epoch: 12 [11264/100088 (11%)] Loss: 3.294523
+Train Epoch: 12 [22528/100088 (23%)] Loss: 3.298434
+Train Epoch: 12 [33792/100088 (34%)] Loss: 3.238667
+Train Epoch: 12 [45056/100088 (45%)] Loss: 3.292584
+Train Epoch: 12 [56320/100088 (56%)] Loss: 3.264524
+Train Epoch: 12 [67584/100088 (68%)] Loss: 3.265563
+Train Epoch: 12 [78848/100088 (79%)] Loss: 3.246033
+Train Epoch: 12 [90112/100088 (90%)] Loss: 3.235223
+    epoch          : 12
+    loss           : 3.2480067282306906
+    inflow_loss    : 1.6767117180386368
+    outflow_loss   : 1.5712950065427898
+    inflow_accuracy_metric: 0.38423073291778564
+    inflow_f1_metric: 0.36135333776474
+    inflow_aucroc_metric: 0.8019054532051086
+    outflow_accuracy_metric: 0.4053914248943329
+    outflow_f1_metric: 0.3932027518749237
+    outflow_aucroc_metric: 0.841279149055481
+    val_loss       : 3.9010501221606604
+    val_inflow_loss: 1.640696594589635
+    val_outflow_loss: 2.2603535401193717
+    val_inflow_accuracy_metric: 0.4017235338687897
+    val_inflow_f1_metric: 0.40189817547798157
+    val_inflow_aucroc_metric: 0.779277503490448
+    val_outflow_accuracy_metric: 0.23526591062545776
+    val_outflow_f1_metric: 0.18429920077323914
+    val_outflow_aucroc_metric: 0.6468281149864197
+Train Epoch: 13 [0/100088 (0%)] Loss: 3.266631
+Train Epoch: 13 [11264/100088 (11%)] Loss: 3.329652
+Train Epoch: 13 [22528/100088 (23%)] Loss: 3.415908
+Train Epoch: 13 [33792/100088 (34%)] Loss: 3.290331
+Train Epoch: 13 [45056/100088 (45%)] Loss: 3.273295
+Train Epoch: 13 [56320/100088 (56%)] Loss: 3.279470
+Train Epoch: 13 [67584/100088 (68%)] Loss: 3.243038
+Train Epoch: 13 [78848/100088 (79%)] Loss: 3.152874
+Train Epoch: 13 [90112/100088 (90%)] Loss: 3.275262
+    epoch          : 13
+    loss           : 3.2783752631167977
+    inflow_loss    : 1.711818825225441
+    outflow_loss   : 1.5665564403241994
+    inflow_accuracy_metric: 0.37080928683280945
+    inflow_f1_metric: 0.34616509079933167
+    inflow_aucroc_metric: 0.7925488948822021
+    outflow_accuracy_metric: 0.4053846299648285
+    outflow_f1_metric: 0.3938215970993042
+    outflow_aucroc_metric: 0.8423490524291992
+    val_loss       : 4.030851477070859
+    val_inflow_loss: 1.6275418400764465
+    val_outflow_loss: 2.403309596212287
+    val_inflow_accuracy_metric: 0.3980914056301117
+    val_inflow_f1_metric: 0.4029797911643982
+    val_inflow_aucroc_metric: 0.783107340335846
+    val_outflow_accuracy_metric: 0.22067572176456451
+    val_outflow_f1_metric: 0.15215308964252472
+    val_outflow_aucroc_metric: 0.6476894617080688
+Train Epoch: 14 [0/100088 (0%)] Loss: 3.318007
+Train Epoch: 14 [11264/100088 (11%)] Loss: 3.296930
+Train Epoch: 14 [22528/100088 (23%)] Loss: 3.237085
+Train Epoch: 14 [33792/100088 (34%)] Loss: 3.212330
+Train Epoch: 14 [45056/100088 (45%)] Loss: 3.249435
+Train Epoch: 14 [56320/100088 (56%)] Loss: 3.212731
+Train Epoch: 14 [67584/100088 (68%)] Loss: 3.061284
+Train Epoch: 14 [78848/100088 (79%)] Loss: 3.248912
+Train Epoch: 14 [90112/100088 (90%)] Loss: 3.272865
+    epoch          : 14
+    loss           : 3.2291932556093954
+    inflow_loss    : 1.6708792302073265
+    outflow_loss   : 1.558314016278909
+    inflow_accuracy_metric: 0.3869289755821228
+    inflow_f1_metric: 0.36425158381462097
+    inflow_aucroc_metric: 0.80335932970047
+    outflow_accuracy_metric: 0.40822145342826843
+    outflow_f1_metric: 0.3976825177669525
+    outflow_aucroc_metric: 0.843920111656189
+    val_loss       : 4.087735358037446
+    val_inflow_loss: 1.663521120422765
+    val_outflow_loss: 2.424214250163028
+    val_inflow_accuracy_metric: 0.3971833884716034
+    val_inflow_f1_metric: 0.3930695950984955
+    val_inflow_aucroc_metric: 0.778360903263092
+    val_outflow_accuracy_metric: 0.2164507955312729
+    val_outflow_f1_metric: 0.14704449474811554
+    val_outflow_aucroc_metric: 0.6489775776863098
+Train Epoch: 15 [0/100088 (0%)] Loss: 3.181678
+Train Epoch: 15 [11264/100088 (11%)] Loss: 3.111026
+Train Epoch: 15 [22528/100088 (23%)] Loss: 3.237494
+Train Epoch: 15 [33792/100088 (34%)] Loss: 3.197837
+Train Epoch: 15 [45056/100088 (45%)] Loss: 3.220517
+Train Epoch: 15 [56320/100088 (56%)] Loss: 3.092563
+Train Epoch: 15 [67584/100088 (68%)] Loss: 3.259539
+Train Epoch: 15 [78848/100088 (79%)] Loss: 3.202468
+Train Epoch: 15 [90112/100088 (90%)] Loss: 3.297261
+    epoch          : 15
+    loss           : 3.2165850449581534
+    inflow_loss    : 1.6674361776332467
+    outflow_loss   : 1.5491488734070136
+    inflow_accuracy_metric: 0.3876364827156067
+    inflow_f1_metric: 0.36503300070762634
+    inflow_aucroc_metric: 0.8042017221450806
+    outflow_accuracy_metric: 0.410617858171463
+    outflow_f1_metric: 0.3993614614009857
+    outflow_aucroc_metric: 0.8460709452629089
+    val_loss       : 4.20710741846185
+    val_inflow_loss: 1.6609915965481807
+    val_outflow_loss: 2.546115850147448
+    val_inflow_accuracy_metric: 0.3958093523979187
+    val_inflow_f1_metric: 0.38565585017204285
+    val_inflow_aucroc_metric: 0.781616747379303
+    val_outflow_accuracy_metric: 0.20969709753990173
+    val_outflow_f1_metric: 0.14138832688331604
+    val_outflow_aucroc_metric: 0.6464690566062927
+Train Epoch: 16 [0/100088 (0%)] Loss: 3.232878
+Train Epoch: 16 [11264/100088 (11%)] Loss: 3.137240
+Train Epoch: 16 [22528/100088 (23%)] Loss: 3.204801
+Train Epoch: 16 [33792/100088 (34%)] Loss: 3.274835
+Train Epoch: 16 [45056/100088 (45%)] Loss: 3.158244
+Train Epoch: 16 [56320/100088 (56%)] Loss: 3.262487
+Train Epoch: 16 [67584/100088 (68%)] Loss: 3.217882
+Train Epoch: 16 [78848/100088 (79%)] Loss: 3.283736
+Train Epoch: 16 [90112/100088 (90%)] Loss: 3.161757
+    epoch          : 16
+    loss           : 3.203996933236414
+    inflow_loss    : 1.6573857713718803
+    outflow_loss   : 1.546611172204115
+    inflow_accuracy_metric: 0.3910329043865204
+    inflow_f1_metric: 0.368375688791275
+    inflow_aucroc_metric: 0.8066279292106628
+    outflow_accuracy_metric: 0.40998879075050354
+    outflow_f1_metric: 0.39899933338165283
+    outflow_aucroc_metric: 0.8465505242347717
+    val_loss       : 4.080932334849709
+    val_inflow_loss: 1.6126194784515782
+    val_outflow_loss: 2.468312828164352
+    val_inflow_accuracy_metric: 0.40676742792129517
+    val_inflow_f1_metric: 0.41313642263412476
+    val_inflow_aucroc_metric: 0.7981418371200562
+    val_outflow_accuracy_metric: 0.21327440440654755
+    val_outflow_f1_metric: 0.15143640339374542
+    val_outflow_aucroc_metric: 0.6472189426422119
+Train Epoch: 17 [0/100088 (0%)] Loss: 3.139554
+Train Epoch: 17 [11264/100088 (11%)] Loss: 3.178949
+Train Epoch: 17 [22528/100088 (23%)] Loss: 3.126986
+Train Epoch: 17 [33792/100088 (34%)] Loss: 3.126067
+Train Epoch: 17 [45056/100088 (45%)] Loss: 3.103617
+Train Epoch: 17 [56320/100088 (56%)] Loss: 3.265663
+Train Epoch: 17 [67584/100088 (68%)] Loss: 3.262799
+Train Epoch: 17 [78848/100088 (79%)] Loss: 3.073415
+Train Epoch: 17 [90112/100088 (90%)] Loss: 3.207527
+    epoch          : 17
+    loss           : 3.1838016692472966
+    inflow_loss    : 1.6504165743078505
+    outflow_loss   : 1.533385083991654
+    inflow_accuracy_metric: 0.39440008997917175
+    inflow_f1_metric: 0.3714432120323181
+    inflow_aucroc_metric: 0.8081303834915161
+    outflow_accuracy_metric: 0.41371628642082214
+    outflow_f1_metric: 0.4034178853034973
+    outflow_aucroc_metric: 0.8493146896362305
+    val_loss       : 4.041308886126468
+    val_inflow_loss: 1.6337816652498747
+    val_outflow_loss: 2.4075272208765934
+    val_inflow_accuracy_metric: 0.4056640565395355
+    val_inflow_f1_metric: 0.405735582113266
+    val_inflow_aucroc_metric: 0.794216513633728
+    val_outflow_accuracy_metric: 0.21465186774730682
+    val_outflow_f1_metric: 0.1608501821756363
+    val_outflow_aucroc_metric: 0.6428665518760681
+Train Epoch: 18 [0/100088 (0%)] Loss: 3.200330
+Train Epoch: 18 [11264/100088 (11%)] Loss: 3.079064
+Train Epoch: 18 [22528/100088 (23%)] Loss: 3.075466
+Train Epoch: 18 [33792/100088 (34%)] Loss: 3.105288
+Train Epoch: 18 [45056/100088 (45%)] Loss: 3.197894
+Train Epoch: 18 [56320/100088 (56%)] Loss: 3.140127
+Train Epoch: 18 [67584/100088 (68%)] Loss: 3.145906
+Train Epoch: 18 [78848/100088 (79%)] Loss: 3.112352
+Train Epoch: 18 [90112/100088 (90%)] Loss: 3.020842
+    epoch          : 18
+    loss           : 3.1773055390435823
+    inflow_loss    : 1.6422748930600224
+    outflow_loss   : 1.5350306441589279
+    inflow_accuracy_metric: 0.3964901566505432
+    inflow_f1_metric: 0.37500447034835815
+    inflow_aucroc_metric: 0.8103689551353455
+    outflow_accuracy_metric: 0.4120109975337982
+    outflow_f1_metric: 0.40075188875198364
+    outflow_aucroc_metric: 0.8489799499511719
+    val_loss       : 4.170772464651811
+    val_inflow_loss: 1.6011732189278853
+    val_outflow_loss: 2.569599233175579
+    val_inflow_accuracy_metric: 0.41584429144859314
+    val_inflow_f1_metric: 0.4136754274368286
+    val_inflow_aucroc_metric: 0.7990289330482483
+    val_outflow_accuracy_metric: 0.19822506606578827
+    val_outflow_f1_metric: 0.15239711105823517
+    val_outflow_aucroc_metric: 0.628858745098114
+Train Epoch: 19 [0/100088 (0%)] Loss: 3.102940
+Train Epoch: 19 [11264/100088 (11%)] Loss: 3.101791
+Train Epoch: 19 [22528/100088 (23%)] Loss: 3.225775
+Train Epoch: 19 [33792/100088 (34%)] Loss: 3.159690
+Train Epoch: 19 [45056/100088 (45%)] Loss: 3.167704
+Train Epoch: 19 [56320/100088 (56%)] Loss: 3.201380
+Train Epoch: 19 [67584/100088 (68%)] Loss: 3.196117
+Train Epoch: 19 [78848/100088 (79%)] Loss: 3.180969
+Train Epoch: 19 [90112/100088 (90%)] Loss: 3.261635
+    epoch          : 19
+    loss           : 3.1799658439597307
+    inflow_loss    : 1.6519644011040122
+    outflow_loss   : 1.5280014379900329
+    inflow_accuracy_metric: 0.3936244249343872
+    inflow_f1_metric: 0.37170422077178955
+    inflow_aucroc_metric: 0.8080762028694153
+    outflow_accuracy_metric: 0.413898229598999
+    outflow_f1_metric: 0.4031931757926941
+    outflow_aucroc_metric: 0.8499295711517334
+    val_loss       : 4.0733917700616935
+    val_inflow_loss: 1.5964521452000267
+    val_outflow_loss: 2.4769396154504073
+    val_inflow_accuracy_metric: 0.40916940569877625
+    val_inflow_f1_metric: 0.41426220536231995
+    val_inflow_aucroc_metric: 0.8011155724525452
+    val_outflow_accuracy_metric: 0.21662212908267975
+    val_outflow_f1_metric: 0.16003796458244324
+    val_outflow_aucroc_metric: 0.651656985282898
+Train Epoch: 20 [0/100088 (0%)] Loss: 3.229381
+Train Epoch: 20 [11264/100088 (11%)] Loss: 3.212695
+Train Epoch: 20 [22528/100088 (23%)] Loss: 3.093424
+Train Epoch: 20 [33792/100088 (34%)] Loss: 3.347628
+Train Epoch: 20 [45056/100088 (45%)] Loss: 3.123450
+Train Epoch: 20 [56320/100088 (56%)] Loss: 3.217647
+Train Epoch: 20 [67584/100088 (68%)] Loss: 3.124147
+Train Epoch: 20 [78848/100088 (79%)] Loss: 3.227523
+Train Epoch: 20 [90112/100088 (90%)] Loss: 3.302161
+    epoch          : 20
+    loss           : 3.1743479687340406
+    inflow_loss    : 1.64637021811641
+    outflow_loss   : 1.52797775000942
+    inflow_accuracy_metric: 0.395638644695282
+    inflow_f1_metric: 0.37472736835479736
+    inflow_aucroc_metric: 0.809737503528595
+    outflow_accuracy_metric: 0.41192227602005005
+    outflow_f1_metric: 0.40150585770606995
+    outflow_aucroc_metric: 0.8501478433609009
+    val_loss       : 3.9694754449944747
+    val_inflow_loss: 1.608011506105724
+    val_outflow_loss: 2.361463929477491
+    val_inflow_accuracy_metric: 0.4120819866657257
+    val_inflow_f1_metric: 0.41459012031555176
+    val_inflow_aucroc_metric: 0.7952492833137512
+    val_outflow_accuracy_metric: 0.22138158977031708
+    val_outflow_f1_metric: 0.15724314749240875
+    val_outflow_aucroc_metric: 0.6616324186325073
+Train Epoch: 21 [0/100088 (0%)] Loss: 3.266022
+Train Epoch: 21 [11264/100088 (11%)] Loss: 3.205687
+Train Epoch: 21 [22528/100088 (23%)] Loss: 3.056453
+Train Epoch: 21 [33792/100088 (34%)] Loss: 3.173187
+Train Epoch: 21 [45056/100088 (45%)] Loss: 3.151852
+Train Epoch: 21 [56320/100088 (56%)] Loss: 3.092332
+Train Epoch: 21 [67584/100088 (68%)] Loss: 3.092280
+Train Epoch: 21 [78848/100088 (79%)] Loss: 3.164696
+Train Epoch: 21 [90112/100088 (90%)] Loss: 3.106836
+    epoch          : 21
+    loss           : 3.1495791661496066
+    inflow_loss    : 1.6350801854717487
+    outflow_loss   : 1.5144989831107003
+    inflow_accuracy_metric: 0.39837318658828735
+    inflow_f1_metric: 0.3765008747577667
+    inflow_aucroc_metric: 0.8119276165962219
+    outflow_accuracy_metric: 0.4187968075275421
+    outflow_f1_metric: 0.40860533714294434
+    outflow_aucroc_metric: 0.8528892993927002
+    val_loss       : 4.117446102594075
+    val_inflow_loss: 1.5893449406874807
+    val_outflow_loss: 2.5281011430840743
+    val_inflow_accuracy_metric: 0.40179550647735596
+    val_inflow_f1_metric: 0.4001759886741638
+    val_inflow_aucroc_metric: 0.806882381439209
+    val_outflow_accuracy_metric: 0.2113521248102188
+    val_outflow_f1_metric: 0.14836366474628448
+    val_outflow_aucroc_metric: 0.6585701704025269
+Train Epoch: 22 [0/100088 (0%)] Loss: 2.993577
+Train Epoch: 22 [11264/100088 (11%)] Loss: 3.105878
+Train Epoch: 22 [22528/100088 (23%)] Loss: 3.207591
+Train Epoch: 22 [33792/100088 (34%)] Loss: 3.153259
+Train Epoch: 22 [45056/100088 (45%)] Loss: 3.034945
+Train Epoch: 22 [56320/100088 (56%)] Loss: 3.096192
+Train Epoch: 22 [67584/100088 (68%)] Loss: 3.117920
+Train Epoch: 22 [78848/100088 (79%)] Loss: 3.102228
+Train Epoch: 22 [90112/100088 (90%)] Loss: 3.304395
+    epoch          : 22
+    loss           : 3.1467194131442477
+    inflow_loss    : 1.6311084165865062
+    outflow_loss   : 1.5156109989905844
+    inflow_accuracy_metric: 0.39994990825653076
+    inflow_f1_metric: 0.3785760700702667
+    inflow_aucroc_metric: 0.813040554523468
+    outflow_accuracy_metric: 0.4168703556060791
+    outflow_f1_metric: 0.4063245356082916
+    outflow_aucroc_metric: 0.85282963514328
+    val_loss       : 4.108855084369057
+    val_inflow_loss: 1.5994451767519902
+    val_outflow_loss: 2.5094099044799805
+    val_inflow_accuracy_metric: 0.41255825757980347
+    val_inflow_f1_metric: 0.4077555537223816
+    val_inflow_aucroc_metric: 0.8020597100257874
+    val_outflow_accuracy_metric: 0.19910910725593567
+    val_outflow_f1_metric: 0.14848101139068604
+    val_outflow_aucroc_metric: 0.6426639556884766
+Train Epoch: 23 [0/100088 (0%)] Loss: 3.163719
+Train Epoch: 23 [11264/100088 (11%)] Loss: 3.157186
+Train Epoch: 23 [22528/100088 (23%)] Loss: 3.125878
+Train Epoch: 23 [33792/100088 (34%)] Loss: 3.192382
+Train Epoch: 23 [45056/100088 (45%)] Loss: 3.128877
+Train Epoch: 23 [56320/100088 (56%)] Loss: 3.127285
+Train Epoch: 23 [67584/100088 (68%)] Loss: 3.182604
+Train Epoch: 23 [78848/100088 (79%)] Loss: 3.211396
+Train Epoch: 23 [90112/100088 (90%)] Loss: 3.142729
+    epoch          : 23
+    loss           : 3.143421165797175
+    inflow_loss    : 1.632728031703404
+    outflow_loss   : 1.5106931274034539
+    inflow_accuracy_metric: 0.3997374475002289
+    inflow_f1_metric: 0.37845513224601746
+    inflow_aucroc_metric: 0.8131007552146912
+    outflow_accuracy_metric: 0.41690152883529663
+    outflow_f1_metric: 0.4067642390727997
+    outflow_aucroc_metric: 0.8538570404052734
+    val_loss       : 4.08800566823859
+    val_inflow_loss: 1.5807420893719322
+    val_outflow_loss: 2.5072635851408305
+    val_inflow_accuracy_metric: 0.42060035467147827
+    val_inflow_f1_metric: 0.4198604226112366
+    val_inflow_aucroc_metric: 0.8055617213249207
+    val_outflow_accuracy_metric: 0.20714432001113892
+    val_outflow_f1_metric: 0.15055131912231445
+    val_outflow_aucroc_metric: 0.6576246023178101
+Train Epoch: 24 [0/100088 (0%)] Loss: 3.232978
+Train Epoch: 24 [11264/100088 (11%)] Loss: 3.108520
+Train Epoch: 24 [22528/100088 (23%)] Loss: 3.116807
+Train Epoch: 24 [33792/100088 (34%)] Loss: 3.208431
+Train Epoch: 24 [45056/100088 (45%)] Loss: 3.150248
+Train Epoch: 24 [56320/100088 (56%)] Loss: 3.116585
+Train Epoch: 24 [67584/100088 (68%)] Loss: 3.162811
+Train Epoch: 24 [78848/100088 (79%)] Loss: 3.093780
+Train Epoch: 24 [90112/100088 (90%)] Loss: 3.049272
+    epoch          : 24
+    loss           : 3.1368214865120088
+    inflow_loss    : 1.6293097874339746
+    outflow_loss   : 1.507511697861613
+    inflow_accuracy_metric: 0.4004140794277191
+    inflow_f1_metric: 0.379539430141449
+    inflow_aucroc_metric: 0.813795268535614
+    outflow_accuracy_metric: 0.4175765812397003
+    outflow_f1_metric: 0.40755754709243774
+    outflow_aucroc_metric: 0.8544285893440247
+    val_loss       : 4.154542094782779
+    val_inflow_loss: 1.5768482936056036
+    val_outflow_loss: 2.5776938011771753
+    val_inflow_accuracy_metric: 0.4096457064151764
+    val_inflow_f1_metric: 0.41307970881462097
+    val_inflow_aucroc_metric: 0.8051923513412476
+    val_outflow_accuracy_metric: 0.22155974805355072
+    val_outflow_f1_metric: 0.15543095767498016
+    val_outflow_aucroc_metric: 0.665369987487793
+Train Epoch: 25 [0/100088 (0%)] Loss: 3.209758
+Train Epoch: 25 [11264/100088 (11%)] Loss: 3.058972
+Train Epoch: 25 [22528/100088 (23%)] Loss: 3.171606
+Train Epoch: 25 [33792/100088 (34%)] Loss: 3.053745
+Train Epoch: 25 [45056/100088 (45%)] Loss: 3.087218
+Train Epoch: 25 [56320/100088 (56%)] Loss: 3.148476
+Train Epoch: 25 [67584/100088 (68%)] Loss: 3.240447
+Train Epoch: 25 [78848/100088 (79%)] Loss: 3.122647
+Train Epoch: 25 [90112/100088 (90%)] Loss: 3.088181
+    epoch          : 25
+    loss           : 3.134081947560213
+    inflow_loss    : 1.6299682843441865
+    outflow_loss   : 1.5041136607831838
+    inflow_accuracy_metric: 0.40081751346588135
+    inflow_f1_metric: 0.3791868984699249
+    inflow_aucroc_metric: 0.813377857208252
+    outflow_accuracy_metric: 0.41858944296836853
+    outflow_f1_metric: 0.40849703550338745
+    outflow_aucroc_metric: 0.8548957705497742
+    val_loss       : 3.9399004986411645
+    val_inflow_loss: 1.6087190163762946
+    val_outflow_loss: 2.331181469716524
+    val_inflow_accuracy_metric: 0.4023163616657257
+    val_inflow_f1_metric: 0.41076573729515076
+    val_inflow_aucroc_metric: 0.792364776134491
+    val_outflow_accuracy_metric: 0.2260279655456543
+    val_outflow_f1_metric: 0.15492570400238037
+    val_outflow_aucroc_metric: 0.6740444898605347
+Train Epoch: 26 [0/100088 (0%)] Loss: 3.060713
+Train Epoch: 26 [11264/100088 (11%)] Loss: 3.146271
+Train Epoch: 26 [22528/100088 (23%)] Loss: 3.116273
+Train Epoch: 26 [33792/100088 (34%)] Loss: 3.093233
+Train Epoch: 26 [45056/100088 (45%)] Loss: 3.186167
+Train Epoch: 26 [56320/100088 (56%)] Loss: 3.043040
+Train Epoch: 26 [67584/100088 (68%)] Loss: 3.164016
+Train Epoch: 26 [78848/100088 (79%)] Loss: 3.158184
+Train Epoch: 26 [90112/100088 (90%)] Loss: 3.133938
+    epoch          : 26
+    loss           : 3.134597289318941
+    inflow_loss    : 1.6317571176558126
+    outflow_loss   : 1.5028401704467074
+    inflow_accuracy_metric: 0.39930638670921326
+    inflow_f1_metric: 0.3779391050338745
+    inflow_aucroc_metric: 0.813239574432373
+    outflow_accuracy_metric: 0.4193724989891052
+    outflow_f1_metric: 0.408338725566864
+    outflow_aucroc_metric: 0.8554173707962036
+    val_loss       : 4.005601462564971
+    val_inflow_loss: 1.5895586515727795
+    val_outflow_loss: 2.4160427984438444
+    val_inflow_accuracy_metric: 0.41265761852264404
+    val_inflow_f1_metric: 0.4194945693016052
+    val_inflow_aucroc_metric: 0.7962421774864197
+    val_outflow_accuracy_metric: 0.221816748380661
+    val_outflow_f1_metric: 0.16917872428894043
+    val_outflow_aucroc_metric: 0.6596141457557678
+Train Epoch: 27 [0/100088 (0%)] Loss: 3.109947
+Train Epoch: 27 [11264/100088 (11%)] Loss: 3.055614
+Train Epoch: 27 [22528/100088 (23%)] Loss: 3.188841
+Train Epoch: 27 [33792/100088 (34%)] Loss: 3.110528
+Train Epoch: 27 [45056/100088 (45%)] Loss: 3.092478
+Train Epoch: 27 [56320/100088 (56%)] Loss: 3.168038
+Train Epoch: 27 [67584/100088 (68%)] Loss: 3.012855
+Train Epoch: 27 [78848/100088 (79%)] Loss: 3.174847
+Train Epoch: 27 [90112/100088 (90%)] Loss: 3.126933
+    epoch          : 27
+    loss           : 3.120504674862842
+    inflow_loss    : 1.6248865188384543
+    outflow_loss   : 1.495618156024388
+    inflow_accuracy_metric: 0.40213513374328613
+    inflow_f1_metric: 0.3812519311904907
+    inflow_aucroc_metric: 0.8153363466262817
+    outflow_accuracy_metric: 0.42056378722190857
+    outflow_f1_metric: 0.41038602590560913
+    outflow_aucroc_metric: 0.8568443059921265
+    val_loss       : 3.9975086764285437
+    val_inflow_loss: 1.6108747783460116
+    val_outflow_loss: 2.386633879260013
+    val_inflow_accuracy_metric: 0.40218955278396606
+    val_inflow_f1_metric: 0.39101484417915344
+    val_inflow_aucroc_metric: 0.7986935377120972
+    val_outflow_accuracy_metric: 0.22336897253990173
+    val_outflow_f1_metric: 0.15986911952495575
+    val_outflow_aucroc_metric: 0.6697396039962769
+Train Epoch: 28 [0/100088 (0%)] Loss: 3.069740
+Train Epoch: 28 [11264/100088 (11%)] Loss: 3.113853
+Train Epoch: 28 [22528/100088 (23%)] Loss: 3.125061
+Train Epoch: 28 [33792/100088 (34%)] Loss: 3.053358
+Train Epoch: 28 [45056/100088 (45%)] Loss: 3.078735
+Train Epoch: 28 [56320/100088 (56%)] Loss: 3.005203
+Train Epoch: 28 [67584/100088 (68%)] Loss: 3.194997
+Train Epoch: 28 [78848/100088 (79%)] Loss: 3.019493
+Train Epoch: 28 [90112/100088 (90%)] Loss: 3.076324
+    epoch          : 28
+    loss           : 3.1111782545946083
+    inflow_loss    : 1.6168474123185994
+    outflow_loss   : 1.4943308368021129
+    inflow_accuracy_metric: 0.40389153361320496
+    inflow_f1_metric: 0.38363319635391235
+    inflow_aucroc_metric: 0.8170696496963501
+    outflow_accuracy_metric: 0.4202510118484497
+    outflow_f1_metric: 0.40995436906814575
+    outflow_aucroc_metric: 0.857208251953125
+    val_loss       : 3.8954361488944604
+    val_inflow_loss: 1.5708038712802685
+    val_outflow_loss: 2.3246322870254517
+    val_inflow_accuracy_metric: 0.4049273431301117
+    val_inflow_f1_metric: 0.40203264355659485
+    val_inflow_aucroc_metric: 0.8079411387443542
+    val_outflow_accuracy_metric: 0.22367392480373383
+    val_outflow_f1_metric: 0.17889834940433502
+    val_outflow_aucroc_metric: 0.6618353724479675
+Train Epoch: 29 [0/100088 (0%)] Loss: 3.153937
+Train Epoch: 29 [11264/100088 (11%)] Loss: 3.128651
+Train Epoch: 29 [22528/100088 (23%)] Loss: 3.075130
+Train Epoch: 29 [33792/100088 (34%)] Loss: 3.047782
+Train Epoch: 29 [45056/100088 (45%)] Loss: 3.013504
+Train Epoch: 29 [56320/100088 (56%)] Loss: 2.964346
+Train Epoch: 29 [67584/100088 (68%)] Loss: 3.089599
+Train Epoch: 29 [78848/100088 (79%)] Loss: 3.081166
+Train Epoch: 29 [90112/100088 (90%)] Loss: 3.161685
+    epoch          : 29
+    loss           : 3.101598860049734
+    inflow_loss    : 1.612619226076165
+    outflow_loss   : 1.4889796370146227
+    inflow_accuracy_metric: 0.40447109937667847
+    inflow_f1_metric: 0.38409924507141113
+    inflow_aucroc_metric: 0.8177000284194946
+    outflow_accuracy_metric: 0.4229103624820709
+    outflow_f1_metric: 0.4127902090549469
+    outflow_aucroc_metric: 0.85813969373703
+    val_loss       : 4.075115385808442
+    val_inflow_loss: 1.5946587826076306
+    val_outflow_loss: 2.480456590652466
+    val_inflow_accuracy_metric: 0.40528371930122375
+    val_inflow_f1_metric: 0.40594497323036194
+    val_inflow_aucroc_metric: 0.8092774748802185
+    val_outflow_accuracy_metric: 0.2249588668346405
+    val_outflow_f1_metric: 0.17340806126594543
+    val_outflow_aucroc_metric: 0.6711938977241516
+Train Epoch: 30 [0/100088 (0%)] Loss: 3.078993
+Train Epoch: 30 [11264/100088 (11%)] Loss: 3.265468
+Train Epoch: 30 [22528/100088 (23%)] Loss: 3.076114
+Train Epoch: 30 [33792/100088 (34%)] Loss: 3.047064
+Train Epoch: 30 [45056/100088 (45%)] Loss: 3.131672
+Train Epoch: 30 [56320/100088 (56%)] Loss: 2.995473
+Train Epoch: 30 [67584/100088 (68%)] Loss: 3.133466
+Train Epoch: 30 [78848/100088 (79%)] Loss: 3.064055
+Train Epoch: 30 [90112/100088 (90%)] Loss: 3.094961
+    epoch          : 30
+    loss           : 3.106046191283635
+    inflow_loss    : 1.6203340985337082
+    outflow_loss   : 1.4857120982238226
+    inflow_accuracy_metric: 0.40202486515045166
+    inflow_f1_metric: 0.3820168077945709
+    inflow_aucroc_metric: 0.8159312009811401
+    outflow_accuracy_metric: 0.4231855273246765
+    outflow_f1_metric: 0.4130305051803589
+    outflow_aucroc_metric: 0.8589684367179871
+    val_loss       : 3.98208192775124
+    val_inflow_loss: 1.5702170541411953
+    val_outflow_loss: 2.411864857924612
+    val_inflow_accuracy_metric: 0.41769805550575256
+    val_inflow_f1_metric: 0.41482001543045044
+    val_inflow_aucroc_metric: 0.8151430487632751
+    val_outflow_accuracy_metric: 0.21704016625881195
+    val_outflow_f1_metric: 0.156682088971138
+    val_outflow_aucroc_metric: 0.6611486077308655
+Train Epoch: 31 [0/100088 (0%)] Loss: 3.161335
+Train Epoch: 31 [11264/100088 (11%)] Loss: 3.086200
+Train Epoch: 31 [22528/100088 (23%)] Loss: 3.119478
+Train Epoch: 31 [33792/100088 (34%)] Loss: 3.181952
+Train Epoch: 31 [45056/100088 (45%)] Loss: 3.071518
+Train Epoch: 31 [56320/100088 (56%)] Loss: 3.036188
+Train Epoch: 31 [67584/100088 (68%)] Loss: 3.049650
+Train Epoch: 31 [78848/100088 (79%)] Loss: 3.135935
+Train Epoch: 31 [90112/100088 (90%)] Loss: 3.157855
+    epoch          : 31
+    loss           : 3.0945304948456434
+    inflow_loss    : 1.610208314292285
+    outflow_loss   : 1.4843221835944118
+    inflow_accuracy_metric: 0.4060703217983246
+    inflow_f1_metric: 0.3860704302787781
+    inflow_aucroc_metric: 0.818367600440979
+    outflow_accuracy_metric: 0.42309457063674927
+    outflow_f1_metric: 0.4129275381565094
+    outflow_aucroc_metric: 0.8591681122779846
+    val_loss       : 4.01066970197778
+    val_inflow_loss: 1.5789729639103538
+    val_outflow_loss: 2.431696753752859
+    val_inflow_accuracy_metric: 0.40914198756217957
+    val_inflow_f1_metric: 0.40532827377319336
+    val_inflow_aucroc_metric: 0.8100818395614624
+    val_outflow_accuracy_metric: 0.20499588549137115
+    val_outflow_f1_metric: 0.14925391972064972
+    val_outflow_aucroc_metric: 0.6542489528656006
+Train Epoch: 32 [0/100088 (0%)] Loss: 3.018764
+Train Epoch: 32 [11264/100088 (11%)] Loss: 3.071248
+Train Epoch: 32 [22528/100088 (23%)] Loss: 3.122975
+Train Epoch: 32 [33792/100088 (34%)] Loss: 3.060328
+Train Epoch: 32 [45056/100088 (45%)] Loss: 3.056657
+Train Epoch: 32 [56320/100088 (56%)] Loss: 3.182208
+Train Epoch: 32 [67584/100088 (68%)] Loss: 3.128084
+Train Epoch: 32 [78848/100088 (79%)] Loss: 3.022840
+Train Epoch: 32 [90112/100088 (90%)] Loss: 3.006748
+    epoch          : 32
+    loss           : 3.0869167836344973
+    inflow_loss    : 1.6033164682436962
+    outflow_loss   : 1.483600313566169
+    inflow_accuracy_metric: 0.4084586501121521
+    inflow_f1_metric: 0.387784868478775
+    inflow_aucroc_metric: 0.8200860023498535
+    outflow_accuracy_metric: 0.423221230506897
+    outflow_f1_metric: 0.4133303761482239
+    outflow_aucroc_metric: 0.8593590259552002
+    val_loss       : 4.22136274136995
+    val_inflow_loss: 1.6350120431498478
+    val_outflow_loss: 2.5863506605750635
+    val_inflow_accuracy_metric: 0.4030359089374542
+    val_inflow_f1_metric: 0.39253491163253784
+    val_inflow_aucroc_metric: 0.8038759827613831
+    val_outflow_accuracy_metric: 0.2088199108839035
+    val_outflow_f1_metric: 0.14695550501346588
+    val_outflow_aucroc_metric: 0.6678882241249084
+Train Epoch: 33 [0/100088 (0%)] Loss: 3.039493
+Train Epoch: 33 [11264/100088 (11%)] Loss: 3.157641
+Train Epoch: 33 [22528/100088 (23%)] Loss: 3.086850
+Train Epoch: 33 [33792/100088 (34%)] Loss: 3.057381
+Train Epoch: 33 [45056/100088 (45%)] Loss: 3.188200
+Train Epoch: 33 [56320/100088 (56%)] Loss: 2.978080
+Train Epoch: 33 [67584/100088 (68%)] Loss: 3.154595
+Train Epoch: 33 [78848/100088 (79%)] Loss: 3.133729
+Train Epoch: 33 [90112/100088 (90%)] Loss: 3.141088
+    epoch          : 33
+    loss           : 3.0856594358171736
+    inflow_loss    : 1.6023590485660397
+    outflow_loss   : 1.4833003787361845
+    inflow_accuracy_metric: 0.40924912691116333
+    inflow_f1_metric: 0.3891650140285492
+    inflow_aucroc_metric: 0.8202615976333618
+    outflow_accuracy_metric: 0.42302513122558594
+    outflow_f1_metric: 0.41293540596961975
+    outflow_aucroc_metric: 0.8590326905250549
+    val_loss       : 3.9043199827796533
+    val_inflow_loss: 1.5779324644490291
+    val_outflow_loss: 2.3263875246047974
+    val_inflow_accuracy_metric: 0.4137780964374542
+    val_inflow_f1_metric: 0.4139810800552368
+    val_inflow_aucroc_metric: 0.8139381408691406
+    val_outflow_accuracy_metric: 0.21216420829296112
+    val_outflow_f1_metric: 0.167918860912323
+    val_outflow_aucroc_metric: 0.6647209525108337
+Train Epoch: 34 [0/100088 (0%)] Loss: 3.125130
+Train Epoch: 34 [11264/100088 (11%)] Loss: 3.078048
+Train Epoch: 34 [22528/100088 (23%)] Loss: 3.041842
+Train Epoch: 34 [33792/100088 (34%)] Loss: 3.127265
+Train Epoch: 34 [45056/100088 (45%)] Loss: 3.044186
+Train Epoch: 34 [56320/100088 (56%)] Loss: 3.075325
+Train Epoch: 34 [67584/100088 (68%)] Loss: 3.112014
+Train Epoch: 34 [78848/100088 (79%)] Loss: 3.119393
+Train Epoch: 34 [90112/100088 (90%)] Loss: 3.113684
+    epoch          : 34
+    loss           : 3.0795428278494854
+    inflow_loss    : 1.6016905842995157
+    outflow_loss   : 1.477852244766391
+    inflow_accuracy_metric: 0.4093966484069824
+    inflow_f1_metric: 0.3893883228302002
+    inflow_aucroc_metric: 0.8204939365386963
+    outflow_accuracy_metric: 0.42485034465789795
+    outflow_f1_metric: 0.4147401452064514
+    outflow_aucroc_metric: 0.8603693246841431
+    val_loss       : 4.036851914305436
+    val_inflow_loss: 1.621234263244428
+    val_outflow_loss: 2.415617666746441
+    val_inflow_accuracy_metric: 0.41056743264198303
+    val_inflow_f1_metric: 0.40669864416122437
+    val_inflow_aucroc_metric: 0.8095282912254333
+    val_outflow_accuracy_metric: 0.21781113743782043
+    val_outflow_f1_metric: 0.16476930677890778
+    val_outflow_aucroc_metric: 0.6634770631790161
+Train Epoch: 35 [0/100088 (0%)] Loss: 3.057819
+Train Epoch: 35 [11264/100088 (11%)] Loss: 3.041894
+Train Epoch: 35 [22528/100088 (23%)] Loss: 3.049085
+Train Epoch: 35 [33792/100088 (34%)] Loss: 3.045437
+Train Epoch: 35 [45056/100088 (45%)] Loss: 3.096773
+Train Epoch: 35 [56320/100088 (56%)] Loss: 3.005892
+Train Epoch: 35 [67584/100088 (68%)] Loss: 3.149219
+Train Epoch: 35 [78848/100088 (79%)] Loss: 3.156581
+Train Epoch: 35 [90112/100088 (90%)] Loss: 3.064549
+    epoch          : 35
+    loss           : 3.0755019139270394
+    inflow_loss    : 1.6008640777091592
+    outflow_loss   : 1.4746378301357737
+    inflow_accuracy_metric: 0.4077100157737732
+    inflow_f1_metric: 0.3870488405227661
+    inflow_aucroc_metric: 0.8210526704788208
+    outflow_accuracy_metric: 0.42473652958869934
+    outflow_f1_metric: 0.4149625301361084
+    outflow_aucroc_metric: 0.8608289957046509
+    val_loss       : 4.4431490270715015
+    val_inflow_loss: 1.5896905848854466
+    val_outflow_loss: 2.8534584421860543
+    val_inflow_accuracy_metric: 0.4073944687843323
+    val_inflow_f1_metric: 0.4115707576274872
+    val_inflow_aucroc_metric: 0.8052335977554321
+    val_outflow_accuracy_metric: 0.20761717855930328
+    val_outflow_f1_metric: 0.1417924463748932
+    val_outflow_aucroc_metric: 0.6683661937713623
+Train Epoch: 36 [0/100088 (0%)] Loss: 3.066417
+Train Epoch: 36 [11264/100088 (11%)] Loss: 3.063101
+Train Epoch: 36 [22528/100088 (23%)] Loss: 2.972765
+Train Epoch: 36 [33792/100088 (34%)] Loss: 3.014945
+Train Epoch: 36 [45056/100088 (45%)] Loss: 3.182512
+Train Epoch: 36 [56320/100088 (56%)] Loss: 3.046487
+Train Epoch: 36 [67584/100088 (68%)] Loss: 3.067689
+Train Epoch: 36 [78848/100088 (79%)] Loss: 3.134142
+Train Epoch: 36 [90112/100088 (90%)] Loss: 3.038608
+    epoch          : 36
+    loss           : 3.0672445285077
+    inflow_loss    : 1.597533528293882
+    outflow_loss   : 1.4697110093369776
+    inflow_accuracy_metric: 0.4100115895271301
+    inflow_f1_metric: 0.3907943665981293
+    inflow_aucroc_metric: 0.8218178153038025
+    outflow_accuracy_metric: 0.4270448386669159
+    outflow_f1_metric: 0.41658300161361694
+    outflow_aucroc_metric: 0.8617570400238037
+    val_loss       : 4.0910162925720215
+    val_inflow_loss: 1.6215621546695107
+    val_outflow_loss: 2.4694541128058183
+    val_inflow_accuracy_metric: 0.40028437972068787
+    val_inflow_f1_metric: 0.4094541668891907
+    val_inflow_aucroc_metric: 0.8124369978904724
+    val_outflow_accuracy_metric: 0.21220189332962036
+    val_outflow_f1_metric: 0.15924286842346191
+    val_outflow_aucroc_metric: 0.6645419597625732
+Train Epoch: 37 [0/100088 (0%)] Loss: 3.130710
+Train Epoch: 37 [11264/100088 (11%)] Loss: 3.050132
+Train Epoch: 37 [22528/100088 (23%)] Loss: 2.962979
+Train Epoch: 37 [33792/100088 (34%)] Loss: 3.069535
+Train Epoch: 37 [45056/100088 (45%)] Loss: 3.011039
+Train Epoch: 37 [56320/100088 (56%)] Loss: 3.036480
+Train Epoch: 37 [67584/100088 (68%)] Loss: 3.063231
+Train Epoch: 37 [78848/100088 (79%)] Loss: 3.067034
+Train Epoch: 37 [90112/100088 (90%)] Loss: 2.948614
+    epoch          : 37
+    loss           : 3.061860905618084
+    inflow_loss    : 1.5934249041031818
+    outflow_loss   : 1.4684360057723767
+    inflow_accuracy_metric: 0.4126381576061249
+    inflow_f1_metric: 0.3934505879878998
+    inflow_aucroc_metric: 0.8226146697998047
+    outflow_accuracy_metric: 0.42801499366760254
+    outflow_f1_metric: 0.41769954562187195
+    outflow_aucroc_metric: 0.8620558381080627
+    val_loss       : 4.162854859703465
+    val_inflow_loss: 1.6032209333620573
+    val_outflow_loss: 2.5596338949705424
+    val_inflow_accuracy_metric: 0.40909403562545776
+    val_inflow_f1_metric: 0.40379422903060913
+    val_inflow_aucroc_metric: 0.8102952837944031
+    val_outflow_accuracy_metric: 0.2178899347782135
+    val_outflow_f1_metric: 0.1512252390384674
+    val_outflow_aucroc_metric: 0.6682876944541931
+Train Epoch: 38 [0/100088 (0%)] Loss: 2.988800
+Train Epoch: 38 [11264/100088 (11%)] Loss: 3.069462
+Train Epoch: 38 [22528/100088 (23%)] Loss: 3.046269
+Train Epoch: 38 [33792/100088 (34%)] Loss: 3.043959
+Train Epoch: 38 [45056/100088 (45%)] Loss: 3.016394
+Train Epoch: 38 [56320/100088 (56%)] Loss: 3.021444
+Train Epoch: 38 [67584/100088 (68%)] Loss: 3.011549
+Train Epoch: 38 [78848/100088 (79%)] Loss: 3.028609
+Train Epoch: 38 [90112/100088 (90%)] Loss: 3.009018
+    epoch          : 38
+    loss           : 3.060382656905116
+    inflow_loss    : 1.5949517701353346
+    outflow_loss   : 1.4654308940683092
+    inflow_accuracy_metric: 0.4112321436405182
+    inflow_f1_metric: 0.3920837938785553
+    inflow_aucroc_metric: 0.8224425911903381
+    outflow_accuracy_metric: 0.42795005440711975
+    outflow_f1_metric: 0.41771379113197327
+    outflow_aucroc_metric: 0.86229407787323
+    val_loss       : 4.151302030212001
+    val_inflow_loss: 1.6200720071792603
+    val_outflow_loss: 2.53123004185526
+    val_inflow_accuracy_metric: 0.4081037640571594
+    val_inflow_f1_metric: 0.40180322527885437
+    val_inflow_aucroc_metric: 0.8008948564529419
+    val_outflow_accuracy_metric: 0.21544338762760162
+    val_outflow_f1_metric: 0.15776652097702026
+    val_outflow_aucroc_metric: 0.6701728701591492
+Train Epoch: 39 [0/100088 (0%)] Loss: 3.168142
+Train Epoch: 39 [11264/100088 (11%)] Loss: 3.063613
+Train Epoch: 39 [22528/100088 (23%)] Loss: 3.037085
+Train Epoch: 39 [33792/100088 (34%)] Loss: 3.111547
+Train Epoch: 39 [45056/100088 (45%)] Loss: 2.968641
+Train Epoch: 39 [56320/100088 (56%)] Loss: 3.154286
+Train Epoch: 39 [67584/100088 (68%)] Loss: 3.112988
+Train Epoch: 39 [78848/100088 (79%)] Loss: 3.151381
+Train Epoch: 39 [90112/100088 (90%)] Loss: 3.088085
+    epoch          : 39
+    loss           : 3.0558917023697676
+    inflow_loss    : 1.5926108025774663
+    outflow_loss   : 1.4632808937101949
+    inflow_accuracy_metric: 0.4119598865509033
+    inflow_f1_metric: 0.3922070264816284
+    inflow_aucroc_metric: 0.8228764533996582
+    outflow_accuracy_metric: 0.42783498764038086
+    outflow_f1_metric: 0.4173533022403717
+    outflow_aucroc_metric: 0.8632399439811707
+    val_loss       : 4.269290679379513
+    val_inflow_loss: 1.6173675311239142
+    val_outflow_loss: 2.6519231670781185
+    val_inflow_accuracy_metric: 0.39979785680770874
+    val_inflow_f1_metric: 0.4005787670612335
+    val_inflow_aucroc_metric: 0.804819643497467
+    val_outflow_accuracy_metric: 0.22081276774406433
+    val_outflow_f1_metric: 0.15736877918243408
+    val_outflow_aucroc_metric: 0.6790821552276611
+Train Epoch: 40 [0/100088 (0%)] Loss: 3.116825
+Train Epoch: 40 [11264/100088 (11%)] Loss: 3.047746
+Train Epoch: 40 [22528/100088 (23%)] Loss: 3.109159
+Train Epoch: 40 [33792/100088 (34%)] Loss: 2.941479
+Train Epoch: 40 [45056/100088 (45%)] Loss: 2.946720
+Train Epoch: 40 [56320/100088 (56%)] Loss: 2.996457
+Train Epoch: 40 [67584/100088 (68%)] Loss: 3.034967
+Train Epoch: 40 [78848/100088 (79%)] Loss: 3.155738
+Train Epoch: 40 [90112/100088 (90%)] Loss: 3.086849
+    epoch          : 40
+    loss           : 3.050326484806684
+    inflow_loss    : 1.5885083219226526
+    outflow_loss   : 1.4618181732236122
+    inflow_accuracy_metric: 0.41399016976356506
+    inflow_f1_metric: 0.3943573534488678
+    inflow_aucroc_metric: 0.8234309554100037
+    outflow_accuracy_metric: 0.42960038781166077
+    outflow_f1_metric: 0.4194716811180115
+    outflow_aucroc_metric: 0.8634082078933716
+    val_loss       : 4.055313229560852
+    val_inflow_loss: 1.6152350149656598
+    val_outflow_loss: 2.4400782585144043
+    val_inflow_accuracy_metric: 0.4029502272605896
+    val_inflow_f1_metric: 0.404964804649353
+    val_inflow_aucroc_metric: 0.7990536093711853
+    val_outflow_accuracy_metric: 0.22131989896297455
+    val_outflow_f1_metric: 0.16120462119579315
+    val_outflow_aucroc_metric: 0.6740244626998901
+Train Epoch: 41 [0/100088 (0%)] Loss: 3.098742
+Train Epoch: 41 [11264/100088 (11%)] Loss: 2.890744
+Train Epoch: 41 [22528/100088 (23%)] Loss: 2.972117
+Train Epoch: 41 [33792/100088 (34%)] Loss: 3.039405
+Train Epoch: 41 [45056/100088 (45%)] Loss: 2.856440
+Train Epoch: 41 [56320/100088 (56%)] Loss: 3.000250
+Train Epoch: 41 [67584/100088 (68%)] Loss: 2.955352
+Train Epoch: 41 [78848/100088 (79%)] Loss: 3.017031
+Train Epoch: 41 [90112/100088 (90%)] Loss: 3.000900
+    epoch          : 41
+    loss           : 3.0469602966795164
+    inflow_loss    : 1.5871867306378422
+    outflow_loss   : 1.459773560567778
+    inflow_accuracy_metric: 0.413459450006485
+    inflow_f1_metric: 0.3933717608451843
+    inflow_aucroc_metric: 0.8245582580566406
+    outflow_accuracy_metric: 0.42942553758621216
+    outflow_f1_metric: 0.418702095746994
+    outflow_aucroc_metric: 0.8638899326324463
+    val_loss       : 4.257607899214092
+    val_inflow_loss: 1.5883779557127702
+    val_outflow_loss: 2.6692299089933695
+    val_inflow_accuracy_metric: 0.4066029489040375
+    val_inflow_f1_metric: 0.40438228845596313
+    val_inflow_aucroc_metric: 0.8088616132736206
+    val_outflow_accuracy_metric: 0.2147272527217865
+    val_outflow_f1_metric: 0.16096220910549164
+    val_outflow_aucroc_metric: 0.6674156785011292
+Train Epoch: 42 [0/100088 (0%)] Loss: 2.949243
+Train Epoch: 42 [11264/100088 (11%)] Loss: 3.067045
+Train Epoch: 42 [22528/100088 (23%)] Loss: 2.918071
+Train Epoch: 42 [33792/100088 (34%)] Loss: 3.091614
+Train Epoch: 42 [45056/100088 (45%)] Loss: 3.087156
+Train Epoch: 42 [56320/100088 (56%)] Loss: 2.997326
+Train Epoch: 42 [67584/100088 (68%)] Loss: 3.039036
+Train Epoch: 42 [78848/100088 (79%)] Loss: 3.021286
+Train Epoch: 42 [90112/100088 (90%)] Loss: 3.053500
+    epoch          : 42
+    loss           : 3.045236343023728
+    inflow_loss    : 1.5862906386657638
+    outflow_loss   : 1.4589457086154394
+    inflow_accuracy_metric: 0.41400495171546936
+    inflow_f1_metric: 0.39457017183303833
+    inflow_aucroc_metric: 0.8241733312606812
+    outflow_accuracy_metric: 0.4309527277946472
+    outflow_f1_metric: 0.42047977447509766
+    outflow_aucroc_metric: 0.8643041849136353
+    val_loss       : 4.173332201807122
+    val_inflow_loss: 1.6316767366308915
+    val_outflow_loss: 2.541655465176231
+    val_inflow_accuracy_metric: 0.4044784903526306
+    val_inflow_f1_metric: 0.41178837418556213
+    val_inflow_aucroc_metric: 0.8002465963363647
+    val_outflow_accuracy_metric: 0.2227487564086914
+    val_outflow_f1_metric: 0.17763358354568481
+    val_outflow_aucroc_metric: 0.655718982219696
+Train Epoch: 43 [0/100088 (0%)] Loss: 3.129778
+Train Epoch: 43 [11264/100088 (11%)] Loss: 3.037916
+Train Epoch: 43 [22528/100088 (23%)] Loss: 2.948324
+Train Epoch: 43 [33792/100088 (34%)] Loss: 2.906620
+Train Epoch: 43 [45056/100088 (45%)] Loss: 3.084690
+Train Epoch: 43 [56320/100088 (56%)] Loss: 3.061634
+Train Epoch: 43 [67584/100088 (68%)] Loss: 3.018349
+Train Epoch: 43 [78848/100088 (79%)] Loss: 2.999393
+Train Epoch: 43 [90112/100088 (90%)] Loss: 3.057874
+    epoch          : 43
+    loss           : 3.0437160255957623
+    inflow_loss    : 1.5848703743243704
+    outflow_loss   : 1.4588456543124453
+    inflow_accuracy_metric: 0.4144582152366638
+    inflow_f1_metric: 0.39516907930374146
+    inflow_aucroc_metric: 0.8246424198150635
+    outflow_accuracy_metric: 0.4313664138317108
+    outflow_f1_metric: 0.42033499479293823
+    outflow_aucroc_metric: 0.8640642762184143
+    val_loss       : 4.208935674868132
+    val_inflow_loss: 1.5812485029822902
+    val_outflow_loss: 2.627687196982534
+    val_inflow_accuracy_metric: 0.4089192748069763
+    val_inflow_f1_metric: 0.40844640135765076
+    val_inflow_aucroc_metric: 0.816231906414032
+    val_outflow_accuracy_metric: 0.22005894780158997
+    val_outflow_f1_metric: 0.1584908366203308
+    val_outflow_aucroc_metric: 0.667385458946228
+Train Epoch: 44 [0/100088 (0%)] Loss: 2.926346
+Train Epoch: 44 [11264/100088 (11%)] Loss: 3.084948
+Train Epoch: 44 [22528/100088 (23%)] Loss: 3.030030
+Train Epoch: 44 [33792/100088 (34%)] Loss: 3.029441
+Train Epoch: 44 [45056/100088 (45%)] Loss: 2.977987
+Train Epoch: 44 [56320/100088 (56%)] Loss: 3.021369
+Train Epoch: 44 [67584/100088 (68%)] Loss: 3.021693
+Train Epoch: 44 [78848/100088 (79%)] Loss: 3.017034
+Train Epoch: 44 [90112/100088 (90%)] Loss: 3.001273
+    epoch          : 44
+    loss           : 3.0304381263499356
+    inflow_loss    : 1.5791690161033554
+    outflow_loss   : 1.451269112679423
+    inflow_accuracy_metric: 0.416302353143692
+    inflow_f1_metric: 0.39693474769592285
+    inflow_aucroc_metric: 0.826181173324585
+    outflow_accuracy_metric: 0.4309597611427307
+    outflow_f1_metric: 0.42081379890441895
+    outflow_aucroc_metric: 0.8654409646987915
+    val_loss       : 4.276749635997572
+    val_inflow_loss: 1.5836048063478971
+    val_outflow_loss: 2.6931448484721936
+    val_inflow_accuracy_metric: 0.407322496175766
+    val_inflow_f1_metric: 0.4073811173439026
+    val_inflow_aucroc_metric: 0.8149009943008423
+    val_outflow_accuracy_metric: 0.20991982519626617
+    val_outflow_f1_metric: 0.1554497331380844
+    val_outflow_aucroc_metric: 0.6563265323638916
+Train Epoch: 45 [0/100088 (0%)] Loss: 3.017501
+Train Epoch: 45 [11264/100088 (11%)] Loss: 3.015115
+Train Epoch: 45 [22528/100088 (23%)] Loss: 3.068080
+Train Epoch: 45 [33792/100088 (34%)] Loss: 3.050387
+Train Epoch: 45 [45056/100088 (45%)] Loss: 2.965695
+Train Epoch: 45 [56320/100088 (56%)] Loss: 3.056121
+Train Epoch: 45 [67584/100088 (68%)] Loss: 2.859092
+Train Epoch: 45 [78848/100088 (79%)] Loss: 2.966348
+Train Epoch: 45 [90112/100088 (90%)] Loss: 2.942523
+    epoch          : 45
+    loss           : 3.025369882583618
+    inflow_loss    : 1.5758450140758438
+    outflow_loss   : 1.4495248709406172
+    inflow_accuracy_metric: 0.4166199266910553
+    inflow_f1_metric: 0.3969200849533081
+    inflow_aucroc_metric: 0.8268805146217346
+    outflow_accuracy_metric: 0.4315827786922455
+    outflow_f1_metric: 0.4208920896053314
+    outflow_aucroc_metric: 0.865752637386322
+    val_loss       : 4.280423340044524
+    val_inflow_loss: 1.6209482519250167
+    val_outflow_loss: 2.65947509439368
+    val_inflow_accuracy_metric: 0.40922078490257263
+    val_inflow_f1_metric: 0.40159061551094055
+    val_inflow_aucroc_metric: 0.8084273934364319
+    val_outflow_accuracy_metric: 0.22442777454853058
+    val_outflow_f1_metric: 0.17633914947509766
+    val_outflow_aucroc_metric: 0.6679368615150452
+Train Epoch: 46 [0/100088 (0%)] Loss: 3.093836
+Train Epoch: 46 [11264/100088 (11%)] Loss: 3.110757
+Train Epoch: 46 [22528/100088 (23%)] Loss: 2.945519
+Train Epoch: 46 [33792/100088 (34%)] Loss: 3.020055
+Train Epoch: 46 [45056/100088 (45%)] Loss: 2.965299
+Train Epoch: 46 [56320/100088 (56%)] Loss: 2.953218
+Train Epoch: 46 [67584/100088 (68%)] Loss: 3.100052
+Train Epoch: 46 [78848/100088 (79%)] Loss: 3.024453
+Train Epoch: 46 [90112/100088 (90%)] Loss: 3.054968
+    epoch          : 46
+    loss           : 3.0258179635417704
+    inflow_loss    : 1.5774140066030073
+    outflow_loss   : 1.4484039557223418
+    inflow_accuracy_metric: 0.4166578948497772
+    inflow_f1_metric: 0.39762040972709656
+    inflow_aucroc_metric: 0.8268013000488281
+    outflow_accuracy_metric: 0.43255898356437683
+    outflow_f1_metric: 0.4217833876609802
+    outflow_aucroc_metric: 0.865980863571167
+    val_loss       : 4.4130849461806445
+    val_inflow_loss: 1.6674267116345858
+    val_outflow_loss: 2.745658184352674
+    val_inflow_accuracy_metric: 0.4132504165172577
+    val_inflow_f1_metric: 0.4154106080532074
+    val_inflow_aucroc_metric: 0.8148550987243652
+    val_outflow_accuracy_metric: 0.22052152454853058
+    val_outflow_f1_metric: 0.1649947166442871
+    val_outflow_aucroc_metric: 0.666035532951355
+Train Epoch: 47 [0/100088 (0%)] Loss: 3.170571
+Train Epoch: 47 [11264/100088 (11%)] Loss: 3.195933
+Train Epoch: 47 [22528/100088 (23%)] Loss: 3.115883
+Train Epoch: 47 [33792/100088 (34%)] Loss: 2.989613
+Train Epoch: 47 [45056/100088 (45%)] Loss: 3.004660
+Train Epoch: 47 [56320/100088 (56%)] Loss: 3.061041
+Train Epoch: 47 [67584/100088 (68%)] Loss: 3.009627
+Train Epoch: 47 [78848/100088 (79%)] Loss: 3.136357
+Train Epoch: 47 [90112/100088 (90%)] Loss: 2.925619
+    epoch          : 47
+    loss           : 3.0217091003242804
+    inflow_loss    : 1.5738988798491809
+    outflow_loss   : 1.447810216217625
+    inflow_accuracy_metric: 0.41804876923561096
+    inflow_f1_metric: 0.3987274169921875
+    inflow_aucroc_metric: 0.8274892568588257
+    outflow_accuracy_metric: 0.4340418577194214
+    outflow_f1_metric: 0.42307183146476746
+    outflow_aucroc_metric: 0.8661311864852905
+    val_loss       : 4.086611176791944
+    val_inflow_loss: 1.6411366933270504
+    val_outflow_loss: 2.4454745305211922
+    val_inflow_accuracy_metric: 0.40753838419914246
+    val_inflow_f1_metric: 0.41061893105506897
+    val_inflow_aucroc_metric: 0.8150574564933777
+    val_outflow_accuracy_metric: 0.2332374006509781
+    val_outflow_f1_metric: 0.18954671919345856
+    val_outflow_aucroc_metric: 0.6687723398208618
+Train Epoch: 48 [0/100088 (0%)] Loss: 3.169572
+Train Epoch: 48 [11264/100088 (11%)] Loss: 2.955920
+Train Epoch: 48 [22528/100088 (23%)] Loss: 3.026948
+Train Epoch: 48 [33792/100088 (34%)] Loss: 2.994637
+Train Epoch: 48 [45056/100088 (45%)] Loss: 3.031981
+Train Epoch: 48 [56320/100088 (56%)] Loss: 3.083835
+Train Epoch: 48 [67584/100088 (68%)] Loss: 3.017295
+Train Epoch: 48 [78848/100088 (79%)] Loss: 3.026021
+Train Epoch: 48 [90112/100088 (90%)] Loss: 3.037372
+    epoch          : 48
+    loss           : 3.0195592787801004
+    inflow_loss    : 1.570049172761489
+    outflow_loss   : 1.4495101078432433
+    inflow_accuracy_metric: 0.41797935962677
+    inflow_f1_metric: 0.3994601368904114
+    inflow_aucroc_metric: 0.8284124732017517
+    outflow_accuracy_metric: 0.4339267611503601
+    outflow_f1_metric: 0.42280393838882446
+    outflow_aucroc_metric: 0.8658080697059631
+    val_loss       : 4.493488738411351
+    val_inflow_loss: 1.6428606259195428
+    val_outflow_loss: 2.8506280999434623
+    val_inflow_accuracy_metric: 0.4009697139263153
+    val_inflow_f1_metric: 0.4047357141971588
+    val_inflow_aucroc_metric: 0.8026382327079773
+    val_outflow_accuracy_metric: 0.21490199863910675
+    val_outflow_f1_metric: 0.1597762405872345
+    val_outflow_aucroc_metric: 0.6636084318161011
+Train Epoch: 49 [0/100088 (0%)] Loss: 3.063296
+Train Epoch: 49 [11264/100088 (11%)] Loss: 3.056068
+Train Epoch: 49 [22528/100088 (23%)] Loss: 2.969439
+Train Epoch: 49 [33792/100088 (34%)] Loss: 3.046047
+Train Epoch: 49 [45056/100088 (45%)] Loss: 2.914715
+Train Epoch: 49 [56320/100088 (56%)] Loss: 3.079664
+Train Epoch: 49 [67584/100088 (68%)] Loss: 2.998338
+Train Epoch: 49 [78848/100088 (79%)] Loss: 3.125491
+Train Epoch: 49 [90112/100088 (90%)] Loss: 3.033731
+    epoch          : 49
+    loss           : 3.0154510140419006
+    inflow_loss    : 1.5738456802708762
+    outflow_loss   : 1.441605334379235
+    inflow_accuracy_metric: 0.4173782467842102
+    inflow_f1_metric: 0.3985256254673004
+    inflow_aucroc_metric: 0.8272855281829834
+    outflow_accuracy_metric: 0.4344742000102997
+    outflow_f1_metric: 0.4241798520088196
+    outflow_aucroc_metric: 0.8668723702430725
+    val_loss       : 4.165847314031501
+    val_inflow_loss: 1.604692236373299
+    val_outflow_loss: 2.561155080795288
+    val_inflow_accuracy_metric: 0.412013441324234
+    val_inflow_f1_metric: 0.4128529727458954
+    val_inflow_aucroc_metric: 0.810810387134552
+    val_outflow_accuracy_metric: 0.23513226211071014
+    val_outflow_f1_metric: 0.18803903460502625
+    val_outflow_aucroc_metric: 0.6710078120231628
+Train Epoch: 50 [0/100088 (0%)] Loss: 2.965788
+Train Epoch: 50 [11264/100088 (11%)] Loss: 3.050629
+Train Epoch: 50 [22528/100088 (23%)] Loss: 3.029618
+Train Epoch: 50 [33792/100088 (34%)] Loss: 3.038555
+Train Epoch: 50 [45056/100088 (45%)] Loss: 3.031560
+Train Epoch: 50 [56320/100088 (56%)] Loss: 3.026959
+Train Epoch: 50 [67584/100088 (68%)] Loss: 3.023970
+Train Epoch: 50 [78848/100088 (79%)] Loss: 3.103867
+Train Epoch: 50 [90112/100088 (90%)] Loss: 2.993846
+    epoch          : 50
+    loss           : 3.0202998421630083
+    inflow_loss    : 1.5793064516417834
+    outflow_loss   : 1.440993389913014
+    inflow_accuracy_metric: 0.41565272212028503
+    inflow_f1_metric: 0.39654114842414856
+    inflow_aucroc_metric: 0.8264884948730469
+    outflow_accuracy_metric: 0.4342861473560333
+    outflow_f1_metric: 0.4236741364002228
+    outflow_aucroc_metric: 0.8672419190406799
+    val_loss       : 4.268097927695827
+    val_inflow_loss: 1.6198974251747131
+    val_outflow_loss: 2.6482005182065462
+    val_inflow_accuracy_metric: 0.40154194831848145
+    val_inflow_f1_metric: 0.3964022994041443
+    val_inflow_aucroc_metric: 0.8024436831474304
+    val_outflow_accuracy_metric: 0.22103892266750336
+    val_outflow_f1_metric: 0.16120921075344086
+    val_outflow_aucroc_metric: 0.6730412244796753
+Train Epoch: 51 [0/100088 (0%)] Loss: 2.926478
+Train Epoch: 51 [11264/100088 (11%)] Loss: 2.936377
+Train Epoch: 51 [22528/100088 (23%)] Loss: 3.037400
+Train Epoch: 51 [33792/100088 (34%)] Loss: 2.938623
+Train Epoch: 51 [45056/100088 (45%)] Loss: 3.069408
+Train Epoch: 51 [56320/100088 (56%)] Loss: 2.962913
+Train Epoch: 51 [67584/100088 (68%)] Loss: 2.996759
+Train Epoch: 51 [78848/100088 (79%)] Loss: 3.018494
+Train Epoch: 51 [90112/100088 (90%)] Loss: 2.934222
+    epoch          : 51
+    loss           : 2.958835098208213
+    inflow_loss    : 1.5464288616666988
+    outflow_loss   : 1.4124062359333038
+    inflow_accuracy_metric: 0.42714032530784607
+    inflow_f1_metric: 0.4082770347595215
+    inflow_aucroc_metric: 0.8337848782539368
+    outflow_accuracy_metric: 0.4447380602359772
+    outflow_f1_metric: 0.4333054721355438
+    outflow_aucroc_metric: 0.8723552227020264
+    val_loss       : 4.359876557400352
+    val_inflow_loss: 1.6176006260671114
+    val_outflow_loss: 2.7422758968252885
+    val_inflow_accuracy_metric: 0.41162624955177307
+    val_inflow_f1_metric: 0.41081079840660095
+    val_inflow_aucroc_metric: 0.8111086487770081
+    val_outflow_accuracy_metric: 0.22148780524730682
+    val_outflow_f1_metric: 0.16634877026081085
+    val_outflow_aucroc_metric: 0.6715518832206726
+Train Epoch: 52 [0/100088 (0%)] Loss: 2.913662
+Train Epoch: 52 [11264/100088 (11%)] Loss: 2.932867
+Train Epoch: 52 [22528/100088 (23%)] Loss: 2.883213
+Train Epoch: 52 [33792/100088 (34%)] Loss: 3.007147
+Train Epoch: 52 [45056/100088 (45%)] Loss: 2.911806
+Train Epoch: 52 [56320/100088 (56%)] Loss: 2.968340
+Train Epoch: 52 [67584/100088 (68%)] Loss: 2.990639
+Train Epoch: 52 [78848/100088 (79%)] Loss: 3.004587
+Train Epoch: 52 [90112/100088 (90%)] Loss: 2.914060
+    epoch          : 52
+    loss           : 2.945616512882466
+    inflow_loss    : 1.5381185832072277
+    outflow_loss   : 1.4074979333245023
+    inflow_accuracy_metric: 0.4286459982395172
+    inflow_f1_metric: 0.41040274500846863
+    inflow_aucroc_metric: 0.8355505466461182
+    outflow_accuracy_metric: 0.44572460651397705
+    outflow_f1_metric: 0.43506285548210144
+    outflow_aucroc_metric: 0.8732859492301941
+    val_loss       : 4.31505106624804
+    val_inflow_loss: 1.6231012877665068
+    val_outflow_loss: 2.691949775344447
+    val_inflow_accuracy_metric: 0.41302770376205444
+    val_inflow_f1_metric: 0.41405588388442993
+    val_inflow_aucroc_metric: 0.8137139678001404
+    val_outflow_accuracy_metric: 0.2239583432674408
+    val_outflow_f1_metric: 0.1705925613641739
+    val_outflow_aucroc_metric: 0.6740487217903137
+Train Epoch: 53 [0/100088 (0%)] Loss: 3.044450
+Train Epoch: 53 [11264/100088 (11%)] Loss: 2.997563
+Train Epoch: 53 [22528/100088 (23%)] Loss: 2.984930
+Train Epoch: 53 [33792/100088 (34%)] Loss: 3.045596
+Train Epoch: 53 [45056/100088 (45%)] Loss: 2.929535
+Train Epoch: 53 [56320/100088 (56%)] Loss: 2.974107
+Train Epoch: 53 [67584/100088 (68%)] Loss: 2.959752
+Train Epoch: 53 [78848/100088 (79%)] Loss: 3.078598
+Train Epoch: 53 [90112/100088 (90%)] Loss: 2.876420
+    epoch          : 53
+    loss           : 2.939800043495334
+    inflow_loss    : 1.5361055372929087
+    outflow_loss   : 1.4036945055942147
+    inflow_accuracy_metric: 0.43025580048561096
+    inflow_f1_metric: 0.41219818592071533
+    inflow_aucroc_metric: 0.836138129234314
+    outflow_accuracy_metric: 0.44789016246795654
+    outflow_f1_metric: 0.43775475025177
+    outflow_aucroc_metric: 0.8739626407623291
+    val_loss       : 4.311666488647461
+    val_inflow_loss: 1.610414323053862
+    val_outflow_loss: 2.7012521969644645
+    val_inflow_accuracy_metric: 0.41560786962509155
+    val_inflow_f1_metric: 0.41364407539367676
+    val_inflow_aucroc_metric: 0.813747227191925
+    val_outflow_accuracy_metric: 0.22357456386089325
+    val_outflow_f1_metric: 0.1708187758922577
+    val_outflow_aucroc_metric: 0.671165406703949
+Train Epoch: 54 [0/100088 (0%)] Loss: 2.930563
+Train Epoch: 54 [11264/100088 (11%)] Loss: 2.788244
+Train Epoch: 54 [22528/100088 (23%)] Loss: 2.890768
+Train Epoch: 54 [33792/100088 (34%)] Loss: 2.797595
+Train Epoch: 54 [45056/100088 (45%)] Loss: 2.841832
+Train Epoch: 54 [56320/100088 (56%)] Loss: 2.927503
+Train Epoch: 54 [67584/100088 (68%)] Loss: 2.882510
+Train Epoch: 54 [78848/100088 (79%)] Loss: 2.970917
+Train Epoch: 54 [90112/100088 (90%)] Loss: 2.959248
+    epoch          : 54
+    loss           : 2.9368492936601442
+    inflow_loss    : 1.5337321606217598
+    outflow_loss   : 1.4031171336465953
+    inflow_accuracy_metric: 0.43122369050979614
+    inflow_f1_metric: 0.41364341974258423
+    inflow_aucroc_metric: 0.836689829826355
+    outflow_accuracy_metric: 0.4476066827774048
+    outflow_f1_metric: 0.43756547570228577
+    outflow_aucroc_metric: 0.8738343715667725
+    val_loss       : 4.357717037200928
+    val_inflow_loss: 1.6165459407003302
+    val_outflow_loss: 2.741171077678078
+    val_inflow_accuracy_metric: 0.41342857480049133
+    val_inflow_f1_metric: 0.41318413615226746
+    val_inflow_aucroc_metric: 0.8123148083686829
+    val_outflow_accuracy_metric: 0.221823588013649
+    val_outflow_f1_metric: 0.1678970754146576
+    val_outflow_aucroc_metric: 0.6725308299064636
+Train Epoch: 55 [0/100088 (0%)] Loss: 2.834417
+Train Epoch: 55 [11264/100088 (11%)] Loss: 2.949733
+Train Epoch: 55 [22528/100088 (23%)] Loss: 2.978299
+Train Epoch: 55 [33792/100088 (34%)] Loss: 2.886177
+Train Epoch: 55 [45056/100088 (45%)] Loss: 2.838771
+Train Epoch: 55 [56320/100088 (56%)] Loss: 2.970287
+Train Epoch: 55 [67584/100088 (68%)] Loss: 3.045053
+Train Epoch: 55 [78848/100088 (79%)] Loss: 2.946965
+Train Epoch: 55 [90112/100088 (90%)] Loss: 2.889901
+    epoch          : 55
+    loss           : 2.9339003672405166
+    inflow_loss    : 1.53112101007481
+    outflow_loss   : 1.4027793510835997
+    inflow_accuracy_metric: 0.43165475130081177
+    inflow_f1_metric: 0.4142473340034485
+    inflow_aucroc_metric: 0.8374000787734985
+    outflow_accuracy_metric: 0.44714829325675964
+    outflow_f1_metric: 0.4371953308582306
+    outflow_aucroc_metric: 0.874163806438446
+    val_loss       : 4.333349503968892
+    val_inflow_loss: 1.6295602384366488
+    val_outflow_loss: 2.7037892529838965
+    val_inflow_accuracy_metric: 0.4137849509716034
+    val_inflow_f1_metric: 0.41260480880737305
+    val_inflow_aucroc_metric: 0.8119956254959106
+    val_outflow_accuracy_metric: 0.2228652834892273
+    val_outflow_f1_metric: 0.17261923849582672
+    val_outflow_aucroc_metric: 0.6722028851509094
+Train Epoch: 56 [0/100088 (0%)] Loss: 2.921044
+Train Epoch: 56 [11264/100088 (11%)] Loss: 2.931011
+Train Epoch: 56 [22528/100088 (23%)] Loss: 2.877229
+Train Epoch: 56 [33792/100088 (34%)] Loss: 3.010321
+Train Epoch: 56 [45056/100088 (45%)] Loss: 2.843483
+Train Epoch: 56 [56320/100088 (56%)] Loss: 2.945723
+Train Epoch: 56 [67584/100088 (68%)] Loss: 2.879938
+Train Epoch: 56 [78848/100088 (79%)] Loss: 2.900783
+Train Epoch: 56 [90112/100088 (90%)] Loss: 2.872474
+    epoch          : 56
+    loss           : 2.9310420861049575
+    inflow_loss    : 1.5301148812381589
+    outflow_loss   : 1.4009272158145905
+    inflow_accuracy_metric: 0.43143296241760254
+    inflow_f1_metric: 0.41393476724624634
+    inflow_aucroc_metric: 0.8374395966529846
+    outflow_accuracy_metric: 0.4479759931564331
+    outflow_f1_metric: 0.4376278519630432
+    outflow_aucroc_metric: 0.8745201230049133
+    val_loss       : 4.370056428407368
+    val_inflow_loss: 1.6303987973614742
+    val_outflow_loss: 2.739657627908807
+    val_inflow_accuracy_metric: 0.41459017992019653
+    val_inflow_f1_metric: 0.41504546999931335
+    val_inflow_aucroc_metric: 0.8101381659507751
+    val_outflow_accuracy_metric: 0.2240782529115677
+    val_outflow_f1_metric: 0.1736031025648117
+    val_outflow_aucroc_metric: 0.6699259281158447
+Train Epoch: 57 [0/100088 (0%)] Loss: 2.838549
+Train Epoch: 57 [11264/100088 (11%)] Loss: 2.885200
+Train Epoch: 57 [22528/100088 (23%)] Loss: 2.921974
+Train Epoch: 57 [33792/100088 (34%)] Loss: 2.869519
+Train Epoch: 57 [45056/100088 (45%)] Loss: 2.920222
+Train Epoch: 57 [56320/100088 (56%)] Loss: 2.967684
+Train Epoch: 57 [67584/100088 (68%)] Loss: 2.898662
+Train Epoch: 57 [78848/100088 (79%)] Loss: 2.863737
+Train Epoch: 57 [90112/100088 (90%)] Loss: 2.912459
+    epoch          : 57
+    loss           : 2.930391693601803
+    inflow_loss    : 1.5292687543800898
+    outflow_loss   : 1.4011229453038196
+    inflow_accuracy_metric: 0.43234360218048096
+    inflow_f1_metric: 0.4149115979671478
+    inflow_aucroc_metric: 0.8379035592079163
+    outflow_accuracy_metric: 0.4484051465988159
+    outflow_f1_metric: 0.4384152889251709
+    outflow_aucroc_metric: 0.8745359182357788
+    val_loss       : 4.373263685326827
+    val_inflow_loss: 1.6271678146563078
+    val_outflow_loss: 2.746095870670519
+    val_inflow_accuracy_metric: 0.4125993549823761
+    val_inflow_f1_metric: 0.4128956198692322
+    val_inflow_aucroc_metric: 0.8122998476028442
+    val_outflow_accuracy_metric: 0.2241673469543457
+    val_outflow_f1_metric: 0.171646386384964
+    val_outflow_aucroc_metric: 0.6716339588165283
+Train Epoch: 58 [0/100088 (0%)] Loss: 2.872387
+Train Epoch: 58 [11264/100088 (11%)] Loss: 2.921727
+Train Epoch: 58 [22528/100088 (23%)] Loss: 2.859525
+Train Epoch: 58 [33792/100088 (34%)] Loss: 2.829194
+Train Epoch: 58 [45056/100088 (45%)] Loss: 2.877228
+Train Epoch: 58 [56320/100088 (56%)] Loss: 3.040427
+Train Epoch: 58 [67584/100088 (68%)] Loss: 2.906617
+Train Epoch: 58 [78848/100088 (79%)] Loss: 2.946791
+Train Epoch: 58 [90112/100088 (90%)] Loss: 2.922500
+    epoch          : 58
+    loss           : 2.9294315795509185
+    inflow_loss    : 1.5289923779818477
+    outflow_loss   : 1.4004391979198068
+    inflow_accuracy_metric: 0.431193470954895
+    inflow_f1_metric: 0.413799911737442
+    inflow_aucroc_metric: 0.8380119204521179
+    outflow_accuracy_metric: 0.4481029808521271
+    outflow_f1_metric: 0.43824970722198486
+    outflow_aucroc_metric: 0.8744563460350037
+    val_loss       : 4.372097429476287
+    val_inflow_loss: 1.6313231022734391
+    val_outflow_loss: 2.7407743554366264
+    val_inflow_accuracy_metric: 0.41453537344932556
+    val_inflow_f1_metric: 0.4146166443824768
+    val_inflow_aucroc_metric: 0.8137838840484619
+    val_outflow_accuracy_metric: 0.22281044721603394
+    val_outflow_f1_metric: 0.16906198859214783
+    val_outflow_aucroc_metric: 0.671768069267273
+Train Epoch: 59 [0/100088 (0%)] Loss: 2.809836
+Train Epoch: 59 [11264/100088 (11%)] Loss: 2.964498
+Train Epoch: 59 [22528/100088 (23%)] Loss: 2.921985
+Train Epoch: 59 [33792/100088 (34%)] Loss: 2.991983
+Train Epoch: 59 [45056/100088 (45%)] Loss: 2.888832
+Train Epoch: 59 [56320/100088 (56%)] Loss: 2.862853
+Train Epoch: 59 [67584/100088 (68%)] Loss: 2.940280
+Train Epoch: 59 [78848/100088 (79%)] Loss: 2.962504
+Train Epoch: 59 [90112/100088 (90%)] Loss: 2.880709
+    epoch          : 59
+    loss           : 2.9267004144435025
+    inflow_loss    : 1.5279137723299923
+    outflow_loss   : 1.3987866475874065
+    inflow_accuracy_metric: 0.4328775405883789
+    inflow_f1_metric: 0.4157537519931793
+    inflow_aucroc_metric: 0.8378463983535767
+    outflow_accuracy_metric: 0.4497276246547699
+    outflow_f1_metric: 0.4399111270904541
+    outflow_aucroc_metric: 0.8749377727508545
+    val_loss       : 4.290385170986778
+    val_inflow_loss: 1.6405272170117027
+    val_outflow_loss: 2.649857991620114
+    val_inflow_accuracy_metric: 0.4107593297958374
+    val_inflow_f1_metric: 0.4110623896121979
+    val_inflow_aucroc_metric: 0.8109406232833862
+    val_outflow_accuracy_metric: 0.22897477447986603
+    val_outflow_f1_metric: 0.18146999180316925
+    val_outflow_aucroc_metric: 0.6736330986022949
+Train Epoch: 60 [0/100088 (0%)] Loss: 2.880306
+Train Epoch: 60 [11264/100088 (11%)] Loss: 2.772620
+Train Epoch: 60 [22528/100088 (23%)] Loss: 2.840919
+Train Epoch: 60 [33792/100088 (34%)] Loss: 2.953973
+Train Epoch: 60 [45056/100088 (45%)] Loss: 2.953950
+Train Epoch: 60 [56320/100088 (56%)] Loss: 2.923577
+Train Epoch: 60 [67584/100088 (68%)] Loss: 2.977535
+Train Epoch: 60 [78848/100088 (79%)] Loss: 2.941155
+Train Epoch: 60 [90112/100088 (90%)] Loss: 2.889621
+    epoch          : 60
+    loss           : 2.925743489849324
+    inflow_loss    : 1.526600453318382
+    outflow_loss   : 1.399143037139153
+    inflow_accuracy_metric: 0.43237191438674927
+    inflow_f1_metric: 0.41551482677459717
+    inflow_aucroc_metric: 0.8381453156471252
+    outflow_accuracy_metric: 0.4481557309627533
+    outflow_f1_metric: 0.4384407699108124
+    outflow_aucroc_metric: 0.874837338924408
+    val_loss       : 4.384098303945441
+    val_inflow_loss: 1.635350183436745
+    val_outflow_loss: 2.748748126782869
+    val_inflow_accuracy_metric: 0.41054344177246094
+    val_inflow_f1_metric: 0.41118496656417847
+    val_inflow_aucroc_metric: 0.8121706247329712
+    val_outflow_accuracy_metric: 0.22627811133861542
+    val_outflow_f1_metric: 0.17443235218524933
+    val_outflow_aucroc_metric: 0.6726359128952026
+Train Epoch: 61 [0/100088 (0%)] Loss: 2.970592
+Train Epoch: 61 [11264/100088 (11%)] Loss: 2.820491
+Train Epoch: 61 [22528/100088 (23%)] Loss: 2.883894
+Train Epoch: 61 [33792/100088 (34%)] Loss: 2.913420
+Train Epoch: 61 [45056/100088 (45%)] Loss: 3.007374
+Train Epoch: 61 [56320/100088 (56%)] Loss: 2.872876
+Train Epoch: 61 [67584/100088 (68%)] Loss: 2.889066
+Train Epoch: 61 [78848/100088 (79%)] Loss: 2.881945
+Train Epoch: 61 [90112/100088 (90%)] Loss: 2.877421
+    epoch          : 61
+    loss           : 2.9259961588042125
+    inflow_loss    : 1.5274072557079548
+    outflow_loss   : 1.398588895189519
+    inflow_accuracy_metric: 0.4341009855270386
+    inflow_f1_metric: 0.4168069362640381
+    inflow_aucroc_metric: 0.8381538391113281
+    outflow_accuracy_metric: 0.4484890401363373
+    outflow_f1_metric: 0.4386972486972809
+    outflow_aucroc_metric: 0.8749918937683105
+    val_loss       : 4.331614218260112
+    val_inflow_loss: 1.6501210080949884
+    val_outflow_loss: 2.681493225850557
+    val_inflow_accuracy_metric: 0.40991297364234924
+    val_inflow_f1_metric: 0.41010358929634094
+    val_inflow_aucroc_metric: 0.8121168613433838
+    val_outflow_accuracy_metric: 0.2273985743522644
+    val_outflow_f1_metric: 0.17687156796455383
+    val_outflow_aucroc_metric: 0.6702024936676025
+Train Epoch: 62 [0/100088 (0%)] Loss: 2.942576
+Train Epoch: 62 [11264/100088 (11%)] Loss: 2.879499
+Train Epoch: 62 [22528/100088 (23%)] Loss: 2.826988
+Train Epoch: 62 [33792/100088 (34%)] Loss: 2.867150
+Train Epoch: 62 [45056/100088 (45%)] Loss: 2.856965
+Train Epoch: 62 [56320/100088 (56%)] Loss: 2.970542
+Train Epoch: 62 [67584/100088 (68%)] Loss: 2.971565
+Train Epoch: 62 [78848/100088 (79%)] Loss: 2.957989
+Train Epoch: 62 [90112/100088 (90%)] Loss: 2.910858
+    epoch          : 62
+    loss           : 2.924134728859882
+    inflow_loss    : 1.5260397007270736
+    outflow_loss   : 1.3980950281328084
+    inflow_accuracy_metric: 0.43323659896850586
+    inflow_f1_metric: 0.41594359278678894
+    inflow_aucroc_metric: 0.838575005531311
+    outflow_accuracy_metric: 0.44794419407844543
+    outflow_f1_metric: 0.43758583068847656
+    outflow_aucroc_metric: 0.8748546242713928
+    val_loss       : 4.341889933535927
+    val_inflow_loss: 1.6405445996083712
+    val_outflow_loss: 2.7013453307904696
+    val_inflow_accuracy_metric: 0.41391175985336304
+    val_inflow_f1_metric: 0.4128926694393158
+    val_inflow_aucroc_metric: 0.8132813572883606
+    val_outflow_accuracy_metric: 0.22734718024730682
+    val_outflow_f1_metric: 0.17717459797859192
+    val_outflow_aucroc_metric: 0.6727758646011353
+Train Epoch: 63 [0/100088 (0%)] Loss: 2.954852
+Train Epoch: 63 [11264/100088 (11%)] Loss: 2.891748
+Train Epoch: 63 [22528/100088 (23%)] Loss: 2.971685
+Train Epoch: 63 [33792/100088 (34%)] Loss: 2.799031
+Train Epoch: 63 [45056/100088 (45%)] Loss: 2.832426
+Train Epoch: 63 [56320/100088 (56%)] Loss: 2.936229
+Train Epoch: 63 [67584/100088 (68%)] Loss: 2.834744
+Train Epoch: 63 [78848/100088 (79%)] Loss: 2.900552
+Train Epoch: 63 [90112/100088 (90%)] Loss: 2.915476
+    epoch          : 63
+    loss           : 2.924011899500477
+    inflow_loss    : 1.5259097990941028
+    outflow_loss   : 1.3981021046638489
+    inflow_accuracy_metric: 0.43395888805389404
+    inflow_f1_metric: 0.41729408502578735
+    inflow_aucroc_metric: 0.8383438587188721
+    outflow_accuracy_metric: 0.4493845999240875
+    outflow_f1_metric: 0.4391686022281647
+    outflow_aucroc_metric: 0.8750089406967163
+    val_loss       : 4.368798494338989
+    val_inflow_loss: 1.6505746402238544
+    val_outflow_loss: 2.718223866663481
+    val_inflow_accuracy_metric: 0.4121128022670746
+    val_inflow_f1_metric: 0.41234272718429565
+    val_inflow_aucroc_metric: 0.8105079531669617
+    val_outflow_accuracy_metric: 0.22507880628108978
+    val_outflow_f1_metric: 0.1744394153356552
+    val_outflow_aucroc_metric: 0.6690768003463745
+Train Epoch: 64 [0/100088 (0%)] Loss: 3.028743
+Train Epoch: 64 [11264/100088 (11%)] Loss: 2.882367
+Train Epoch: 64 [22528/100088 (23%)] Loss: 2.930301
+Train Epoch: 64 [33792/100088 (34%)] Loss: 2.886539
+Train Epoch: 64 [45056/100088 (45%)] Loss: 2.932972
+Train Epoch: 64 [56320/100088 (56%)] Loss: 3.026755
+Train Epoch: 64 [67584/100088 (68%)] Loss: 2.924926
+Train Epoch: 64 [78848/100088 (79%)] Loss: 2.917290
+Train Epoch: 64 [90112/100088 (90%)] Loss: 2.903001
+    epoch          : 64
+    loss           : 2.9217200376549544
+    inflow_loss    : 1.5255100240512771
+    outflow_loss   : 1.3962100111708349
+    inflow_accuracy_metric: 0.4328775405883789
+    inflow_f1_metric: 0.4159286618232727
+    inflow_aucroc_metric: 0.8386597037315369
+    outflow_accuracy_metric: 0.44927918910980225
+    outflow_f1_metric: 0.4392348527908325
+    outflow_aucroc_metric: 0.8751570582389832
+    val_loss       : 4.3822790823484725
+    val_inflow_loss: 1.6394764373176975
+    val_outflow_loss: 2.742802626208255
+    val_inflow_accuracy_metric: 0.4099951982498169
+    val_inflow_f1_metric: 0.4111363887786865
+    val_inflow_aucroc_metric: 0.811375617980957
+    val_outflow_accuracy_metric: 0.22591832280158997
+    val_outflow_f1_metric: 0.175507590174675
+    val_outflow_aucroc_metric: 0.6706473231315613
+Train Epoch: 65 [0/100088 (0%)] Loss: 2.876474
+Train Epoch: 65 [11264/100088 (11%)] Loss: 2.832952
+Train Epoch: 65 [22528/100088 (23%)] Loss: 2.876562
+Train Epoch: 65 [33792/100088 (34%)] Loss: 2.802881
+Train Epoch: 65 [45056/100088 (45%)] Loss: 3.001032
+Train Epoch: 65 [56320/100088 (56%)] Loss: 2.816434
+Train Epoch: 65 [67584/100088 (68%)] Loss: 3.027305
+Train Epoch: 65 [78848/100088 (79%)] Loss: 2.979149
+Train Epoch: 65 [90112/100088 (90%)] Loss: 2.819775
+    epoch          : 65
+    loss           : 2.920579511292127
+    inflow_loss    : 1.5244498429249744
+    outflow_loss   : 1.3961296641096776
+    inflow_accuracy_metric: 0.434734582901001
+    inflow_f1_metric: 0.41807955503463745
+    inflow_aucroc_metric: 0.8383364677429199
+    outflow_accuracy_metric: 0.44882914423942566
+    outflow_f1_metric: 0.43878355622291565
+    outflow_aucroc_metric: 0.875433623790741
+    val_loss       : 4.393497994071559
+    val_inflow_loss: 1.6344362622813176
+    val_outflow_loss: 2.7590617317902413
+    val_inflow_accuracy_metric: 0.4117873013019562
+    val_inflow_f1_metric: 0.4104473292827606
+    val_inflow_aucroc_metric: 0.8140459060668945
+    val_outflow_accuracy_metric: 0.2244243323802948
+    val_outflow_f1_metric: 0.1709129363298416
+    val_outflow_aucroc_metric: 0.6705498099327087
+Train Epoch: 66 [0/100088 (0%)] Loss: 2.865376
+Train Epoch: 66 [11264/100088 (11%)] Loss: 2.959995
+Train Epoch: 66 [22528/100088 (23%)] Loss: 2.966453
+Train Epoch: 66 [33792/100088 (34%)] Loss: 2.804483
+Train Epoch: 66 [45056/100088 (45%)] Loss: 2.861586
+Train Epoch: 66 [56320/100088 (56%)] Loss: 2.896401
+Train Epoch: 66 [67584/100088 (68%)] Loss: 2.885374
+Train Epoch: 66 [78848/100088 (79%)] Loss: 2.873286
+Train Epoch: 66 [90112/100088 (90%)] Loss: 2.945745
+    epoch          : 66
+    loss           : 2.9192221225524437
+    inflow_loss    : 1.5246574386041991
+    outflow_loss   : 1.3945646875975084
+    inflow_accuracy_metric: 0.4327338635921478
+    inflow_f1_metric: 0.4153141379356384
+    inflow_aucroc_metric: 0.8385720252990723
+    outflow_accuracy_metric: 0.44957777857780457
+    outflow_f1_metric: 0.4399752914905548
+    outflow_aucroc_metric: 0.8755820989608765
+    val_loss       : 4.421516732165688
+    val_inflow_loss: 1.648878812789917
+    val_outflow_loss: 2.772637969569156
+    val_inflow_accuracy_metric: 0.4121813178062439
+    val_inflow_f1_metric: 0.41265639662742615
+    val_inflow_aucroc_metric: 0.8125796914100647
+    val_outflow_accuracy_metric: 0.2262335568666458
+    val_outflow_f1_metric: 0.17592379450798035
+    val_outflow_aucroc_metric: 0.6730482578277588
+Train Epoch: 67 [0/100088 (0%)] Loss: 2.917738
+Train Epoch: 67 [11264/100088 (11%)] Loss: 2.932554
+Train Epoch: 67 [22528/100088 (23%)] Loss: 2.920877
+Train Epoch: 67 [33792/100088 (34%)] Loss: 2.806535
+Train Epoch: 67 [45056/100088 (45%)] Loss: 2.961322
+Train Epoch: 67 [56320/100088 (56%)] Loss: 2.886278
+Train Epoch: 67 [67584/100088 (68%)] Loss: 2.969266
+Train Epoch: 67 [78848/100088 (79%)] Loss: 2.971678
+Train Epoch: 67 [90112/100088 (90%)] Loss: 2.893467
+    epoch          : 67
+    loss           : 2.9177388488029945
+    inflow_loss    : 1.5222890255402546
+    outflow_loss   : 1.3954498244791615
+    inflow_accuracy_metric: 0.43417298793792725
+    inflow_f1_metric: 0.41710415482521057
+    inflow_aucroc_metric: 0.8391767740249634
+    outflow_accuracy_metric: 0.44859448075294495
+    outflow_f1_metric: 0.4384978711605072
+    outflow_aucroc_metric: 0.8755475878715515
+    val_loss       : 4.369226781945479
+    val_inflow_loss: 1.6463611690621627
+    val_outflow_loss: 2.72286561915749
+    val_inflow_accuracy_metric: 0.4126405119895935
+    val_inflow_f1_metric: 0.41179266571998596
+    val_inflow_aucroc_metric: 0.8122546076774597
+    val_outflow_accuracy_metric: 0.22840598225593567
+    val_outflow_f1_metric: 0.17878861725330353
+    val_outflow_aucroc_metric: 0.672447919845581
+Train Epoch: 68 [0/100088 (0%)] Loss: 2.948813
+Train Epoch: 68 [11264/100088 (11%)] Loss: 2.927674
+Train Epoch: 68 [22528/100088 (23%)] Loss: 2.926247
+Train Epoch: 68 [33792/100088 (34%)] Loss: 3.025365
+Train Epoch: 68 [45056/100088 (45%)] Loss: 2.934977
+Train Epoch: 68 [56320/100088 (56%)] Loss: 2.874038
+Train Epoch: 68 [67584/100088 (68%)] Loss: 2.988965
+Train Epoch: 68 [78848/100088 (79%)] Loss: 3.027739
+Train Epoch: 68 [90112/100088 (90%)] Loss: 2.960812
+    epoch          : 68
+    loss           : 2.9177349599040285
+    inflow_loss    : 1.5224577006028623
+    outflow_loss   : 1.3952772629504302
+    inflow_accuracy_metric: 0.43452659249305725
+    inflow_f1_metric: 0.4176139831542969
+    inflow_aucroc_metric: 0.8392568826675415
+    outflow_accuracy_metric: 0.44942641258239746
+    outflow_f1_metric: 0.4392266571521759
+    outflow_aucroc_metric: 0.8754670023918152
+    val_loss       : 4.390816475215711
+    val_inflow_loss: 1.6335140937253048
+    val_outflow_loss: 2.7573023846274927
+    val_inflow_accuracy_metric: 0.41361021995544434
+    val_inflow_f1_metric: 0.41280707716941833
+    val_inflow_aucroc_metric: 0.814224362373352
+    val_outflow_accuracy_metric: 0.22533923387527466
+    val_outflow_f1_metric: 0.17613907158374786
+    val_outflow_aucroc_metric: 0.6715962886810303
+Train Epoch: 69 [0/100088 (0%)] Loss: 2.900657
+Train Epoch: 69 [11264/100088 (11%)] Loss: 3.061368
+Train Epoch: 69 [22528/100088 (23%)] Loss: 2.922812
+Train Epoch: 69 [33792/100088 (34%)] Loss: 2.825799
+Train Epoch: 69 [45056/100088 (45%)] Loss: 2.922447
+Train Epoch: 69 [56320/100088 (56%)] Loss: 2.930011
+Train Epoch: 69 [67584/100088 (68%)] Loss: 2.853821
+Train Epoch: 69 [78848/100088 (79%)] Loss: 3.040021
+Train Epoch: 69 [90112/100088 (90%)] Loss: 2.889241
+    epoch          : 69
+    loss           : 2.9172100522080244
+    inflow_loss    : 1.5227669696418606
+    outflow_loss   : 1.3944430874318492
+    inflow_accuracy_metric: 0.43355613946914673
+    inflow_f1_metric: 0.41662532091140747
+    inflow_aucroc_metric: 0.8389954566955566
+    outflow_accuracy_metric: 0.45033255219459534
+    outflow_f1_metric: 0.4396982789039612
+    outflow_aucroc_metric: 0.8756159543991089
+    val_loss       : 4.361378167804919
+    val_inflow_loss: 1.6645692555527938
+    val_outflow_loss: 2.6968089279375578
+    val_inflow_accuracy_metric: 0.41084155440330505
+    val_inflow_f1_metric: 0.41120365262031555
+    val_inflow_aucroc_metric: 0.8123453259468079
+    val_outflow_accuracy_metric: 0.2281695455312729
+    val_outflow_f1_metric: 0.18032431602478027
+    val_outflow_aucroc_metric: 0.6719129681587219
+Train Epoch: 70 [0/100088 (0%)] Loss: 2.888767
+Train Epoch: 70 [11264/100088 (11%)] Loss: 2.920375
+Train Epoch: 70 [22528/100088 (23%)] Loss: 2.941787
+Train Epoch: 70 [33792/100088 (34%)] Loss: 2.890718
+Train Epoch: 70 [45056/100088 (45%)] Loss: 2.970527
+Train Epoch: 70 [56320/100088 (56%)] Loss: 2.974391
+Train Epoch: 70 [67584/100088 (68%)] Loss: 2.916965
+Train Epoch: 70 [78848/100088 (79%)] Loss: 2.920888
+Train Epoch: 70 [90112/100088 (90%)] Loss: 2.925365
+    epoch          : 70
+    loss           : 2.9152768582713846
+    inflow_loss    : 1.521974380527224
+    outflow_loss   : 1.3933024771359501
+    inflow_accuracy_metric: 0.4352864921092987
+    inflow_f1_metric: 0.4182968735694885
+    inflow_aucroc_metric: 0.8394040465354919
+    outflow_accuracy_metric: 0.4497472047805786
+    outflow_f1_metric: 0.43989163637161255
+    outflow_aucroc_metric: 0.8758087754249573
+    val_loss       : 4.42781568828382
+    val_inflow_loss: 1.6549486925727444
+    val_outflow_loss: 2.772867014533595
+    val_inflow_accuracy_metric: 0.4114617705345154
+    val_inflow_f1_metric: 0.41195154190063477
+    val_inflow_aucroc_metric: 0.8145280480384827
+    val_outflow_accuracy_metric: 0.22452372312545776
+    val_outflow_f1_metric: 0.173631951212883
+    val_outflow_aucroc_metric: 0.672127902507782
+Train Epoch: 71 [0/100088 (0%)] Loss: 2.918860
+Train Epoch: 71 [11264/100088 (11%)] Loss: 2.953058
+Train Epoch: 71 [22528/100088 (23%)] Loss: 2.871552
+Train Epoch: 71 [33792/100088 (34%)] Loss: 2.920528
+Train Epoch: 71 [45056/100088 (45%)] Loss: 2.839514
+Train Epoch: 71 [56320/100088 (56%)] Loss: 2.927190
+Train Epoch: 71 [67584/100088 (68%)] Loss: 2.943960
+Train Epoch: 71 [78848/100088 (79%)] Loss: 3.008359
+Train Epoch: 71 [90112/100088 (90%)] Loss: 3.002041
+    epoch          : 71
+    loss           : 2.9134194984727975
+    inflow_loss    : 1.5208740872996194
+    outflow_loss   : 1.3925454069157035
+    inflow_accuracy_metric: 0.43464231491088867
+    inflow_f1_metric: 0.417706698179245
+    inflow_aucroc_metric: 0.8398086428642273
+    outflow_accuracy_metric: 0.45002302527427673
+    outflow_f1_metric: 0.4401708245277405
+    outflow_aucroc_metric: 0.8760427832603455
+    val_loss       : 4.435634512650339
+    val_inflow_loss: 1.6545332419244867
+    val_outflow_loss: 2.781101283274199
+    val_inflow_accuracy_metric: 0.4103207290172577
+    val_inflow_f1_metric: 0.41002148389816284
+    val_inflow_aucroc_metric: 0.8090822100639343
+    val_outflow_accuracy_metric: 0.2273540198802948
+    val_outflow_f1_metric: 0.17835544049739838
+    val_outflow_aucroc_metric: 0.6708981990814209
+Train Epoch: 72 [0/100088 (0%)] Loss: 2.865148
+Train Epoch: 72 [11264/100088 (11%)] Loss: 2.837030
+Train Epoch: 72 [22528/100088 (23%)] Loss: 2.854974
+Train Epoch: 72 [33792/100088 (34%)] Loss: 2.974685
+Train Epoch: 72 [45056/100088 (45%)] Loss: 2.937679
+Train Epoch: 72 [56320/100088 (56%)] Loss: 2.914774
+Train Epoch: 72 [67584/100088 (68%)] Loss: 2.859241
+Train Epoch: 72 [78848/100088 (79%)] Loss: 2.825673
+Train Epoch: 72 [90112/100088 (90%)] Loss: 2.949528
+    epoch          : 72
+    loss           : 2.9131226040879072
+    inflow_loss    : 1.519921519926616
+    outflow_loss   : 1.3932010841612914
+    inflow_accuracy_metric: 0.4347493648529053
+    inflow_f1_metric: 0.41731035709381104
+    inflow_aucroc_metric: 0.8398100137710571
+    outflow_accuracy_metric: 0.4493672549724579
+    outflow_f1_metric: 0.4389558732509613
+    outflow_aucroc_metric: 0.8760001063346863
+    val_loss       : 4.4034218537180045
+    val_inflow_loss: 1.659337928420619
+    val_outflow_loss: 2.7440839503940784
+    val_inflow_accuracy_metric: 0.41125616431236267
+    val_inflow_f1_metric: 0.41101425886154175
+    val_inflow_aucroc_metric: 0.8133330941200256
+    val_outflow_accuracy_metric: 0.22752192616462708
+    val_outflow_f1_metric: 0.1794150173664093
+    val_outflow_aucroc_metric: 0.6675832867622375
+Train Epoch: 73 [0/100088 (0%)] Loss: 2.884171
+Train Epoch: 73 [11264/100088 (11%)] Loss: 2.898518
+Train Epoch: 73 [22528/100088 (23%)] Loss: 2.915764
+Train Epoch: 73 [33792/100088 (34%)] Loss: 2.809023
+Train Epoch: 73 [45056/100088 (45%)] Loss: 2.805749
+Train Epoch: 73 [56320/100088 (56%)] Loss: 2.875629
+Train Epoch: 73 [67584/100088 (68%)] Loss: 3.019324
+Train Epoch: 73 [78848/100088 (79%)] Loss: 2.959007
+Train Epoch: 73 [90112/100088 (90%)] Loss: 3.019554
+    epoch          : 73
+    loss           : 2.912141196581782
+    inflow_loss    : 1.5196360459133071
+    outflow_loss   : 1.392505140328894
+    inflow_accuracy_metric: 0.4354996085166931
+    inflow_f1_metric: 0.4187488555908203
+    inflow_aucroc_metric: 0.8398570418357849
+    outflow_accuracy_metric: 0.4511011242866516
+    outflow_f1_metric: 0.44127583503723145
+    outflow_aucroc_metric: 0.8759374618530273
+    val_loss       : 4.438960276151958
+    val_inflow_loss: 1.653006192884947
+    val_outflow_loss: 2.785954048759059
+    val_inflow_accuracy_metric: 0.4103687107563019
+    val_inflow_f1_metric: 0.4103662669658661
+    val_inflow_aucroc_metric: 0.8077062368392944
+    val_outflow_accuracy_metric: 0.22702164947986603
+    val_outflow_f1_metric: 0.17576783895492554
+    val_outflow_aucroc_metric: 0.67134690284729
+Train Epoch: 74 [0/100088 (0%)] Loss: 2.921445
+Train Epoch: 74 [11264/100088 (11%)] Loss: 2.872882
+Train Epoch: 74 [22528/100088 (23%)] Loss: 2.894678
+Train Epoch: 74 [33792/100088 (34%)] Loss: 2.874130
+Train Epoch: 74 [45056/100088 (45%)] Loss: 2.821535
+Train Epoch: 74 [56320/100088 (56%)] Loss: 2.892488
+Train Epoch: 74 [67584/100088 (68%)] Loss: 2.871897
+Train Epoch: 74 [78848/100088 (79%)] Loss: 2.917480
+Train Epoch: 74 [90112/100088 (90%)] Loss: 2.959028
+    epoch          : 74
+    loss           : 2.9119763155372773
+    inflow_loss    : 1.51931324236247
+    outflow_loss   : 1.3926630610105943
+    inflow_accuracy_metric: 0.43430447578430176
+    inflow_f1_metric: 0.41726410388946533
+    inflow_aucroc_metric: 0.8399657011032104
+    outflow_accuracy_metric: 0.4511082172393799
+    outflow_f1_metric: 0.44109776616096497
+    outflow_aucroc_metric: 0.8758369088172913
+    val_loss       : 4.3915325214988306
+    val_inflow_loss: 1.6618852333018654
+    val_outflow_loss: 2.7296472850598787
+    val_inflow_accuracy_metric: 0.40954291820526123
+    val_inflow_f1_metric: 0.4111333191394806
+    val_inflow_aucroc_metric: 0.8107380270957947
+    val_outflow_accuracy_metric: 0.2273506075143814
+    val_outflow_f1_metric: 0.17670077085494995
+    val_outflow_aucroc_metric: 0.6726668477058411
+Train Epoch: 75 [0/100088 (0%)] Loss: 2.890630
+Train Epoch: 75 [11264/100088 (11%)] Loss: 2.961349
+Train Epoch: 75 [22528/100088 (23%)] Loss: 3.063989
+Train Epoch: 75 [33792/100088 (34%)] Loss: 2.775428
+Train Epoch: 75 [45056/100088 (45%)] Loss: 2.947986
+Train Epoch: 75 [56320/100088 (56%)] Loss: 2.843783
+Train Epoch: 75 [67584/100088 (68%)] Loss: 2.982645
+Train Epoch: 75 [78848/100088 (79%)] Loss: 2.912026
+Train Epoch: 75 [90112/100088 (90%)] Loss: 3.016785
+    epoch          : 75
+    loss           : 2.9098979356337566
+    inflow_loss    : 1.5178116395765422
+    outflow_loss   : 1.3920862978818465
+    inflow_accuracy_metric: 0.43598371744155884
+    inflow_f1_metric: 0.41962677240371704
+    inflow_aucroc_metric: 0.8401261568069458
+    outflow_accuracy_metric: 0.4507385492324829
+    outflow_f1_metric: 0.44106611609458923
+    outflow_aucroc_metric: 0.8761304616928101
+    val_loss       : 4.446990703281603
+    val_inflow_loss: 1.6780848032549809
+    val_outflow_loss: 2.768905909437882
+    val_inflow_accuracy_metric: 0.4135519564151764
+    val_inflow_f1_metric: 0.4118901491165161
+    val_inflow_aucroc_metric: 0.8138067126274109
+    val_outflow_accuracy_metric: 0.2258429229259491
+    val_outflow_f1_metric: 0.1768873929977417
+    val_outflow_aucroc_metric: 0.6726597547531128
+Train Epoch: 76 [0/100088 (0%)] Loss: 2.849545
+Train Epoch: 76 [11264/100088 (11%)] Loss: 2.905086
+Train Epoch: 76 [22528/100088 (23%)] Loss: 2.919096
+Train Epoch: 76 [33792/100088 (34%)] Loss: 2.926247
+Train Epoch: 76 [45056/100088 (45%)] Loss: 2.871526
+Train Epoch: 76 [56320/100088 (56%)] Loss: 2.903616
+Train Epoch: 76 [67584/100088 (68%)] Loss: 2.879897
+Train Epoch: 76 [78848/100088 (79%)] Loss: 2.955795
+Train Epoch: 76 [90112/100088 (90%)] Loss: 2.882124
+    epoch          : 76
+    loss           : 2.9089906337309857
+    inflow_loss    : 1.5188095326326332
+    outflow_loss   : 1.3901810956244567
+    inflow_accuracy_metric: 0.4348564147949219
+    inflow_f1_metric: 0.41785764694213867
+    inflow_aucroc_metric: 0.8400479555130005
+    outflow_accuracy_metric: 0.4513821005821228
+    outflow_f1_metric: 0.44133415818214417
+    outflow_aucroc_metric: 0.8763338923454285
+    val_loss       : 4.449285733072381
+    val_inflow_loss: 1.6623727365543968
+    val_outflow_loss: 2.786912993380898
+    val_inflow_accuracy_metric: 0.40693530440330505
+    val_inflow_f1_metric: 0.4079425036907196
+    val_inflow_aucroc_metric: 0.808804452419281
+    val_outflow_accuracy_metric: 0.2265625
+    val_outflow_f1_metric: 0.17916972935199738
+    val_outflow_aucroc_metric: 0.6722356081008911
+Train Epoch: 77 [0/100088 (0%)] Loss: 2.836165
+Train Epoch: 77 [11264/100088 (11%)] Loss: 3.092293
+Train Epoch: 77 [22528/100088 (23%)] Loss: 2.968051
+Train Epoch: 77 [33792/100088 (34%)] Loss: 2.851943
+Train Epoch: 77 [45056/100088 (45%)] Loss: 2.908181
+Train Epoch: 77 [56320/100088 (56%)] Loss: 2.878419
+Train Epoch: 77 [67584/100088 (68%)] Loss: 2.845236
+Train Epoch: 77 [78848/100088 (79%)] Loss: 2.887235
+Train Epoch: 77 [90112/100088 (90%)] Loss: 2.839487
+    epoch          : 77
+    loss           : 2.9084277080029857
+    inflow_loss    : 1.517941521138561
+    outflow_loss   : 1.3904861813905287
+    inflow_accuracy_metric: 0.43596699833869934
+    inflow_f1_metric: 0.41920769214630127
+    inflow_aucroc_metric: 0.840107798576355
+    outflow_accuracy_metric: 0.4501345455646515
+    outflow_f1_metric: 0.44023633003234863
+    outflow_aucroc_metric: 0.8760810494422913
+    val_loss       : 4.475434253090306
+    val_inflow_loss: 1.657458992380845
+    val_outflow_loss: 2.8179752450240287
+    val_inflow_accuracy_metric: 0.4099472165107727
+    val_inflow_f1_metric: 0.4093416929244995
+    val_inflow_aucroc_metric: 0.8113279342651367
+    val_outflow_accuracy_metric: 0.22488006949424744
+    val_outflow_f1_metric: 0.1731695681810379
+    val_outflow_aucroc_metric: 0.6720485687255859
+Train Epoch: 78 [0/100088 (0%)] Loss: 2.864086
+Train Epoch: 78 [11264/100088 (11%)] Loss: 2.932459
+Train Epoch: 78 [22528/100088 (23%)] Loss: 2.967709
+Train Epoch: 78 [33792/100088 (34%)] Loss: 2.799545
+Train Epoch: 78 [45056/100088 (45%)] Loss: 2.883492
+Train Epoch: 78 [56320/100088 (56%)] Loss: 2.875616
+Train Epoch: 78 [67584/100088 (68%)] Loss: 2.760938
+Train Epoch: 78 [78848/100088 (79%)] Loss: 2.957280
+Train Epoch: 78 [90112/100088 (90%)] Loss: 2.905706
+    epoch          : 78
+    loss           : 2.9080239157287444
+    inflow_loss    : 1.5172300198856665
+    outflow_loss   : 1.3907938867199177
+    inflow_accuracy_metric: 0.4361855983734131
+    inflow_f1_metric: 0.4191800355911255
+    inflow_aucroc_metric: 0.8407735228538513
+    outflow_accuracy_metric: 0.45192021131515503
+    outflow_f1_metric: 0.44185420870780945
+    outflow_aucroc_metric: 0.8762795329093933
+    val_loss       : 4.46762940758153
+    val_inflow_loss: 1.6748730948096828
+    val_outflow_loss: 2.792756306497674
+    val_inflow_accuracy_metric: 0.41316819190979004
+    val_inflow_f1_metric: 0.4109985828399658
+    val_inflow_aucroc_metric: 0.8131266832351685
+    val_outflow_accuracy_metric: 0.22303317487239838
+    val_outflow_f1_metric: 0.17510519921779633
+    val_outflow_aucroc_metric: 0.6704151034355164
+Train Epoch: 79 [0/100088 (0%)] Loss: 2.913694
+Train Epoch: 79 [11264/100088 (11%)] Loss: 2.898076
+Train Epoch: 79 [22528/100088 (23%)] Loss: 2.906883
+Train Epoch: 79 [33792/100088 (34%)] Loss: 2.890688
+Train Epoch: 79 [45056/100088 (45%)] Loss: 2.740131
+Train Epoch: 79 [56320/100088 (56%)] Loss: 2.904240
+Train Epoch: 79 [67584/100088 (68%)] Loss: 3.072081
+Train Epoch: 79 [78848/100088 (79%)] Loss: 2.955122
+Train Epoch: 79 [90112/100088 (90%)] Loss: 2.873394
+    epoch          : 79
+    loss           : 2.9068402039761447
+    inflow_loss    : 1.5166937751429421
+    outflow_loss   : 1.3901464294414132
+    inflow_accuracy_metric: 0.4356243312358856
+    inflow_f1_metric: 0.4186985492706299
+    inflow_aucroc_metric: 0.8405136466026306
+    outflow_accuracy_metric: 0.45085811614990234
+    outflow_f1_metric: 0.44046059250831604
+    outflow_aucroc_metric: 0.8766174912452698
+    val_loss       : 4.519663396634553
+    val_inflow_loss: 1.6686641636647677
+    val_outflow_loss: 2.8509992298326994
+    val_inflow_accuracy_metric: 0.4109512269496918
+    val_inflow_f1_metric: 0.40946537256240845
+    val_inflow_aucroc_metric: 0.8144510984420776
+    val_outflow_accuracy_metric: 0.22480811178684235
+    val_outflow_f1_metric: 0.1770353764295578
+    val_outflow_aucroc_metric: 0.6714058518409729
+Train Epoch: 80 [0/100088 (0%)] Loss: 2.846022
+Train Epoch: 80 [11264/100088 (11%)] Loss: 2.910726
+Train Epoch: 80 [22528/100088 (23%)] Loss: 3.000672
+Train Epoch: 80 [33792/100088 (34%)] Loss: 2.950632
+Train Epoch: 80 [45056/100088 (45%)] Loss: 2.830497
+Train Epoch: 80 [56320/100088 (56%)] Loss: 2.866673
+Train Epoch: 80 [67584/100088 (68%)] Loss: 2.952015
+Train Epoch: 80 [78848/100088 (79%)] Loss: 2.807815
+Train Epoch: 80 [90112/100088 (90%)] Loss: 2.954116
+    epoch          : 80
+    loss           : 2.906135691671955
+    inflow_loss    : 1.5161603920313778
+    outflow_loss   : 1.3899752959913136
+    inflow_accuracy_metric: 0.4365443289279938
+    inflow_f1_metric: 0.41971054673194885
+    inflow_aucroc_metric: 0.8407419919967651
+    outflow_accuracy_metric: 0.45101627707481384
+    outflow_f1_metric: 0.44096285104751587
+    outflow_aucroc_metric: 0.8765469789505005
+    val_loss       : 4.454706775514703
+    val_inflow_loss: 1.6598006643747027
+    val_outflow_loss: 2.794906108002914
+    val_inflow_accuracy_metric: 0.410252183675766
+    val_inflow_f1_metric: 0.4099684953689575
+    val_inflow_aucroc_metric: 0.8127453327178955
+    val_outflow_accuracy_metric: 0.23356632888317108
+    val_outflow_f1_metric: 0.18359342217445374
+    val_outflow_aucroc_metric: 0.6712986826896667
+Train Epoch: 81 [0/100088 (0%)] Loss: 2.883364
+Train Epoch: 81 [11264/100088 (11%)] Loss: 2.869871
+Train Epoch: 81 [22528/100088 (23%)] Loss: 2.830951
+Train Epoch: 81 [33792/100088 (34%)] Loss: 2.886380
+Train Epoch: 81 [45056/100088 (45%)] Loss: 2.893285
+Train Epoch: 81 [56320/100088 (56%)] Loss: 2.888979
+Train Epoch: 81 [67584/100088 (68%)] Loss: 2.788433
+Train Epoch: 81 [78848/100088 (79%)] Loss: 2.964303
+Train Epoch: 81 [90112/100088 (90%)] Loss: 2.847992
+    epoch          : 81
+    loss           : 2.905515821612611
+    inflow_loss    : 1.5161499186437957
+    outflow_loss   : 1.3893659078345006
+    inflow_accuracy_metric: 0.4374009966850281
+    inflow_f1_metric: 0.4207281768321991
+    inflow_aucroc_metric: 0.8408962488174438
+    outflow_accuracy_metric: 0.4507073760032654
+    outflow_f1_metric: 0.44071531295776367
+    outflow_aucroc_metric: 0.8764520287513733
+    val_loss       : 4.508636361674259
+    val_inflow_loss: 1.6869892760326988
+    val_outflow_loss: 2.8216470730932137
+    val_inflow_accuracy_metric: 0.40816202759742737
+    val_inflow_f1_metric: 0.4077233672142029
+    val_inflow_aucroc_metric: 0.8114909529685974
+    val_outflow_accuracy_metric: 0.22574357688426971
+    val_outflow_f1_metric: 0.1770114153623581
+    val_outflow_aucroc_metric: 0.6719449758529663
+Train Epoch: 82 [0/100088 (0%)] Loss: 2.899909
+Train Epoch: 82 [11264/100088 (11%)] Loss: 2.907861
+Train Epoch: 82 [22528/100088 (23%)] Loss: 2.909540
+Train Epoch: 82 [33792/100088 (34%)] Loss: 2.868650
+Train Epoch: 82 [45056/100088 (45%)] Loss: 2.981166
+Train Epoch: 82 [56320/100088 (56%)] Loss: 2.970003
+Train Epoch: 82 [67584/100088 (68%)] Loss: 2.921379
+Train Epoch: 82 [78848/100088 (79%)] Loss: 2.877449
+Train Epoch: 82 [90112/100088 (90%)] Loss: 2.906858
+    epoch          : 82
+    loss           : 2.905033620036378
+    inflow_loss    : 1.5159821887405551
+    outflow_loss   : 1.3890514270383485
+    inflow_accuracy_metric: 0.436493843793869
+    inflow_f1_metric: 0.4198013246059418
+    inflow_aucroc_metric: 0.8406664729118347
+    outflow_accuracy_metric: 0.4511708915233612
+    outflow_f1_metric: 0.4411713778972626
+    outflow_aucroc_metric: 0.8764826655387878
+    val_loss       : 4.501818368309422
+    val_inflow_loss: 1.667989570843546
+    val_outflow_loss: 2.8338287755062708
+    val_inflow_accuracy_metric: 0.407459557056427
+    val_inflow_f1_metric: 0.4069918394088745
+    val_inflow_aucroc_metric: 0.8101351857185364
+    val_outflow_accuracy_metric: 0.22694969177246094
+    val_outflow_f1_metric: 0.176869198679924
+    val_outflow_aucroc_metric: 0.6718766689300537
+Train Epoch: 83 [0/100088 (0%)] Loss: 2.913913
+Train Epoch: 83 [11264/100088 (11%)] Loss: 2.895241
+Train Epoch: 83 [22528/100088 (23%)] Loss: 2.805732
+Train Epoch: 83 [33792/100088 (34%)] Loss: 2.968240
+Train Epoch: 83 [45056/100088 (45%)] Loss: 2.856871
+Train Epoch: 83 [56320/100088 (56%)] Loss: 2.908227
+Train Epoch: 83 [67584/100088 (68%)] Loss: 2.928036
+Train Epoch: 83 [78848/100088 (79%)] Loss: 2.980245
+Train Epoch: 83 [90112/100088 (90%)] Loss: 2.851648
+    epoch          : 83
+    loss           : 2.9042629587407016
+    inflow_loss    : 1.5158749612010256
+    outflow_loss   : 1.3883880060546252
+    inflow_accuracy_metric: 0.436489999294281
+    inflow_f1_metric: 0.4199478328227997
+    inflow_aucroc_metric: 0.8407072424888611
+    outflow_accuracy_metric: 0.4525425136089325
+    outflow_f1_metric: 0.44236937165260315
+    outflow_aucroc_metric: 0.8765442967414856
+    val_loss       : 4.477421948784276
+    val_inflow_loss: 1.6720056031879627
+    val_outflow_loss: 2.8054163518704867
+    val_inflow_accuracy_metric: 0.41014254093170166
+    val_inflow_f1_metric: 0.40882787108421326
+    val_inflow_aucroc_metric: 0.8111449480056763
+    val_outflow_accuracy_metric: 0.22343407571315765
+    val_outflow_f1_metric: 0.17226648330688477
+    val_outflow_aucroc_metric: 0.6726884245872498
+Train Epoch: 84 [0/100088 (0%)] Loss: 2.978135
+Train Epoch: 84 [11264/100088 (11%)] Loss: 3.010353
+Train Epoch: 84 [22528/100088 (23%)] Loss: 2.906122
+Train Epoch: 84 [33792/100088 (34%)] Loss: 2.816921
+Train Epoch: 84 [45056/100088 (45%)] Loss: 2.930336
+Train Epoch: 84 [56320/100088 (56%)] Loss: 3.007488
+Train Epoch: 84 [67584/100088 (68%)] Loss: 2.962693
+Train Epoch: 84 [78848/100088 (79%)] Loss: 2.902320
+Train Epoch: 84 [90112/100088 (90%)] Loss: 2.989851
+    epoch          : 84
+    loss           : 2.9013976418242162
+    inflow_loss    : 1.5146622974045423
+    outflow_loss   : 1.386735348068938
+    inflow_accuracy_metric: 0.43641477823257446
+    inflow_f1_metric: 0.41983938217163086
+    inflow_aucroc_metric: 0.8413170576095581
+    outflow_accuracy_metric: 0.4518684446811676
+    outflow_f1_metric: 0.44219011068344116
+    outflow_aucroc_metric: 0.8767843842506409
+    val_loss       : 4.436879534470408
+    val_inflow_loss: 1.6734053116095693
+    val_outflow_loss: 2.763474225997925
+    val_inflow_accuracy_metric: 0.40990954637527466
+    val_inflow_f1_metric: 0.4082988202571869
+    val_inflow_aucroc_metric: 0.8113583326339722
+    val_outflow_accuracy_metric: 0.22948874533176422
+    val_outflow_f1_metric: 0.18267573416233063
+    val_outflow_aucroc_metric: 0.6734334230422974
+Train Epoch: 85 [0/100088 (0%)] Loss: 2.994655
+Train Epoch: 85 [11264/100088 (11%)] Loss: 2.857536
+Train Epoch: 85 [22528/100088 (23%)] Loss: 2.828199
+Train Epoch: 85 [33792/100088 (34%)] Loss: 2.998912
+Train Epoch: 85 [45056/100088 (45%)] Loss: 2.864573
+Train Epoch: 85 [56320/100088 (56%)] Loss: 2.911359
+Train Epoch: 85 [67584/100088 (68%)] Loss: 2.871937
+Train Epoch: 85 [78848/100088 (79%)] Loss: 2.908813
+Train Epoch: 85 [90112/100088 (90%)] Loss: 2.879389
+    epoch          : 85
+    loss           : 2.9008058613660386
+    inflow_loss    : 1.5133949974361731
+    outflow_loss   : 1.3874108651462866
+    inflow_accuracy_metric: 0.4374353885650635
+    inflow_f1_metric: 0.4202556610107422
+    inflow_aucroc_metric: 0.8414154648780823
+    outflow_accuracy_metric: 0.4517633318901062
+    outflow_f1_metric: 0.4418478012084961
+    outflow_aucroc_metric: 0.876977264881134
+    val_loss       : 4.503158192885549
+    val_inflow_loss: 1.690638774319699
+    val_outflow_loss: 2.8125193997433313
+    val_inflow_accuracy_metric: 0.409453809261322
+    val_inflow_f1_metric: 0.40857094526290894
+    val_inflow_aucroc_metric: 0.8078599572181702
+    val_outflow_accuracy_metric: 0.22541460394859314
+    val_outflow_f1_metric: 0.17856808006763458
+    val_outflow_aucroc_metric: 0.6708816885948181
+Train Epoch: 86 [0/100088 (0%)] Loss: 2.984755
+Train Epoch: 86 [11264/100088 (11%)] Loss: 2.997525
+Train Epoch: 86 [22528/100088 (23%)] Loss: 2.915156
+Train Epoch: 86 [33792/100088 (34%)] Loss: 2.892603
+Train Epoch: 86 [45056/100088 (45%)] Loss: 2.775186
+Train Epoch: 86 [56320/100088 (56%)] Loss: 2.880334
+Train Epoch: 86 [67584/100088 (68%)] Loss: 2.774424
+Train Epoch: 86 [78848/100088 (79%)] Loss: 2.903588
+Train Epoch: 86 [90112/100088 (90%)] Loss: 2.883463
+    epoch          : 86
+    loss           : 2.90037378607964
+    inflow_loss    : 1.5138388604533917
+    outflow_loss   : 1.3865349298837233
+    inflow_accuracy_metric: 0.4374752342700958
+    inflow_f1_metric: 0.4206656515598297
+    inflow_aucroc_metric: 0.8413538336753845
+    outflow_accuracy_metric: 0.4529935121536255
+    outflow_f1_metric: 0.4430135190486908
+    outflow_aucroc_metric: 0.8767907023429871
+    val_loss       : 4.480290375257793
+    val_inflow_loss: 1.6729934999817295
+    val_outflow_loss: 2.8072969097840157
+    val_inflow_accuracy_metric: 0.40947094559669495
+    val_inflow_f1_metric: 0.4082658588886261
+    val_inflow_aucroc_metric: 0.8118551969528198
+    val_outflow_accuracy_metric: 0.2305133044719696
+    val_outflow_f1_metric: 0.18274274468421936
+    val_outflow_aucroc_metric: 0.6721651554107666
+Train Epoch: 87 [0/100088 (0%)] Loss: 2.864873
+Train Epoch: 87 [11264/100088 (11%)] Loss: 2.897963
+Train Epoch: 87 [22528/100088 (23%)] Loss: 2.866899
+Train Epoch: 87 [33792/100088 (34%)] Loss: 3.026509
+Train Epoch: 87 [45056/100088 (45%)] Loss: 2.962385
+Train Epoch: 87 [56320/100088 (56%)] Loss: 2.876870
+Train Epoch: 87 [67584/100088 (68%)] Loss: 2.926870
+Train Epoch: 87 [78848/100088 (79%)] Loss: 2.939938
+Train Epoch: 87 [90112/100088 (90%)] Loss: 2.854697
+    epoch          : 87
+    loss           : 2.8996592820907128
+    inflow_loss    : 1.513010278040049
+    outflow_loss   : 1.386648997968557
+    inflow_accuracy_metric: 0.4367333650588989
+    inflow_f1_metric: 0.41963711380958557
+    inflow_aucroc_metric: 0.8414302468299866
+    outflow_accuracy_metric: 0.4526515007019043
+    outflow_f1_metric: 0.44269859790802
+    outflow_aucroc_metric: 0.8770776391029358
+    val_loss       : 4.519169079629998
+    val_inflow_loss: 1.688881466263219
+    val_outflow_loss: 2.830287632189299
+    val_inflow_accuracy_metric: 0.40623629093170166
+    val_inflow_f1_metric: 0.40744560956954956
+    val_inflow_aucroc_metric: 0.8078308701515198
+    val_outflow_accuracy_metric: 0.22852592170238495
+    val_outflow_f1_metric: 0.1785094290971756
+    val_outflow_aucroc_metric: 0.672690749168396
+Train Epoch: 88 [0/100088 (0%)] Loss: 2.904890
+Train Epoch: 88 [11264/100088 (11%)] Loss: 2.965470
+Train Epoch: 88 [22528/100088 (23%)] Loss: 2.895833
+Train Epoch: 88 [33792/100088 (34%)] Loss: 2.806069
+Train Epoch: 88 [45056/100088 (45%)] Loss: 2.889369
+Train Epoch: 88 [56320/100088 (56%)] Loss: 2.984214
+Train Epoch: 88 [67584/100088 (68%)] Loss: 2.786458
+Train Epoch: 88 [78848/100088 (79%)] Loss: 2.917156
+Train Epoch: 88 [90112/100088 (90%)] Loss: 2.935186
+    epoch          : 88
+    loss           : 2.8990097118883718
+    inflow_loss    : 1.5125309873600394
+    outflow_loss   : 1.386478719054436
+    inflow_accuracy_metric: 0.43805772066116333
+    inflow_f1_metric: 0.4212934374809265
+    inflow_aucroc_metric: 0.841295599937439
+    outflow_accuracy_metric: 0.45275434851646423
+    outflow_f1_metric: 0.4428563416004181
+    outflow_aucroc_metric: 0.8772579431533813
+    val_loss       : 4.50171496993617
+    val_inflow_loss: 1.6891004976473356
+    val_outflow_loss: 2.8126144911113538
+    val_inflow_accuracy_metric: 0.40828192234039307
+    val_inflow_f1_metric: 0.406695693731308
+    val_inflow_aucroc_metric: 0.8107126951217651
+    val_outflow_accuracy_metric: 0.22869381308555603
+    val_outflow_f1_metric: 0.18190841376781464
+    val_outflow_aucroc_metric: 0.6684330701828003
+Train Epoch: 89 [0/100088 (0%)] Loss: 2.958004
+Train Epoch: 89 [11264/100088 (11%)] Loss: 2.875841
+Train Epoch: 89 [22528/100088 (23%)] Loss: 2.899773
+Train Epoch: 89 [33792/100088 (34%)] Loss: 2.940137
+Train Epoch: 89 [45056/100088 (45%)] Loss: 2.968384
+Train Epoch: 89 [56320/100088 (56%)] Loss: 2.836772
+Train Epoch: 89 [67584/100088 (68%)] Loss: 2.850111
+Train Epoch: 89 [78848/100088 (79%)] Loss: 2.940950
+Train Epoch: 89 [90112/100088 (90%)] Loss: 2.951594
+    epoch          : 89
+    loss           : 2.8964588800255133
+    inflow_loss    : 1.5114712325894102
+    outflow_loss   : 1.3849876437868391
+    inflow_accuracy_metric: 0.4377526640892029
+    inflow_f1_metric: 0.42121389508247375
+    inflow_aucroc_metric: 0.8417776823043823
+    outflow_accuracy_metric: 0.4538871645927429
+    outflow_f1_metric: 0.4439409077167511
+    outflow_aucroc_metric: 0.8772372603416443
+    val_loss       : 4.528229060925935
+    val_inflow_loss: 1.6838769975461458
+    val_outflow_loss: 2.844352038283097
+    val_inflow_accuracy_metric: 0.4093373119831085
+    val_inflow_f1_metric: 0.4081612229347229
+    val_inflow_aucroc_metric: 0.810896635055542
+    val_outflow_accuracy_metric: 0.22744996845722198
+    val_outflow_f1_metric: 0.17751523852348328
+    val_outflow_aucroc_metric: 0.6732686758041382
+Train Epoch: 90 [0/100088 (0%)] Loss: 2.858084
+Train Epoch: 90 [11264/100088 (11%)] Loss: 2.868387
+Train Epoch: 90 [22528/100088 (23%)] Loss: 2.950006
+Train Epoch: 90 [33792/100088 (34%)] Loss: 2.877161
+Train Epoch: 90 [45056/100088 (45%)] Loss: 2.884662
+Train Epoch: 90 [56320/100088 (56%)] Loss: 2.833063
+Train Epoch: 90 [67584/100088 (68%)] Loss: 2.999618
+Train Epoch: 90 [78848/100088 (79%)] Loss: 2.914596
+Train Epoch: 90 [90112/100088 (90%)] Loss: 2.825897
+    epoch          : 90
+    loss           : 2.8951383585832557
+    inflow_loss    : 1.5113687642983027
+    outflow_loss   : 1.3837695894192676
+    inflow_accuracy_metric: 0.43823450803756714
+    inflow_f1_metric: 0.4215497374534607
+    inflow_aucroc_metric: 0.8417092561721802
+    outflow_accuracy_metric: 0.45327287912368774
+    outflow_f1_metric: 0.44293683767318726
+    outflow_aucroc_metric: 0.8775440454483032
+    val_loss       : 4.556504952280145
+    val_inflow_loss: 1.6954373403599388
+    val_outflow_loss: 2.8610676025089465
+    val_inflow_accuracy_metric: 0.4098101556301117
+    val_inflow_f1_metric: 0.40889260172843933
+    val_inflow_aucroc_metric: 0.8122549057006836
+    val_outflow_accuracy_metric: 0.22645971179008484
+    val_outflow_f1_metric: 0.17752991616725922
+    val_outflow_aucroc_metric: 0.6692761182785034
+Train Epoch: 91 [0/100088 (0%)] Loss: 2.884894
+Train Epoch: 91 [11264/100088 (11%)] Loss: 3.055528
+Train Epoch: 91 [22528/100088 (23%)] Loss: 2.882604
+Train Epoch: 91 [33792/100088 (34%)] Loss: 2.949604
+Train Epoch: 91 [45056/100088 (45%)] Loss: 2.931844
+Train Epoch: 91 [56320/100088 (56%)] Loss: 2.938299
+Train Epoch: 91 [67584/100088 (68%)] Loss: 2.809523
+Train Epoch: 91 [78848/100088 (79%)] Loss: 2.935709
+Train Epoch: 91 [90112/100088 (90%)] Loss: 3.099459
+    epoch          : 91
+    loss           : 2.895777013837075
+    inflow_loss    : 1.5114039383372482
+    outflow_loss   : 1.3843730785408799
+    inflow_accuracy_metric: 0.43832162022590637
+    inflow_f1_metric: 0.4214014708995819
+    inflow_aucroc_metric: 0.8417514562606812
+    outflow_accuracy_metric: 0.45314204692840576
+    outflow_f1_metric: 0.4432724416255951
+    outflow_aucroc_metric: 0.877503514289856
+    val_loss       : 4.441554119712428
+    val_inflow_loss: 1.6784877682987012
+    val_outflow_loss: 2.763066373373333
+    val_inflow_accuracy_metric: 0.4093921482563019
+    val_inflow_f1_metric: 0.4080209732055664
+    val_inflow_aucroc_metric: 0.8101733922958374
+    val_outflow_accuracy_metric: 0.23011240363121033
+    val_outflow_f1_metric: 0.18417058885097504
+    val_outflow_aucroc_metric: 0.6725780367851257
+Train Epoch: 92 [0/100088 (0%)] Loss: 2.762414
+Train Epoch: 92 [11264/100088 (11%)] Loss: 2.921778
+Train Epoch: 92 [22528/100088 (23%)] Loss: 2.864951
+Train Epoch: 92 [33792/100088 (34%)] Loss: 2.897465
+Train Epoch: 92 [45056/100088 (45%)] Loss: 2.804429
+Train Epoch: 92 [56320/100088 (56%)] Loss: 2.931450
+Train Epoch: 92 [67584/100088 (68%)] Loss: 2.969362
+Train Epoch: 92 [78848/100088 (79%)] Loss: 2.801579
+Train Epoch: 92 [90112/100088 (90%)] Loss: 2.912223
+    epoch          : 92
+    loss           : 2.8957462189148884
+    inflow_loss    : 1.511429250240326
+    outflow_loss   : 1.3843169808387756
+    inflow_accuracy_metric: 0.4382181167602539
+    inflow_f1_metric: 0.4215773940086365
+    inflow_aucroc_metric: 0.8421499133110046
+    outflow_accuracy_metric: 0.45289257168769836
+    outflow_f1_metric: 0.4429977834224701
+    outflow_aucroc_metric: 0.8774289488792419
+    val_loss       : 4.552037602976749
+    val_inflow_loss: 1.6969326954138906
+    val_outflow_loss: 2.8551049106999447
+    val_inflow_accuracy_metric: 0.4099438190460205
+    val_inflow_f1_metric: 0.4089537560939789
+    val_inflow_aucroc_metric: 0.8105289340019226
+    val_outflow_accuracy_metric: 0.22582922875881195
+    val_outflow_f1_metric: 0.17758053541183472
+    val_outflow_aucroc_metric: 0.668374240398407
+Train Epoch: 93 [0/100088 (0%)] Loss: 2.865855
+Train Epoch: 93 [11264/100088 (11%)] Loss: 2.832414
+Train Epoch: 93 [22528/100088 (23%)] Loss: 2.961376
+Train Epoch: 93 [33792/100088 (34%)] Loss: 2.995333
+Train Epoch: 93 [45056/100088 (45%)] Loss: 2.843948
+Train Epoch: 93 [56320/100088 (56%)] Loss: 2.823156
+Train Epoch: 93 [67584/100088 (68%)] Loss: 2.857977
+Train Epoch: 93 [78848/100088 (79%)] Loss: 2.996399
+Train Epoch: 93 [90112/100088 (90%)] Loss: 2.810027
+    epoch          : 93
+    loss           : 2.8947504673685347
+    inflow_loss    : 1.511519048286944
+    outflow_loss   : 1.3832314251636972
+    inflow_accuracy_metric: 0.43933194875717163
+    inflow_f1_metric: 0.42286837100982666
+    inflow_aucroc_metric: 0.8415800333023071
+    outflow_accuracy_metric: 0.45430245995521545
+    outflow_f1_metric: 0.44404152035713196
+    outflow_aucroc_metric: 0.8774620890617371
+    val_loss       : 4.586377394826789
+    val_inflow_loss: 1.7195662448280735
+    val_outflow_loss: 2.866811143724542
+    val_inflow_accuracy_metric: 0.4081037640571594
+    val_inflow_f1_metric: 0.4074072241783142
+    val_inflow_aucroc_metric: 0.8074210286140442
+    val_outflow_accuracy_metric: 0.2270764857530594
+    val_outflow_f1_metric: 0.17704316973686218
+    val_outflow_aucroc_metric: 0.6705052256584167
+Train Epoch: 94 [0/100088 (0%)] Loss: 2.907066
+Train Epoch: 94 [11264/100088 (11%)] Loss: 3.003931
+Train Epoch: 94 [22528/100088 (23%)] Loss: 2.951920
+Train Epoch: 94 [33792/100088 (34%)] Loss: 2.823176
+Train Epoch: 94 [45056/100088 (45%)] Loss: 2.871361
+Train Epoch: 94 [56320/100088 (56%)] Loss: 2.835700
+Train Epoch: 94 [67584/100088 (68%)] Loss: 2.994782
+Train Epoch: 94 [78848/100088 (79%)] Loss: 2.791137
+Train Epoch: 94 [90112/100088 (90%)] Loss: 2.869890
+    epoch          : 94
+    loss           : 2.892355169568743
+    inflow_loss    : 1.5098162056231985
+    outflow_loss   : 1.3825389682030191
+    inflow_accuracy_metric: 0.438529908657074
+    inflow_f1_metric: 0.422019362449646
+    inflow_aucroc_metric: 0.8421127200126648
+    outflow_accuracy_metric: 0.4527910053730011
+    outflow_f1_metric: 0.44290807843208313
+    outflow_aucroc_metric: 0.8777010440826416
+    val_loss       : 4.462960343611868
+    val_inflow_loss: 1.6932521085990102
+    val_outflow_loss: 2.7697082381499443
+    val_inflow_accuracy_metric: 0.40660980343818665
+    val_inflow_f1_metric: 0.4062216579914093
+    val_inflow_aucroc_metric: 0.8087971806526184
+    val_outflow_accuracy_metric: 0.2290056198835373
+    val_outflow_f1_metric: 0.18288132548332214
+    val_outflow_aucroc_metric: 0.671597421169281
+Train Epoch: 95 [0/100088 (0%)] Loss: 3.024558
+Train Epoch: 95 [11264/100088 (11%)] Loss: 2.970744
+Train Epoch: 95 [22528/100088 (23%)] Loss: 2.911529
+Train Epoch: 95 [33792/100088 (34%)] Loss: 3.017329
+Train Epoch: 95 [45056/100088 (45%)] Loss: 2.910426
+Train Epoch: 95 [56320/100088 (56%)] Loss: 2.879266
+Train Epoch: 95 [67584/100088 (68%)] Loss: 2.859215
+Train Epoch: 95 [78848/100088 (79%)] Loss: 2.900446
+Train Epoch: 95 [90112/100088 (90%)] Loss: 2.772579
+    epoch          : 95
+    loss           : 2.892116748556799
+    inflow_loss    : 1.5095319084975185
+    outflow_loss   : 1.3825848455331764
+    inflow_accuracy_metric: 0.43950873613357544
+    inflow_f1_metric: 0.4229309558868408
+    inflow_aucroc_metric: 0.841937780380249
+    outflow_accuracy_metric: 0.4529745578765869
+    outflow_f1_metric: 0.44315633177757263
+    outflow_aucroc_metric: 0.8777496814727783
+    val_loss       : 4.530271028217516
+    val_inflow_loss: 1.716425945884303
+    val_outflow_loss: 2.81384507605904
+    val_inflow_accuracy_metric: 0.4115679860115051
+    val_inflow_f1_metric: 0.4094531834125519
+    val_inflow_aucroc_metric: 0.8106002807617188
+    val_outflow_accuracy_metric: 0.22617186605930328
+    val_outflow_f1_metric: 0.17858053743839264
+    val_outflow_aucroc_metric: 0.6692386865615845
+Train Epoch: 96 [0/100088 (0%)] Loss: 2.833805
+Train Epoch: 96 [11264/100088 (11%)] Loss: 2.994926
+Train Epoch: 96 [22528/100088 (23%)] Loss: 2.916416
+Train Epoch: 96 [33792/100088 (34%)] Loss: 2.749567
+Train Epoch: 96 [45056/100088 (45%)] Loss: 2.995394
+Train Epoch: 96 [56320/100088 (56%)] Loss: 2.893981
+Train Epoch: 96 [67584/100088 (68%)] Loss: 2.948289
+Train Epoch: 96 [78848/100088 (79%)] Loss: 2.834919
+Train Epoch: 96 [90112/100088 (90%)] Loss: 2.921032
+    epoch          : 96
+    loss           : 2.8912063922200884
+    inflow_loss    : 1.5088289313170375
+    outflow_loss   : 1.382377459078419
+    inflow_accuracy_metric: 0.4395003616809845
+    inflow_f1_metric: 0.42276257276535034
+    inflow_aucroc_metric: 0.8422352075576782
+    outflow_accuracy_metric: 0.45383796095848083
+    outflow_f1_metric: 0.44378259778022766
+    outflow_aucroc_metric: 0.877735435962677
+    val_loss       : 4.587269281086169
+    val_inflow_loss: 1.7154176548907631
+    val_outflow_loss: 2.8718515948245398
+    val_inflow_accuracy_metric: 0.4098341763019562
+    val_inflow_f1_metric: 0.4087828993797302
+    val_inflow_aucroc_metric: 0.8105903267860413
+    val_outflow_accuracy_metric: 0.22689488530158997
+    val_outflow_f1_metric: 0.17862017452716827
+    val_outflow_aucroc_metric: 0.6712200045585632
+Train Epoch: 97 [0/100088 (0%)] Loss: 2.930675
+Train Epoch: 97 [11264/100088 (11%)] Loss: 2.831577
+Train Epoch: 97 [22528/100088 (23%)] Loss: 2.835495
+Train Epoch: 97 [33792/100088 (34%)] Loss: 2.985926
+Train Epoch: 97 [45056/100088 (45%)] Loss: 2.913708
+Train Epoch: 97 [56320/100088 (56%)] Loss: 2.998728
+Train Epoch: 97 [67584/100088 (68%)] Loss: 2.931855
+Train Epoch: 97 [78848/100088 (79%)] Loss: 2.868523
+Train Epoch: 97 [90112/100088 (90%)] Loss: 2.906974
+    epoch          : 97
+    loss           : 2.8895315333288543
+    inflow_loss    : 1.508085615172678
+    outflow_loss   : 1.3814459126822802
+    inflow_accuracy_metric: 0.4388786852359772
+    inflow_f1_metric: 0.4221268892288208
+    inflow_aucroc_metric: 0.8427552580833435
+    outflow_accuracy_metric: 0.454485684633255
+    outflow_f1_metric: 0.444541335105896
+    outflow_aucroc_metric: 0.8777583837509155
+    val_loss       : 4.559356087132504
+    val_inflow_loss: 1.707647891421067
+    val_outflow_loss: 2.8517081925743506
+    val_inflow_accuracy_metric: 0.41093066334724426
+    val_inflow_f1_metric: 0.4086472690105438
+    val_inflow_aucroc_metric: 0.8080587387084961
+    val_outflow_accuracy_metric: 0.22801534831523895
+    val_outflow_f1_metric: 0.1807679384946823
+    val_outflow_aucroc_metric: 0.6693457365036011
+Train Epoch: 98 [0/100088 (0%)] Loss: 2.942679
+Train Epoch: 98 [11264/100088 (11%)] Loss: 2.980415
+Train Epoch: 98 [22528/100088 (23%)] Loss: 2.910761
+Train Epoch: 98 [33792/100088 (34%)] Loss: 2.856990
+Train Epoch: 98 [45056/100088 (45%)] Loss: 3.042908
+Train Epoch: 98 [56320/100088 (56%)] Loss: 2.860186
+Train Epoch: 98 [67584/100088 (68%)] Loss: 2.946509
+Train Epoch: 98 [78848/100088 (79%)] Loss: 2.932412
+Train Epoch: 98 [90112/100088 (90%)] Loss: 2.874847
+    epoch          : 98
+    loss           : 2.889055451568292
+    inflow_loss    : 1.5081014037132263
+    outflow_loss   : 1.3809540460304337
+    inflow_accuracy_metric: 0.4397144615650177
+    inflow_f1_metric: 0.42300838232040405
+    inflow_aucroc_metric: 0.8426580429077148
+    outflow_accuracy_metric: 0.45555803179740906
+    outflow_f1_metric: 0.44568485021591187
+    outflow_aucroc_metric: 0.878109872341156
+    val_loss       : 4.62389844342282
+    val_inflow_loss: 1.7144131064414978
+    val_outflow_loss: 2.9094853463925814
+    val_inflow_accuracy_metric: 0.40854236483573914
+    val_inflow_f1_metric: 0.4080851376056671
+    val_inflow_aucroc_metric: 0.8100723624229431
+    val_outflow_accuracy_metric: 0.22346147894859314
+    val_outflow_f1_metric: 0.17314979434013367
+    val_outflow_aucroc_metric: 0.67073655128479
+Train Epoch: 99 [0/100088 (0%)] Loss: 2.866987
+Train Epoch: 99 [11264/100088 (11%)] Loss: 2.922606
+Train Epoch: 99 [22528/100088 (23%)] Loss: 2.859031
+Train Epoch: 99 [33792/100088 (34%)] Loss: 2.761401
+Train Epoch: 99 [45056/100088 (45%)] Loss: 2.837188
+Train Epoch: 99 [56320/100088 (56%)] Loss: 2.951587
+Train Epoch: 99 [67584/100088 (68%)] Loss: 2.901052
+Train Epoch: 99 [78848/100088 (79%)] Loss: 2.827643
+Train Epoch: 99 [90112/100088 (90%)] Loss: 2.923631
+    epoch          : 99
+    loss           : 2.887608350539694
+    inflow_loss    : 1.5075598018510001
+    outflow_loss   : 1.3800485535543792
+    inflow_accuracy_metric: 0.43876197934150696
+    inflow_f1_metric: 0.4223797917366028
+    inflow_aucroc_metric: 0.8429017066955566
+    outflow_accuracy_metric: 0.45530152320861816
+    outflow_f1_metric: 0.44503557682037354
+    outflow_aucroc_metric: 0.8781500458717346
+    val_loss       : 4.64072228732862
+    val_inflow_loss: 1.7029340424035724
+    val_outflow_loss: 2.937788248062134
+    val_inflow_accuracy_metric: 0.4086211621761322
+    val_inflow_f1_metric: 0.40577179193496704
+    val_inflow_aucroc_metric: 0.8089115023612976
+    val_outflow_accuracy_metric: 0.22420504689216614
+    val_outflow_f1_metric: 0.174223393201828
+    val_outflow_aucroc_metric: 0.6698084473609924
+Train Epoch: 100 [0/100088 (0%)] Loss: 2.955307
+Train Epoch: 100 [11264/100088 (11%)] Loss: 2.779766
+Train Epoch: 100 [22528/100088 (23%)] Loss: 2.812900
+Train Epoch: 100 [33792/100088 (34%)] Loss: 2.989160
+Train Epoch: 100 [45056/100088 (45%)] Loss: 2.814139
+Train Epoch: 100 [56320/100088 (56%)] Loss: 2.821502
+Train Epoch: 100 [67584/100088 (68%)] Loss: 2.885364
+Train Epoch: 100 [78848/100088 (79%)] Loss: 2.980944
+Train Epoch: 100 [90112/100088 (90%)] Loss: 2.911360
+    epoch          : 100
+    loss           : 2.887658960965215
+    inflow_loss    : 1.5071189531258173
+    outflow_loss   : 1.3805399993244483
+    inflow_accuracy_metric: 0.4394984245300293
+    inflow_f1_metric: 0.42268094420433044
+    inflow_aucroc_metric: 0.8427321314811707
+    outflow_accuracy_metric: 0.45387908816337585
+    outflow_f1_metric: 0.4439227283000946
+    outflow_aucroc_metric: 0.8779979348182678
+    val_loss       : 4.5013242771751
+    val_inflow_loss: 1.7013135709260638
+    val_outflow_loss: 2.8000107313457288
+    val_inflow_accuracy_metric: 0.4065309762954712
+    val_inflow_f1_metric: 0.40608763694763184
+    val_inflow_aucroc_metric: 0.8096381425857544
+    val_outflow_accuracy_metric: 0.22901931405067444
+    val_outflow_f1_metric: 0.18214374780654907
+    val_outflow_aucroc_metric: 0.672339916229248

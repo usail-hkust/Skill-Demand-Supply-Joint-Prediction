@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!--
+    This is a generated document.  Do not edit.
+-->
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Output Formats</TITLE>
+<style>
+.jsontable {
+    border: 1px solid black;
+    background-color: beige;
+}
+</style>
+<script src="w3data.js"></script>
+</HEAD>
+<BODY BGCOLOR=white>
+<A NAME="top"></A>
+<H1 align=CENTER>Output Formats</H1>
+<HR>
+The output format is specified with the <STRONG>-T</STRONG><I>lang</I>
+flag on the <A HREF=command.html>command line</A>, where <I>lang</I>
+is one of the parameters listed below.
+<P>
+The formats actually available in a given Graphviz system depend on
+how the system was built and the presence of additional libraries.
+To see what formats <b>dot</b> supports, run <TT>dot -T?</TT>.
+See the <A HREF=command.html#d:T> description of the -T</A>
+flag for additional information.
+<P>
+Note that the internal coordinate system has the origin
+in the lower left corner.
+Thus, positions in the
+<A HREF=#d:canon>canon</A>,
+<A HREF=#d:dot>dot</A>,
+<A HREF=#d:xdot>xdot</A>,
+<A HREF=#d:plain>plain</A>, and
+<A HREF=#d:plain-ext>plain-ext</A>
+formats need to be interpreted in this manner.
+<P>
+<TABLE ALIGN=CENTER>
+<TR><TH>Command-line<BR>parameter</TH><TH>Format</TH></TR>
+{% for params, format in formats | dictsort %}
+ <TR><TD ALIGN=CENTER>
+  {%- for p in params -%}
+    <A NAME=a:{{p}} HREF=#d:{{p}}>{{p}}</A>
+    {%- if not loop.last %}
+
+<BR>
+    {%- endif %}
+  {%- endfor %}
+
+</TD><TD>{{ format }}</TD> </TR>
+{% endfor %}
+</TABLE>
+<HR>
+<H2>Format Descriptions</H2>
+<DL>
+{% for params, description in descriptions | dictsort %}
+  {% for p in params %}
+    {% if not loop.first -%}
+      ,
+    {%- endif -%}
+    <DT><A NAME=d:{{p}} HREF=#a:{{p}}><STRONG>{{p}}</STRONG></A>
+  {% endfor -%}
+  <DD>
+  {{- description }}
+{% endfor %}
+</DL>
+<HR>
+<H1 align=CENTER><A NAME=d:image_fmts>Image Formats</A></H1>
+<HR>
+The <A HREF=attrs.html#a:image>image</A> and <A HREF=attrs.html#a:shapefile>shapefile</A> attributes specify an image file to be included
+as part of the final diagram. Not all image formats can be read. In addition,
+even if read, not all image formats can necessarily be used in a given
+output format.
+<P>
+The graph below shows what image formats can be used in which output formats,
+and the required plugins. On the left are the supported image formats. 
+On the right are the supported output formats.
+In the middle are the plugins: image loaders, renderers, drivers, arranged by 
+plugin library.  
+This presents the most general case. A given installation may not provide
+one of the plugins, in which case, that transformation is not possible.
+<BR>
+<IMG WIDTH="80%" SRC="plugins.png">
+<HR>
+<H2>Notes</H2>
+<OL TYPE="1">
+<LI>
+<A NAME=ID></A>In the formats: -Tcmap, -Tcmapx, -Tsvg, -Tvml, the output generates
+'id="node#"' properties for nodes, 'id="edge#"' properties for edges, and 'id="cluster#"' properties for clusters, with the '#' replaced by an internally assigned integer. These strings can be provided instead by an externally provided "id=xxx" attribute on the object.
+Normal "&#92;N" "&#92;E" "&#92;G" substitutions are applied.
+Externally provided id values are not used internally, and it is the use's reponsibilty to ensure
+that they are sufficiently unique for their intended downstream use.
+Note, in particular, that "&#92;E" is not a unique id for multiedges.
+</OL>
+</BODY>
+</HTML>

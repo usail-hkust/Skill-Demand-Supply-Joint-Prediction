@@ -2,7 +2,7 @@ import torch
 from abc import abstractmethod
 from numpy import inf
 from logger import TensorboardWriter
-
+import wandb
 
 class BaseTrainer:
     """
@@ -11,7 +11,13 @@ class BaseTrainer:
     def __init__(self, model, criterion, metric_ftns, optimizer, config):
         self.config = config
         self.logger = config.get_logger('trainer', config['trainer']['verbosity'])
-
+        self.wand = config["wandb"]
+        
+        if self.wand:
+            # print(self.wand)
+            wandb.init(project="SKillTrend",name=config.config["name"]
+                    ,config=config.config)
+        
         self.model = model
         self.criterion = criterion
         self.metric_ftns = metric_ftns
@@ -21,7 +27,7 @@ class BaseTrainer:
         self.epochs = cfg_trainer['epochs']
         self.save_period = cfg_trainer['save_period']
         self.monitor = cfg_trainer.get('monitor', 'off')
-
+        
         # configuration to monitor model performance and save best
         if self.monitor == 'off':
             self.mnt_mode = 'off'
@@ -69,7 +75,8 @@ class BaseTrainer:
             # print logged informations to the screen
             for key, value in log.items():
                 self.logger.info('    {:15s}: {}'.format(str(key), value))
-
+            if self.wand:
+                wandb.log(log)
             # evaluate model performance according to configured metric, save best checkpoint as model_best
             best = False
             if self.mnt_mode != 'off':
@@ -95,8 +102,9 @@ class BaseTrainer:
                                      "Training stops.".format(self.early_stop))
                     break
 
-            if epoch % self.save_period == 0:
-                self._save_checkpoint(epoch, save_best=best)
+            # if epoch % self.save_period == 0:
+            #     self._save_checkpoint(epoch, save_best=best)
+            #     wandb.save(f"{epoch}_mymodel.h5")
 
     def _save_checkpoint(self, epoch, save_best=False):
         """

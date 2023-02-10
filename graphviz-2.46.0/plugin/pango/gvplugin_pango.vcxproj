@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{42C526F9-36E5-4B20-92CA-265C90058651}</ProjectGuid>
+    <RootNamespace>gvplugin_pango</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25123.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\Graphviz\bin\</OutDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\Graphviz\bin\</OutDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)windows\include;$(SolutionDir)windows\dependencies\libraries\x86\include;$(SolutionDir)windows\dependencies\libraries\x86\include\cairo;$(SolutionDir)/libltdl;$(SolutionDir)/lib;$(SolutionDir)/windows/lib/cdt;$(SolutionDir)/;$(SolutionDir)/lib/sfpdpgen;$(SolutionDir)/lib/pathplan;$(SolutionDir)/lib/pack;$(SolutionDir)/lib/filter;$(SolutionDir)/lib/dotgen;$(SolutionDir)/lib/common;$(SolutionDir)/lib/gvc;$(SolutionDir)/lib/cdt;$(SolutionDir)/lib/cgraph;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <EnablePREfast>true</EnablePREfast>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)windows\dependencies\libraries\x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>cgraph.lib;gvc.lib;cairo.lib;glib-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)windows\dependencies\libraries\x86\bin\cairo.dll $(OutDir)cairo.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\expat.dll $(OutDir)expat.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\fontconfig.dll $(OutDir)fontconfig.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\glib-2.dll $(OutDir)glib-2.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\gobject-2.dll $(OutDir)gobject-2.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\libharfbuzz-0.dll $(OutDir)libharfbuzz-0.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pango-1.dll $(OutDir)pango-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangocairo-1.dll $(OutDir)pangocairo-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangoft2-1.dll $(OutDir)\pangoft2-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangowin32-1.dll $(OutDir)pangowin32-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pixman-1.dll $(OutDir)pixman-1.dll</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)windows\include;$(SolutionDir)windows\dependencies\libraries\x86\include;$(SolutionDir)windows\dependencies\libraries\x86\include\cairo;$(SolutionDir)/libltdl;$(SolutionDir)/lib;$(SolutionDir)/windows/lib/cdt;$(SolutionDir)/;$(SolutionDir)/lib/sfpdpgen;$(SolutionDir)/lib/pathplan;$(SolutionDir)/lib/pack;$(SolutionDir)/lib/filter;$(SolutionDir)/lib/dotgen;$(SolutionDir)/lib/common;$(SolutionDir)/lib/gvc;$(SolutionDir)/lib/cdt;$(SolutionDir)/lib/cgraph;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <EnablePREfast>true</EnablePREfast>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)windows\dependencies\libraries\x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>cgraph.lib;gvc.lib;cairo.lib;glib-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)windows\dependencies\libraries\x86\bin\cairo.dll $(OutDir)cairo.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\expat.dll $(OutDir)expat.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\fontconfig.dll $(OutDir)fontconfig.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\glib-2.dll $(OutDir)glib-2.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\gobject-2.dll $(OutDir)gobject-2.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\libharfbuzz-0.dll $(OutDir)libharfbuzz-0.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pango-1.dll $(OutDir)pango-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangocairo-1.dll $(OutDir)pangocairo-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangoft2-1.dll $(OutDir)\pangoft2-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pangowin32-1.dll $(OutDir)pangowin32-1.dll
+copy $(SolutionDir)windows\dependencies\libraries\x86\bin\pixman-1.dll $(OutDir)pixman-1.dll</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="gvgetfontlist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gvgetfontlist_pango.c" />
+    <ClCompile Include="gvloadimage_pango.c" />
+    <ClCompile Include="gvplugin_pango.c" />
+    <ClCompile Include="gvrender_pango.c" />
+    <ClCompile Include="gvtextlayout_pango.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\gvplugin_core.vcxproj">
+      <Project>{ae706502-3203-4815-bf50-4d73bf96ba58}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
