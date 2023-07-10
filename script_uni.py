@@ -1,0 +1,9 @@
+python train.py --config config.json --name it_LSTM_32 --univarmodel LSTM --emb_dim 32 --dataset it -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name it_GRU_32 --univarmodel GRU --emb_dim 32 --dataset it -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name it_RNN_32 --univarmodel RNN --emb_dim 32 --dataset it -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name fin_LSTM_32 --univarmodel LSTM --emb_dim 32 --dataset fin -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name fin_GRU_32 --univarmodel GRU --emb_dim 32 --dataset fin -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name fin_RNN_32 --univarmodel RNN --emb_dim 32 --dataset fin -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name cons_LSTM_32 --univarmodel LSTM --emb_dim 32 --dataset cons -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name cons_GRU_32 --univarmodel GRU --emb_dim 32 --dataset cons -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true
+python train.py --config config.json --name cons_RNN_32 --univarmodel RNN --emb_dim 32 --dataset cons -lr 0.001 --subgraph 7446 --skill_num 7446 --layer_num 3 -dev 0 --wandb true

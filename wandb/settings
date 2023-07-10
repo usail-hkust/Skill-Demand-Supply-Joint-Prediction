@@ -1,0 +1,5 @@
+[default]
+entity = wchao
+project = SKillTrend
+base_url = https://api.wandb.ai
+

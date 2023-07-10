@@ -53,7 +53,7 @@ class ConfigParser:
         Initialize this class from some cli arguments. Used in train, test.
         """
         for opt in options:
-            args.add_argument(*opt.flags, default=None, type=opt.type)
+            args.add_argument(*opt.flags, default=opt.defaults, type=opt.type)
         if not isinstance(args, tuple):
             args, _ = args.parse_known_args()
 

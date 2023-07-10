@@ -1,38 +1,49 @@
 {
-    "name": "GRU",
+    "name": "hier 100 single node emb",
     "wandb": true,
     "n_gpu": 1,
-    "device_id": 3,
+    "device": 2,
     "hparam": {
-        "class_num": 10
+        "class_num": 5
     },
     "arch": {
-        "type": "GRU",
-            "args":{
-                "embed_dim": 128,
-                "class_num": 10,
-                "hidden_dim": 64,
-                "rnn_layer_num": 3,
-                "dropout": 0.2
+        "type": "Graph_Baseline",
+        "args":{
+            "skill_num": 7446,
+            "embed_dim": 32,
+            "skill_embed_dim": 32,
+            "class_num": 5,
+            "nhead": 4,
+            "nhid": 16,
+            "nlayers": 3,
+            "dropout": 0.2,
+            "sample_node_num": 50,
+            "hyperdecode": true,
+            "model": "static"
             }
     },
     "data_loader": {
         "type": "SkillDataLoader",
         "args":{
-            "data_dir": "./data/skill_inflow_outflow/",
-            "graph_dir": "./data/myGraph.gpickle",
-            "skill_num": 7447,
+            "data_dir": "/data/wchao/data/skill_inflow_outflow/",
+            "dataset": "it",
+            "graph_dir": "/data/wchao/data/graph_list/",
+            "skill_num": 16956,
+            "subgraph_num": 16956,
             "max_length": 18,
-            "batch_size": 512,
+            "batch_size": 1,
             "shuffle": true,
-            "validation_split": 0.16,
+            "validation_split": 0.25,
+            "class_num": 5,
+            "min_length": 5,
+            
             "num_workers": 0
         }
     },
     "optimizer": {
         "type": "Adam",
         "args":{
-            "lr": 0.001,
+            "lr": 1e-2,
             "weight_decay": 1e-5,
             "amsgrad": true
         }
@@ -49,15 +60,15 @@
         }
     },
     "trainer": {
-        "epochs": 100,
+        "epochs": 300,
 
         "save_dir": "saved/",
         "save_period": 10,
         "verbosity": 2,
         
         "monitor": "min val_loss",
-        "early_stop": 30,
+        "early_stop": 60,
 
-        "tensorboard": true
+        "tensorboard": false
     }
 }

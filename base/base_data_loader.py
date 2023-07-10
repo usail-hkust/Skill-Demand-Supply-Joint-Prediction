@@ -29,11 +29,19 @@ class BaseDataLoader(DataLoader):
     def _split_sampler(self, split):
         if split == 0.0:
             return None, None
-
+        print("number of samples:", self.n_samples)
         idx_full = np.arange(self.n_samples)
-
+        mask=np.full(len(idx_full),True,dtype=bool)
         np.random.seed(0)
-        # np.random.shuffle(idx_full)
+        np.random.shuffle(idx_full)
+        # b = [3 , 4, 5, -15,-14, -13, -12]
+        # mask[-28:-21]=False
+        # mask[:int(len(idx_full)*split)]=False
+        # mask[-6:] = False
+        mask[-int(self.n_samples*self.validation_split):]=False
+        # mask[b] = False
+        
+        
 
         if isinstance(split, int):
             assert split > 0
@@ -41,10 +49,16 @@ class BaseDataLoader(DataLoader):
             len_valid = split
         else:
             len_valid = int(self.n_samples * split)
+        
+        train_idx = idx_full[mask]
+        valid_idx = idx_full[~mask]
 
-        valid_idx = idx_full[-1*len_valid:]
-        train_idx = np.delete(idx_full, valid_idx)
 
+        # valid_idx = idx_full[-1*len_valid:]
+        # train_idx = idx_full[:-1*len_valid]
+        # print(valid_idx, train_idx)
+        np.random.shuffle(valid_idx)
+        np.random.shuffle(train_idx)
         train_sampler = SubsetRandomSampler(train_idx)
         valid_sampler = SubsetRandomSampler(valid_idx)
 
