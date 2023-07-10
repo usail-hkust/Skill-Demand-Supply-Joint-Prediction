@@ -129,9 +129,10 @@ ipython_config.py
 
 # End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks
 
-./data/*
-./artifacts/*
-./wandb/*
-./saved/*
+data/*
+artifacts/*
+wandb/*
+saved/*
 *.out
 *.sh
+*.json
