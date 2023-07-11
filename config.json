@@ -67,7 +67,7 @@
         "verbosity": 2,
         
         "monitor": "min val_loss",
-        "early_stop": 60,
+        "early_stop": 80,
 
         "tensorboard": false
     }

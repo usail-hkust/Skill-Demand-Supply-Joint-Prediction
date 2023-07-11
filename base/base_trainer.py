@@ -16,7 +16,8 @@ class BaseTrainer:
         if self.wand:
             # print(self.wand)
             wandb.init(project="SKillTrend",name=config.config["name"]
-                    ,config=config.config)
+                    ,config=config.config,settings=wandb.Settings(code_dir="./model/"))
+            wandb.run.log_code(".")
         
         self.model = model
         self.criterion = criterion

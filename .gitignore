@@ -131,7 +131,10 @@ ipython_config.py
 
 data/*
 artifacts/*
-wandb/*
+result/*
+graphviz-2.46.0/*
+doctest-output/*
+wandb/
 saved/*
 *.out
 *.sh

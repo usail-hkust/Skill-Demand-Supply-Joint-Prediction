@@ -34,12 +34,7 @@ class BaseDataLoader(DataLoader):
         mask=np.full(len(idx_full),True,dtype=bool)
         np.random.seed(0)
         np.random.shuffle(idx_full)
-        # b = [3 , 4, 5, -15,-14, -13, -12]
-        # mask[-28:-21]=False
-        # mask[:int(len(idx_full)*split)]=False
-        # mask[-6:] = False
         mask[-int(self.n_samples*self.validation_split):]=False
-        # mask[b] = False
         
         
 

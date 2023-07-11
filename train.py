@@ -15,9 +15,11 @@ import os
 # fix random seeds for reproducibility
 SEED = 42
 torch.manual_seed(SEED)
+np.random.seed(SEED)
+
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
-np.random.seed(SEED)
+
 
 def main(config):
     
@@ -89,7 +91,7 @@ if __name__ == '__main__':
         CustomArgs(['--class_num'], type=int, defaults=5, target='arch;args;class_num'),
         CustomArgs(['--layer_num'], type=int, defaults=5, target='arch;args;rnn_layer_num'),
         CustomArgs(['--sample_node_num'], type=int, defaults=50, target='arch;args;sample_node_num'),
-        CustomArgs(['--dropout'], type=float, defaults=0.2, target='arch;args;dropout'),
+        CustomArgs(['--dropout'], type=float, defaults=0.1, target='arch;args;dropout'),
         CustomArgs(['-hyp', '--hyperdecode'], type=bool,defaults=False, target='arch;args;hyperdecode'),
         CustomArgs(['-hypcomb', '--hypcomb'], type=str,defaults="add", target='arch;args;hypcomb'),
 

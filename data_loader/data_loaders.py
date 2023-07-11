@@ -101,42 +101,8 @@ class SkillflowDataset(SingleSkillDataset):
                                    skills=self.datasetdemand.index.to_list(), class_num=class_num,
                                    min_length=min_length)
         self.demand_graph = []
-        # print(self.demand_matrices)
-        # print(self.supply_matrices)
-        # for i in range(18):
-        ### Demand_graph_wo_adj_matrix
-        # demand_graph= nx.from_numpy_array(np.eye(skill_num*2))
-        
-        ### Demand_graph_w_adj_matrix
-        # demand_graph = nx.read_gpickle(graph_dir+f"demand_graph.gpickle")
-        # supply_graph = nx.read_gpickle(graph_dir+f"supply_graph.gpickle")
-        # supply_graph.add_weighted_edges_from([(e[0], e[1], e[2]["weight"]) for e in demand_graph.edges(data=True) if e[2]["weight"]>1])
-        # supply_graph = nx.relabel_nodes(supply_graph, {n: n+demand_graph.number_of_nodes() for n in supply_graph.nodes})
-        # demand_graph = nx.compose(demand_graph, supply_graph)
-        # 
 
-
-
-        # demand_graph_nx = nx.read_gpickle(graph_dir+f"combined_ds_graph.gpickle")
-        # # demand_graph_nx = nx.read_graphml(graph_dir+f"combined_ds_graph.graphml")
-        # demand_graph_nx = demand_graph_nx.subgraph([i for i in range(subgraph_num)]+[i+skill_num for i in range(subgraph_num)])
-        # print("read graph done")
-        # demand_graph = from_networkx(demand_graph_nx, group_edge_attrs=["weight"])
-        # del demand_graph_nx
-        # demand_graph.edge_index = demand_graph.edge_index[:, (demand_graph.edge_attr>=5e-4).squeeze()]
-        # demand_graph.edge_attr = demand_graph.edge_attr[(demand_graph.edge_attr>=5e-4).squeeze(), :]
-        # print("number of edges", demand_graph.edge_index.shape)
-
-
-
-        # supply_graph = from_networkx(supply_graph, group_edge_attrs=['weight'])
-        # supply_graph.edge_index = supply_graph.edge_index[:, (supply_graph.edge_attr>=1e-3).squeeze()]
-        # supply_graph.edge_index = supply_graph.edge_index+demand_graph.num_nodes
-        # supply_graph.edge_attr = supply_graph.edge_attr[(supply_graph.edge_attr>=1e-3).squeeze(), :]
-        # demand_graph.update(supply_graph)
-        # demand_graph.edge_attr = torch.cat([demand_graph.edge_attr,supply_graph.edge_attr], dim=0)
-        # demand_graph.edge_index = torch.cat([demand_graph.edge_index,supply_graph.edge_index], dim=-1)
-        # demand_graph.num_nodes = demand_graph.num_nodes + supply_graph.num_nodes
+        ### Demand_graph_w_adj_matri
         edge_index = torch.load(graph_dir+'edge_index.pt')
         edge_attr = torch.load(graph_dir+'edge_attr.pt')
         x = torch.zeros(subgraph_num*2,1)

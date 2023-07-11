@@ -87,7 +87,7 @@ class Trainer(BaseTrainer):
             demand_loss = self.criterion(d_output, target=d_y)
             supply_loss = self.criterion(s_output, target=s_y)
             # auxiliary_loss = self.aux_loss(pred, auxiliary_label)
-            # joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-6).mean()
+            joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-8).mean()
             joint_loss = 0
             supply_loss = supply_loss.mean()
             demand_loss = demand_loss.mean()
@@ -100,7 +100,7 @@ class Trainer(BaseTrainer):
             # model_loss, auxiliary_loss
             # loss = demand_loss + supply_loss + 1e-2 * auxiliary_loss
             # print((demand_loss* supply_loss))
-            loss = (demand_loss + supply_loss).mean() + 1e-2*joint_loss
+            loss = (demand_loss + supply_loss).mean() + 1e-1*joint_loss
             # + 
             regularized_loss = loss + 1e-3 * adj_loss
             regularized_loss.backward()
@@ -156,6 +156,7 @@ class Trainer(BaseTrainer):
             supply_loss_sum = 0
             loss_sum = 0
             auxiliary_loss_sum = 0
+            joint_loss_sum = 0
             s_output_list = []
             s_label_list = []
             d_output_list = []
@@ -191,8 +192,8 @@ class Trainer(BaseTrainer):
                 # print(d_y.shape)
                 demand_loss = self.criterion(d_output, target=d_y)
                 supply_loss = self.criterion(s_output, target=s_y)
-                # joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-6).mean()
-                joint_loss = 0
+                joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-8).mean()
+                # joint_loss = 0
                 supply_loss = supply_loss.mean()
                 demand_loss = demand_loss.mean()
                 # print(demand_loss)
@@ -209,7 +210,7 @@ class Trainer(BaseTrainer):
                 demand_loss_sum+=demand_loss
                 supply_loss_sum+=supply_loss
                 loss_sum+=loss
-                auxiliary_loss_sum+=auxiliary_loss
+                joint_loss_sum+=joint_loss
 
                 s_output_list.append(s_output)
                 s_label_list.append(s_y)
@@ -221,7 +222,7 @@ class Trainer(BaseTrainer):
             self.valid_metrics.update('supply_loss', supply_loss_sum.item()/len(self.valid_data_loader))
             # self.train_metrics.update('adj_loss', adj_loss.item())
             self.valid_metrics.update('loss', loss_sum.item()/len(self.valid_data_loader))
-            self.valid_metrics.update('auxiliary_loss', auxiliary_loss_sum.item()/len(self.valid_data_loader))
+            self.valid_metrics.update('auxiliary_loss', joint_loss.item()/len(self.valid_data_loader))
 
             s_output = torch.cat(s_output_list,dim=0)
             s_y = torch.cat(s_label_list,dim=0)
