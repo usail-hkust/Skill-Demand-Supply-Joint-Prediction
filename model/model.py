@@ -444,13 +444,13 @@ class Skill_Evolve_Hetero(BaseSeqModel):
         return y
     def _combined_decode(self, x, s):
         d_x, s_x = x
-        d_s = self.drop(self.inoutflow_merge(torch.concat([d_x, s_x, s], dim=-1)))
+        d_s = self.inoutflow_merge(torch.concat([d_x, s_x, s], dim=-1))
         d_y = self.demand_MLP(torch.concat([d_x, d_s[:,:]], dim=-1))
         s_y = self.supply_MLP(torch.concat([s_x, d_s[:,:]], dim=-1))
         return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
     def _decode(self, x, s):
         d_x, s_x = x
-        d_s = self.drop(self.inoutflow_merge(torch.concat([d_x, s_x], dim=-1)))
+        d_s = self.inoutflow_merge(torch.concat([d_x, s_x], dim=-1))
         d_y = self.demand_MLP(torch.concat([d_x, s[:d_x.shape[0],:], d_s], dim=-1))
         s_y = self.supply_MLP(torch.concat([s_x, s[d_x.shape[0]:, :], d_s], dim=-1))
         return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
@@ -622,8 +622,8 @@ class Crossview_Graph_Learning(nn.Module):
         # self.skill_emb_2 = nn.Embedding(skill_num, skill_embed_dim)
         self.skill_demand_LT = nn.Linear(skill_embed_dim, skill_embed_dim)
         self.skill_supply_LT = nn.Linear(skill_embed_dim, skill_embed_dim)
-        self.attention = nn.MultiheadAttention(skill_embed_dim, 4,dropout=0.2,batch_first=True)
-        self.multihead_attn = nn.MultiheadAttention(skill_embed_dim, 4,dropout=0.2,batch_first=True)
+        self.attention = nn.MultiheadAttention(skill_embed_dim, 4,dropout=0.1,batch_first=True)
+        self.multihead_attn = nn.MultiheadAttention(skill_embed_dim, 4,dropout=0.1,batch_first=True)
         # self.skill_inflow_emb = nn.Embedding(skill_num, skill_embed_dim)
         # self.densecat_linear = nn.Linear(skill_embed_dim*2, skill_embed_dim)
         if model == "semantic":
@@ -874,7 +874,7 @@ class GCN(nn.Module):
 
     def __init__(self, skill_embed_dim: int, gcn_layers: int):
         super().__init__()
-        self.preserve_ratio = 0.2
+        self.preserve_ratio = 0.1
         # self.GCN_1 = DCRNN(skill_embed_dim, skill_embed_dim, K=5)
         self.GCN = nn.ModuleList([geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim) for i in range(gcn_layers)])
         # self.GCN_2 = geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim)
@@ -883,8 +883,8 @@ class GCN(nn.Module):
     def forward(self, skill_embed, adj_list, edge_attr):
         temp = skill_embed
         for gcn in self.GCN:
-            out = gcn(skill_embed, adj_list, edge_attr)
-            temp = (1-self.preserve_ratio)* out+ self.preserve_ratio *skill_embed
+            out = gcn(temp, adj_list, edge_attr)
+            temp = (1-self.preserve_ratio)* out+ self.preserve_ratio *temp
         # out = self.GCN_2(temp, adj_list, edge_attr)
         # temp = (1-self.preserve_ratio)* out+self.preserve_ratio *skill_embed
         # temp = self.GCN_1(skill_embed, adj_list)
