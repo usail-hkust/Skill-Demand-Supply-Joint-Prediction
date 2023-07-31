@@ -10,7 +10,7 @@ def _generate_data(skillinflow: pd.DataFrame, skilloutflow: pd.DataFrame, time_r
     gap = skillinflow-skilloutflow
     inflow_matrices = _get_matrices(skillinflow, time_range)
     outflow_matrices = _get_matrices(skilloutflow, time_range)
-    gap = _get_matrices(gap, time_range, norm=False)
+    gap = _get_matrices(gap, time_range)
 
     # sampling
     data = []

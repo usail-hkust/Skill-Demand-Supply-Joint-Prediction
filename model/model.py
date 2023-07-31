@@ -74,42 +74,217 @@ class BaseSeqModel(nn.Module):
         y = F.log_softmax(y, dim=-1)
         return y
 
-   
+class BaseRNNModel(BaseSeqModel):
+    '''Override BaseSeqModel for recurrent neural networks variants, which can easily used based on this class
+    '''
+    # "type": "RNN",
+    #         "args":{
+    #             "embed_dim": 128,
+    #             "class_num": 5,
+    #             "hidden_dim": 32,
+    #             "rnn_layer_num": 3,
+    #             "dropout": 0.2
+    #         }
+    def __init__(
+        self,
+        ENCODER: nn.Module,
+        embed_dim: int,
+        rnn_layer_num: int,
+        class_num: int,
+        dropout: float,
+        *args,
+        **kwargs
+    ):
+        super().__init__()
+        
+        self.demand_amplifier = self.default_amplifier(embed_dim)
+        self.supply_amplifier = self.default_amplifier(embed_dim)
+        self.demand_encoder = ENCODER(
+            input_size=embed_dim,
+            hidden_size=embed_dim,
+            num_layers=rnn_layer_num,
+            batch_first=True
+        )
+        self.supply_encoder = ENCODER(
+            input_size=embed_dim,
+            hidden_size=embed_dim,
+            num_layers=rnn_layer_num,
+            batch_first=True
+        )
+        self.demand_decoder = self.default_decoder(embed_dim, embed_dim, dropout, class_num)
+        self.supply_decoder = self.default_decoder(embed_dim, embed_dim, dropout, class_num)
+
+    def forward(self, x, l, s, t_s, t_e, g, g_1,g_2, gap):
+        d_x, s_x = x
+        # print(s_x.shape)
+        l  = l.expand(d_x.shape[0])
+        # print(d_x.shape)
+        d_x = self._amplify(d_x, self.demand_amplifier)
+        s_x = self._amplify(s_x, self.supply_amplifier)
+        # print(d_x.shape)
+        d_x = self._encode(d_x, l, self.demand_encoder)
+        s_x = self._encode(s_x, l, self.supply_encoder)
+        d_y = self._decode(d_x, self.demand_decoder)
+        s_y = self._decode(s_x, self.supply_decoder)
+        return (d_y, s_y) , 0, 0, 0
+
+    def _encode(self, x, l, encoder):
+        
+        x = pack_padded_sequence(x, l.cpu(), batch_first=True, enforce_sorted=False)
+        y, _ = encoder(x)
+        y, _ = pad_packed_sequence(y, batch_first=True)
+        # y = _get_masked_seq_last(y, l)
+        y = y[:, -1,:]
+        return y
+    
+
+class RNN(BaseRNNModel):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(ENCODER=nn.RNN, *args, **kwargs)
+
+
+class GRU(BaseRNNModel):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(ENCODER=nn.GRU, *args, **kwargs)
+
+
+class LSTM(BaseRNNModel):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(ENCODER=nn.LSTM, *args, **kwargs)
+
+class Graph_Baseline(BaseSeqModel):
+    def __init__(self, skill_num, embed_dim, skill_embed_dim, class_num, nhead, nlayers, dropout, model, *args, **kwargs):
+        super().__init__()
+
+        self.src_mask = None
+        self.embed_dim = embed_dim
+        self.skill_num = skill_num
+        self.nlayer = nlayers
+        self.model = model
+        self.in_dim = 32
+        # dy_com_pos_hgnn
+        self.demand_amplifier = self.default_amplifier(self.in_dim)
+        self.supply_amplifier = self.default_amplifier(self.in_dim)
+        self.init_skill_emb1 = nn.Embedding(skill_num, skill_embed_dim)
+        self.init_skill_emb2 = nn.Embedding(skill_num, skill_embed_dim)
+        if self.model == "wavenet":
+            self.stgnn = gwnet(num_nodes=skill_num,dropout=dropout, in_dim=self.in_dim, out_dim=1,supports=[1],residual_channels=self.in_dim,dilation_channels=self.in_dim,skip_channels=self.in_dim*4,end_channels=self.in_dim*8)
+        if self.model == "mtgnn":
+            self.stgnn = gwnet()
+        
+        self.init_start_token = nn.Embedding(1, skill_embed_dim)
+        self.multihead_attn = nn.MultiheadAttention(embed_dim, nhead,dropout=dropout,batch_first=True)
+        self.linear_for_trans = nn.Linear(6, embed_dim)
+        self.drop = torch.nn.Dropout(dropout)
+        self.demand_MLP = nn.Sequential(
+            nn.Linear(embed_dim* 2, embed_dim),
+            nn.Dropout(dropout),
+            nn.ReLU(inplace=True),
+            nn.Linear(embed_dim, embed_dim),
+            nn.ReLU(inplace=True),
+            nn.Linear(embed_dim, class_num)
+            )
+        self.supply_MLP = nn.Sequential(
+            nn.Linear(embed_dim* 2, embed_dim),
+            nn.Dropout(dropout),
+            nn.ReLU(inplace=True),
+            nn.Linear(embed_dim, embed_dim),
+            nn.ReLU(inplace=True),
+            nn.Linear(embed_dim, class_num)
+            ) 
+
+    def forward(self, x, l, s, t_s, t_e, g, comm, skill_semantic_embed, gap):
+        d_x, s_x = x  # [batch_size, 18]
+        max_len = d_x.shape[1]
+        d_x = d_x[:,:l]
+        s_x = s_x[:,:l]
+        d_x = F.pad(input=d_x, pad=(max_len - l, 0))
+        s_x = F.pad(input=s_x, pad=(max_len - l, 0))
+        # s_subgraph = torch.range(self.skill_num,self.skill_num*2, dtype=torch.long)
+        g_d_idx, g_d_attr = g.edge_index[:,(g.edge_index<self.skill_num).all(0)], g.edge_attr[(g.edge_index<self.skill_num).all(0)]
+        g_s_idx, g_s_attr = g.edge_index[:,(g.edge_index>=self.skill_num).all(0)]-self.skill_num, g.edge_attr[(g.edge_index>=self.skill_num).all(0)]
+        # g_s_idx, g_s_attr = geo_utils.subgraph(s_subgraph,g.edge_index,g.edge_attr,relabel_nodes=True)
+        g_d = geo_utils.to_dense_adj(g_d_idx, edge_attr= g_d_attr,max_num_nodes=self.skill_num).squeeze()
+        g_s = geo_utils.to_dense_adj(g_s_idx, edge_attr= g_s_attr,max_num_nodes=self.skill_num).squeeze()
+        # print(g_s.shape)
+        # d_x = d_x.squeeze()
+        # s_x = s_x.squeeze()
+        learned_graph, loss, pred=0, 0, 0
+        d_x = self._amplify(d_x, self.demand_amplifier).unsqueeze(0)
+        s_x = self._amplify(s_x, self.supply_amplifier).unsqueeze(0)
+        d_x = d_x.permute((0,3,1,2))  # [1, in_dim, num_skill, seq_length]
+        s_x = s_x.permute((0,3,1,2))  # [1, in_dim, num_skill, seq_length]
+        
+        node_emb1 = self.init_skill_emb1.weight
+        node_emb2 = self.init_skill_emb2.weight
+
+
+
+        demand = self.stgnn(d_x,g_d,node_emb1,node_emb2)
+        supply = self.stgnn(s_x,g_s,node_emb1,node_emb2) # [1, out_dim, num_skill, seq_length/3]
+        # print(demand.shape)
+        demand = demand.squeeze()
+        supply = supply.squeeze()
+        demand = F.relu(self.linear_for_trans(demand))
+        supply = F.relu(self.linear_for_trans(supply))
+        # demand = demand
+
+        
+        # print(supply.shape)
+        d_y, s_y = self._decode((demand, supply), node_emb1) #[batch_size, 10]
+        
+
+        
+        return (d_y, s_y), learned_graph, loss, pred
+    def _decode(self, x, s):
+        d_x, s_x = x
+
+        # d_s = self.drop(self.inoutflow_merge(torch.concat([d_x, s_x, s], dim=-1)))
+        d_y = self.demand_MLP(torch.concat([d_x, s[:,:]], dim=-1))
+        s_y = self.supply_MLP(torch.concat([s_x, s[:, :]], dim=-1))
+        return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
+# ----------------------Evolve Graph Models----------------------
+
 class Skill_Evolve_Hetero(BaseSeqModel):
     '''Dynamic Heterogeneous Graph Enhanced Meta-learner
     '''
-    def __init__(self, skill_num, embed_dim, skill_embed_dim, class_num, nhead, nhid, nlayers, dropout, sample_node_num, model, hyperdecode=False, hypcomb='', *args, **kwargs):
+    def __init__(self, skill_num, embed_dim, skill_embed_dim, class_num, nhead, nhid, nlayers, dropout, sample_node_num, model, hyperdecode=False, hypcomb='',gcn_layers=2,delta=0.1, *args, **kwargs):
         super().__init__()
 
         self.src_mask = None
         self.embed_dim = embed_dim
         self.nlayer = nlayers
+        self.gcn_layers = gcn_layers
         self.model = model
         self.hyper_size = int(embed_dim/4)
         self.hyperdecode = hyperdecode
         self.hyper_n_layers = 1
-
+        
         # dy_com_pos_hgnn
         if model == "static":
-            self.largedyskillhgnn = StSkillGNN(skill_num, skill_embed_dim, sample_node_num)
+            self.largedyskillhgnn = StSkillGNN(skill_num, skill_embed_dim, sample_node_num,gcn_layers)
         elif model == "adaptive":
-            self.largedyskillhgnn = AdaptiveGraph(skill_num, skill_embed_dim, sample_node_num)
+            self.largedyskillhgnn = AdaptiveGraph(skill_num, skill_embed_dim, sample_node_num,gcn_layers)
         elif model == "cross-view":
-            self.largedyskillhgnn = Crossview_Graph_Learning(skill_num, skill_embed_dim, sample_node_num,model)
+            self.largedyskillhgnn = Crossview_Graph_Learning(skill_num, skill_embed_dim, sample_node_num,model, gcn_layers, delta)
         elif model in ["hier", "semantic"]:
-            self.largedyskillhgnn = Crossview_Graph_Learning(skill_num, skill_embed_dim, sample_node_num,model)
+            self.largedyskillhgnn = Crossview_Graph_Learning(skill_num, skill_embed_dim, sample_node_num,model, gcn_layers, delta)
         
         # amplifier
         self.inflow_amplifier = self.default_amplifier(embed_dim)
         self.outflow_amplifier = self.default_amplifier(embed_dim)
+        self.layernorm = nn.LayerNorm(embed_dim)
         # self.skill_amplifier = nn.Linear(embed_dim + skill_embed_dim, embed_dim)
         # encoder
         self.position_encoder = PositionalEncoding(embed_dim, dropout)
         # self.transformer_encoder = nn.TransformerEncoder(nn.TransformerEncoderLayer(embed_dim, nhead, nhid, dropout), nlayers)
-        self.inflow_LSTM_encoder = nn.GRU(input_size=embed_dim,hidden_size=embed_dim,
-                                    num_layers=nlayers, batch_first=True)
-        self.outflow_LSTM_encoder = nn.GRU(input_size=embed_dim,hidden_size=embed_dim,
-                                    num_layers=nlayers, batch_first=True)
+        self.inflow_LSTM_encoder = nn.LSTM(input_size=embed_dim,hidden_size=embed_dim,
+                                    num_layers=nlayers, batch_first=True, dropout=dropout)
+        self.outflow_LSTM_encoder = nn.LSTM(input_size=embed_dim,hidden_size=embed_dim,
+                                    num_layers=nlayers, batch_first=True, dropout=dropout)
         # if hyperdecode == True:
         #     self.inflow_LSTM_encoder = HyperLSTM(input_size=embed_dim,hidden_size=embed_dim, hyper_size=self.hyper_size, n_z=2,
         #                                     n_layers=self.hyper_n_layers, batch_first=True)
@@ -121,47 +296,62 @@ class Skill_Evolve_Hetero(BaseSeqModel):
         # self.demand_transformer_encoder = nn.TransformerEncoder(nn.TransformerEncoderLayer(embed_dim, nhead, embed_dim, dropout), nlayers)
         # self.supply_transformer_encoder = nn.TransformerEncoder(nn.TransformerEncoderLayer(embed_dim, nhead, embed_dim, dropout), nlayers)
         # self.testlinear = nn.Linear(embed_dim*18+128, 10)
-        self.multihead_attn = nn.MultiheadAttention(embed_dim, nhead, dropout=dropout, batch_first=True)
+        self.multihead_attn = nn.MultiheadAttention(embed_dim, nhead, batch_first=True)
         self.drop = nn.Dropout(dropout)
         self.init_skill_emb = nn.Embedding(skill_num, skill_embed_dim)
         self.init_start_token = nn.Embedding(1, skill_embed_dim)
         
-        
+        lin_setting = (2,3)
+        if model in ["static","adaptive"]:
+            lin_setting = (3,2)
         # decoder
-        self.inoutflow_merge = nn.Linear(embed_dim * 2, embed_dim)
-        self.before_hyp_MLP = nn.Sequential(
-            nn.Linear(embed_dim*2, embed_dim),
-            )
+        self.inoutflow_merge = nn.Linear(embed_dim * lin_setting[0], embed_dim)
         self.demand_MLP = nn.Sequential(
-            nn.Linear(embed_dim*3, embed_dim),
-            nn.Dropout(p=dropout),
+            nn.Linear(embed_dim* lin_setting[1], embed_dim),
             nn.ReLU(inplace=True),
             nn.Linear(embed_dim, embed_dim),
-            nn.Dropout(p=dropout),
             nn.ReLU(inplace=True),
             nn.Linear(embed_dim, class_num)
             )
         self.supply_MLP = nn.Sequential(
-            nn.Linear(embed_dim*3, embed_dim),
-            nn.Dropout(p=dropout),
+            nn.Linear(embed_dim* lin_setting[1], embed_dim),
             nn.ReLU(inplace=True),
             nn.Linear(embed_dim, embed_dim),
-            nn.Dropout(p=dropout),
             nn.ReLU(inplace=True),
             nn.Linear(embed_dim, class_num)
             ) 
-        self.hypcomb = hypcomb
         if hyperdecode == True:
+            self.before_hyp_MLP = nn.Sequential(
+                nn.Linear(embed_dim*3, embed_dim),
+                nn.ReLU(inplace=True),
+                )
+            self.demand_MLP = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim),
+                nn.ReLU(inplace=True),
+                nn.Linear(embed_dim, class_num)
+                )
+            self.supply_MLP = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim),
+                nn.ReLU(inplace=True),
+                nn.Linear(embed_dim, class_num)
+                ) 
+        self.hypcomb = hypcomb
+        
+        if hyperdecode == True:
+            self.condition = torch.rand(embed_dim*2)
             self.gap_encoder = nn.LSTM(input_size=1,hidden_size=embed_dim,
                                         num_layers=nlayers, batch_first=True)
-            self.main_MLP = MLP(n_in=embed_dim*2, n_out=embed_dim, hidden_layers=[embed_dim for _ in range(2)], no_weights=False,dropout_rate=0.2,use_batch_norm=True)
+            self.main_MLP = MLP(n_in=embed_dim*3, n_out=embed_dim, hidden_layers=[embed_dim for _ in range(2)], dropout_rate=0.1, no_weights=False,use_batch_norm=True)
             print("parameter :", self.main_MLP.param_shapes)
             self.hyper_MLP = HMLP(self.main_MLP.param_shapes, uncond_in_size=0, cond_in_size=skill_embed_dim*2,
-                layers=(embed_dim*2,embed_dim*2), num_cond_embs=1, dropout_rate = dropout, use_batch_norm=True)
+                layers=(embed_dim,embed_dim), num_cond_embs=1, use_batch_norm=True)
+            self.norm_cond = nn.LayerNorm(embed_dim*2)
+            self.norm_input = nn.LayerNorm(embed_dim)
             self.hyper_attention = torch.nn.MultiheadAttention(skill_embed_dim,num_heads=1,add_zero_attn=True,batch_first=True)
             self.skill_type_emb = nn.Embedding(4, skill_embed_dim)
             self.supply_demand_task_emb = nn.Embedding(2, skill_embed_dim)
 
+        
     def forward(self, x, l, s, t_s, t_e, g, comm, skill_semantic_embed, gap):
         # print(gap.shape)
         '''
@@ -250,6 +440,7 @@ class Skill_Evolve_Hetero(BaseSeqModel):
         x = pack_padded_sequence(x, l.cpu(), batch_first=True, enforce_sorted=False)
         y, _ = encoder(x) # 
         y, _ = pad_packed_sequence(y, batch_first=True)
+
         return y
     def _combined_decode(self, x, s):
         d_x, s_x = x
@@ -259,13 +450,14 @@ class Skill_Evolve_Hetero(BaseSeqModel):
         return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
     def _decode(self, x, s):
         d_x, s_x = x
-        d_s = self.inoutflow_merge(torch.concat([d_x, s_x], dim=-1))
+        d_s = self.drop(self.inoutflow_merge(torch.concat([d_x, s_x], dim=-1)))
         d_y = self.demand_MLP(torch.concat([d_x, s[:d_x.shape[0],:], d_s], dim=-1))
         s_y = self.supply_MLP(torch.concat([s_x, s[d_x.shape[0]:, :], d_s], dim=-1))
         return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
     def _hyperdecode(self, x, s, cond=None):
         d_x, s_x = x
         x_in = torch.cat([d_x,s_x],dim=0)
+        d_s = self.inoutflow_merge(torch.concat([d_x, s_x], dim=-1))
         sd_emb = self.supply_demand_task_emb(torch.cat([d_x.new_zeros(d_x.shape[0]), d_x.new_ones(d_x.shape[0])],dim=0).to(d_x.device).type(torch.int32))
         if self.hypcomb == "none":
             # print("here")
@@ -274,10 +466,16 @@ class Skill_Evolve_Hetero(BaseSeqModel):
             return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
         hyper_feat_d = torch.cat([s[:d_x.shape[0],:], cond],dim=-1)
         hyper_feat_s = torch.cat([s[d_x.shape[0]:,:], cond],dim=-1)
+        
+        # self.condition = self.condition.to(hyper_feat_d.device)
+        # hyper_feat_d = self.condition.expand(d_x.shape[0],-1)
+        # hyper_feat_s = self.condition.expand(d_x.shape[0],-1)
+        hyper_feat_d = self.norm_cond(hyper_feat_d)
+        hyper_feat_s = self.norm_cond(hyper_feat_s)
         weight_d = self.hyper_MLP(cond_input=hyper_feat_d)
         weight_s = self.hyper_MLP(cond_input=hyper_feat_s)
-        d_y_h = self.main_MLP(torch.concat([d_x, s[:d_x.shape[0],:]], dim=-1),weight_d[0])
-        s_y_h = self.main_MLP(torch.concat([s_x, s[:d_x.shape[0],:]], dim=-1),weight_s[0])
+        d_y_h = self.main_MLP(torch.concat([d_x, s[:d_x.shape[0],:], d_s], dim=-1), weight_d[0])
+        s_y_h = self.main_MLP(torch.concat([s_x, s[d_x.shape[0]:,:], d_s], dim=-1), weight_s[0])
         
         if self.hypcomb == "res":
             d_y = d_x + d_y_h
@@ -285,8 +483,8 @@ class Skill_Evolve_Hetero(BaseSeqModel):
             d_y = self.demand_MLP(d_y)
             s_y = self.supply_MLP(s_y)
         elif self.hypcomb == 'add':
-            d_y = self.before_hyp_MLP(torch.concat([d_x, s[:d_x.shape[0],:]], dim=-1))
-            s_y = self.before_hyp_MLP(torch.concat([s_x, s[d_x.shape[0]:,:]], dim=-1))
+            d_y = self.before_hyp_MLP(torch.concat([d_x, s[:d_x.shape[0],:], d_s], dim=-1))
+            s_y = self.before_hyp_MLP(torch.concat([s_x, s[d_x.shape[0]:,:], d_s], dim=-1))
             d_y = d_y + d_y_h
             s_y = s_y + s_y_h
             d_y = self.demand_MLP(d_y)
@@ -303,7 +501,10 @@ class Skill_Evolve_Hetero(BaseSeqModel):
             d_y = (1-lamb)*d_y + lamb*d_y_h
             s_y = (1-lamb)*s_y + lamb*s_y_h
             d_y = self.demand_MLP(d_y)
-            s_y = self.supply_MLP(s_y)   
+            s_y = self.supply_MLP(s_y)
+        elif self.hypcomb == "pure":
+            d_y = self.demand_MLP(d_y_h)
+            s_y = self.supply_MLP(s_y_h)
         # d_y = d_y_h
         # s_y = s_y_h
         return F.log_softmax(d_y, dim=-1), F.log_softmax(s_y, dim=-1)
@@ -313,13 +514,13 @@ class StSkillGNN(nn.Module):
     '''Static Skill Heterogeneous Graph Neural Network
     '''
 
-    def __init__(self, skill_num, skill_embed_dim, sample_node_num):
+    def __init__(self, skill_num, skill_embed_dim, sample_node_num,gcn_layers):
         super().__init__()
         self.sample_node_num = sample_node_num
         self.skill_num = skill_num
-        self.GNN_0 = GCN(skill_embed_dim)
+        self.GNN_0 = GCN(skill_embed_dim,gcn_layers)
         self.skill_emb_1 = nn.Embedding(skill_num, skill_embed_dim)
-        self.fuse_seq = nn.Linear(skill_embed_dim*2, skill_embed_dim)
+        self.fuse_seq = nn.Linear(skill_embed_dim*3, skill_embed_dim)
         # .to(list(self.hg.edge_index_dict.values())[0].device)
 
     def forward(self, inflow_seq_emb, outflow_seq_emb, l, t_s, t_e, g_d, comm, skill_semantic_embed,init_emb):
@@ -330,9 +531,9 @@ class StSkillGNN(nn.Module):
         loss = 0
         seq_cat = torch.cat([inflow_seq_emb, outflow_seq_emb],dim=-1)
         pred_g = 0
-        fuse_seq  = self.fuse_seq(seq_cat[:, -1, :])
-        # update_graph_emb = self.fuse_seq(torch.cat([self.skill_emb_1.weight, seq_cat[:, -1, :]],dim=-1))
-        skill_embs_2 = self.GNN_0(init_emb+fuse_seq, g_d.edge_index[:,(g_d.edge_index<self.skill_num).all(0)], g_d.edge_attr[(g_d.edge_index<self.skill_num).all(0)])
+        # fuse_seq  = self.fuse_seq(seq_cat[:, -1, :])
+        update_graph_emb = self.fuse_seq(torch.cat([self.skill_emb_1.weight, seq_cat[:, -1, :]],dim=-1))
+        skill_embs_2 = self.GNN_0(update_graph_emb, g_d.edge_index[:,(g_d.edge_index<self.skill_num).all(0)], g_d.edge_attr[(g_d.edge_index<self.skill_num).all(0)])
         
         # skill_embs_2 = self.GNN[1](cat, g_d.edge_index[:, (g_d.edge_attr.int() == 2).nonzero()[:,0]],g_d.edge_attr[:, (g_d.edge_attr.int() == 2).nonzero()[:,0]])
         # skill_embs_3 = self.GNN[2](cat, g_d.edge_index[:, (g_d.edge_attr.int() == 3).nonzero()[:,0]],g_d.edge_attr[:, (g_d.edge_attr.int() == 3).nonzero()[:,0]])
@@ -344,12 +545,12 @@ class StSkillGNN(nn.Module):
 class AdaptiveGraph(nn.Module):
     '''Adaptive Graph Graph Neural Network
     '''
-    def __init__(self, skill_num, skill_embed_dim, sample_node_num):
+    def __init__(self, skill_num, skill_embed_dim, sample_node_num,gcn_layers):
         super().__init__()
         self.sample_node_num = sample_node_num
         self.skill_num = skill_num
-        self.GNN_0 = GCN(skill_embed_dim)
-        self.GNN_1 = GCN(skill_embed_dim)
+        self.GNN_0 = GCN(skill_embed_dim,gcn_layers)
+        self.GNN_1 = GCN(skill_embed_dim,gcn_layers)
         self.skill_emb_1 = nn.Embedding(skill_num, skill_embed_dim)
         self.skill_emb_2 = nn.Embedding(skill_num, skill_embed_dim)
         self.fuse_seq = nn.Linear(skill_embed_dim*3, skill_embed_dim)
@@ -400,17 +601,20 @@ class AdaptiveGraph(nn.Module):
 class Crossview_Graph_Learning(nn.Module):
     '''Dynamic Skill Heterogeneous Graph Neural Network
     '''
-    def __init__(self, skill_num, skill_embed_dim, sample_node_num, model):
+    def __init__(self, skill_num, skill_embed_dim, sample_node_num, model,gcn_layers=2,delta=0.1):
         super().__init__()
         self.model = model
         self.cluster_size = 100
+        print("gcn_layers:", gcn_layers)
+        print("delta:", delta)
         self.skill_num = skill_num
-        self.GNN_0 = GCN(skill_embed_dim)
-        self.GNN_1 = GCN(skill_embed_dim)
+        self.delta = delta
+        self.GNN_0 = GCN(skill_embed_dim,gcn_layers)
+        self.GNN_1 = GCN(skill_embed_dim,gcn_layers)
         if self.model == "semantic":
-            self.GNN_2 = GCN(skill_embed_dim)
+            self.GNN_2 = GCN(skill_embed_dim,gcn_layers)
         if self.model == "hier":
-            self.GNN_pool = GCN(skill_embed_dim)
+            self.GNN_pool = GCN(skill_embed_dim,gcn_layers)
         self.skill_emb_1 = nn.Embedding(skill_num, skill_embed_dim)
         self.skill_emb_2 = nn.Embedding(skill_num, skill_embed_dim)
         self.sender = nn.Parameter(torch.tensor(1,dtype=torch.float32))
@@ -499,14 +703,14 @@ class Crossview_Graph_Learning(nn.Module):
         return pooled_embs, link_loss + ent_loss
     
     def graph_update(self, s_emb, s_emb_2):
-        s_emb = self.sender * s_emb
-        s_emb_2 = self.receiver* s_emb_2
+        s_emb = F.tanh(self.sender * s_emb)
+        s_emb_2 = F.tanh(self.receiver* s_emb_2)
         updated_adj = self.find_possible_edges('{i}', s_emb, s_emb_2)
         # threshold = updated_adj.sum()+updated_adj.std()
         # larger than threshold
         # updated_adj = torch.where(updated_adj>threshold, updated_adj, 0)
         # # topk
-        updated_adj = F.relu(updated_adj-0.1)
+        updated_adj = F.relu(updated_adj-self.delta)
         # mask = torch.zeros(updated_adj.size(0), updated_adj.size(0)).to(updated_adj.device)
         # mask.fill_(float('0'))
         # s1,t1 = updated_adj.topk(int(updated_adj.size(0)*0.1),1)
@@ -668,20 +872,21 @@ class GCN(nn.Module):
     '''SKill Heterogeneous Graph Neural Network
     '''
 
-    def __init__(self, skill_embed_dim: int):
+    def __init__(self, skill_embed_dim: int, gcn_layers: int):
         super().__init__()
         self.preserve_ratio = 0.2
         # self.GCN_1 = DCRNN(skill_embed_dim, skill_embed_dim, K=5)
-        self.GCN_1 = geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim)
-        self.GCN_2 = geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim)
+        self.GCN = nn.ModuleList([geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim) for i in range(gcn_layers)])
+        # self.GCN_2 = geo_nn.conv.GCNConv(skill_embed_dim, skill_embed_dim)
         # self.GCN_1 = geo_nn.conv.SAGEConv(skill_embed_dim, skill_embed_dim, dropout=0.2)
         # self.GCN_2 = geo_nn.conv.SAGEConv(skill_embed_dim, skill_embed_dim, dropout=0.2)
     def forward(self, skill_embed, adj_list, edge_attr):
         temp = skill_embed
-        out = self.GCN_1(skill_embed, adj_list, edge_attr)
-        temp = (1-self.preserve_ratio)* out+ self.preserve_ratio *skill_embed
-        out = self.GCN_2(temp, adj_list, edge_attr)
-        temp = (1-self.preserve_ratio)* out+self.preserve_ratio *skill_embed
+        for gcn in self.GCN:
+            out = gcn(skill_embed, adj_list, edge_attr)
+            temp = (1-self.preserve_ratio)* out+ self.preserve_ratio *skill_embed
+        # out = self.GCN_2(temp, adj_list, edge_attr)
+        # temp = (1-self.preserve_ratio)* out+self.preserve_ratio *skill_embed
         # temp = self.GCN_1(skill_embed, adj_list)
         # temp = self.GCN_2(temp, adj_list)
         # temp = self.heterognn_2(temp,adj)

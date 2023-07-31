@@ -49,6 +49,9 @@ class SingleSkillDataset(Dataset):
         # padding
         d_x_padded = F.pad(input=d_x, pad=(0, self.max_length - l))
         s_x_padded = F.pad(input=s_x, pad=(0, self.max_length - l))
+        # wave padding 
+        # d_x_padded = F.pad(input=d_x, pad=(self.max_length - l, 0))
+        # s_x_padded = F.pad(input=s_x, pad=(self.max_length - l, 0))
         # d_x_padded = d_x
         # s_x_padded = s_x
         return (d_x_padded, s_x_padded), (d_y, s_y), l, s, t_s, t_e, g

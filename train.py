@@ -90,11 +90,14 @@ if __name__ == '__main__':
         CustomArgs(['--sk_emb_dim'], type=int, defaults=32, target='arch;args;skill_embed_dim'),
         CustomArgs(['--class_num'], type=int, defaults=5, target='arch;args;class_num'),
         CustomArgs(['--layer_num'], type=int, defaults=5, target='arch;args;rnn_layer_num'),
+        CustomArgs(['-gcn', '--gcn_layer'], type=int,defaults=2, target='arch;args;gcn_layers'),
+        CustomArgs(['--delta'], type=float, defaults=0.1, target='arch;args;delta'),
         CustomArgs(['--sample_node_num'], type=int, defaults=50, target='arch;args;sample_node_num'),
         CustomArgs(['--dropout'], type=float, defaults=0.1, target='arch;args;dropout'),
         CustomArgs(['-hyp', '--hyperdecode'], type=bool,defaults=False, target='arch;args;hyperdecode'),
         CustomArgs(['-hypcomb', '--hypcomb'], type=str,defaults="add", target='arch;args;hypcomb'),
-
+        
+        
         CustomArgs(['-lr', '--learning_rate'], type=float,defaults=1e-4, target='optimizer;args;lr')
         
     ]
