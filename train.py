@@ -81,8 +81,8 @@ if __name__ == '__main__':
         CustomArgs(['-epoch', '--epoch'], type=int,defaults=300, target='trainer;epochs'),
         # Data related Definition
         CustomArgs(['-bs', '--batch_size'], type=int,defaults=1, target='data_loader;args;batch_size'),
-        CustomArgs(['--data_dir'], type=str,defaults="datadir", target='data_loader;args;data_dir'),
-        CustomArgs(['--graph_dir'], type=str,defaults="datadir", target='data_loader;args;graph_dir'),
+        CustomArgs(['--data_dir'], type=str,defaults="", target='data_loader;args;data_dir'),
+        CustomArgs(['--graph_dir'], type=str,defaults="", target='data_loader;args;graph_dir'),
         CustomArgs(['--dataset'], type=str, defaults="it", target='data_loader;args;dataset'),
         CustomArgs(['-subg', '--subgraph'], type=int, defaults=7446, target='data_loader;args;subgraph_num'),
         # Model
@@ -96,7 +96,7 @@ if __name__ == '__main__':
         CustomArgs(['-gcn', '--gcn_layer'], type=int,defaults=2, target='arch;args;gcn_layers'),
         CustomArgs(['--delta'], type=float, defaults=0.1, target='arch;args;delta'),
         CustomArgs(['--sample_node_num'], type=int, defaults=50, target='arch;args;sample_node_num'),
-        CustomArgs(['--dropout'], type=float, defaults=0.1, target='arch;args;dropout'),
+        CustomArgs(['--dropout'], type=float, defaults=0.3, target='arch;args;dropout'),
         CustomArgs(['-hyp', '--hyperdecode'], type=bool,defaults=False, target='arch;args;hyperdecode'),
         CustomArgs(['-hypcomb', '--hypcomb'], type=str,defaults="add", target='arch;args;hypcomb'),
         
