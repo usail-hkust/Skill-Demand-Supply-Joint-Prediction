@@ -48,10 +48,6 @@ class BaseDataLoader(DataLoader):
         train_idx = idx_full[mask]
         valid_idx = idx_full[~mask]
 
-
-        # valid_idx = idx_full[-1*len_valid:]
-        # train_idx = idx_full[:-1*len_valid]
-        # print(valid_idx, train_idx)
         np.random.shuffle(valid_idx)
         np.random.shuffle(train_idx)
         train_sampler = SubsetRandomSampler(train_idx)

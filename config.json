@@ -1,5 +1,5 @@
 {
-    "name": "hier 100 single node emb",
+    "name": "hier",
     "wandb": true,
     "n_gpu": 1,
     "device": 2,
@@ -14,36 +14,31 @@
             "skill_embed_dim": 32,
             "class_num": 5,
             "nhead": 4,
-            "nhid": 16,
-            "nlayers": 3,
+            "nhid": 32,
+            "nlayers": 2,
             "dropout": 0.2,
-            "sample_node_num": 50,
-            "hyperdecode": true,
             "model": "static"
             }
     },
     "data_loader": {
         "type": "SkillDataLoader",
         "args":{
-            "data_dir": "/data/wchao/data/skill_inflow_outflow/",
             "dataset": "it",
-            "graph_dir": "/data/wchao/data/graph_list/",
-            "skill_num": 16956,
-            "subgraph_num": 16956,
+            "skill_num": 7446,
+            "subgraph_num": 7446,
             "max_length": 18,
             "batch_size": 1,
             "shuffle": true,
-            "validation_split": 0.25,
+            "validation_split": 0.1,
             "class_num": 5,
             "min_length": 5,
-            
             "num_workers": 0
         }
     },
     "optimizer": {
         "type": "Adam",
         "args":{
-            "lr": 1e-2,
+            "lr": 1e-3,
             "weight_decay": 1e-5,
             "amsgrad": true
         }
@@ -63,7 +58,7 @@
         "epochs": 300,
 
         "save_dir": "saved/",
-        "save_period": 10,
+        "save_period": 50,
         "verbosity": 2,
         
         "monitor": "min val_loss",

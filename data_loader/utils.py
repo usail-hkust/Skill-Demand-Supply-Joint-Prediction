@@ -24,7 +24,6 @@ def _generate_data(skillinflow: pd.DataFrame, skilloutflow: pd.DataFrame, time_r
     # train
     for l in range(min_length, max_length, 1):  # l: x's length 2
         for i in range(0, max_length-l, 2): # 3
-            # print(l, i)
             x = (inflow_matrices[i: i+l, :].transpose(1,0), outflow_matrices[i: i+l, :].transpose(1,0))
             y = (inflow_matrices[i+l, :], outflow_matrices[i+l, :])
             g = gap[i: i+l, :].transpose(1,0)
@@ -39,7 +38,6 @@ def _generate_data(skillinflow: pd.DataFrame, skilloutflow: pd.DataFrame, time_r
         out_ys.append(s_y)
     in_val_range_list = _get_labels(torch.stack(in_ys), class_num)
     out_val_range_list = _get_labels(torch.stack(out_ys), class_num)
-    # print(val_range_list)
     for sample in data:
         d_y, s_y = sample['Y']
         d_y_label = _to_label(d_y, in_val_range_list, class_num)
@@ -51,10 +49,8 @@ def _generate_data(skillinflow: pd.DataFrame, skilloutflow: pd.DataFrame, time_r
             seperate_by_y[sample["End"]].append(sample)
         else:
             seperate_by_y[sample["End"]] = [sample]
-    # print(seperate_by_y)
     data = []
     for key in seperate_by_y:
-        print(key, len(seperate_by_y[key]))
         data = data + seperate_by_y[key]
         
     return data, inflow_matrices, outflow_matrices
@@ -73,16 +69,8 @@ def _get_matrices(count, time_range, norm=True):
         matrices[time] = torch.from_numpy(matrix.values)
     # stack data
     matrices = torch.stack(list(matrices.values()),dim=0).float()
-    # print(torch.std(matrices,dim=0,unbiased=True).shape)
-    # print((torch.std(matrices,dim=0,unbiased=True)==0).any())
-    # normalize data
-    print(matrices.shape)
     if norm:
         matrices = F.normalize(matrices, dim=0)
-    # print(matrices.shape)
-    # print(matrices)
-    # matrices_submean = torch.sub(matrices, torch.mean(matrices, dim=0))
-    # matrices = torch.div(matrices_submean, torch.maximum(torch.std(matrices,dim=0,unbiased=True), torch.tensor(1)))
     return matrices
 
 def _get_labels(vec: torch.Tensor, class_num: int):
@@ -96,8 +84,6 @@ def _get_labels(vec: torch.Tensor, class_num: int):
         val_range_list.append(vec_tmp[(n // class_num) * i])
     val_range_list.append(vec_tmp[-1])
     return val_range_list
-
-# def _get_label_SAX(vec: torch.Tensor, class_num: int):
     
 def _to_label(vec: torch.Tensor, val_range_list: list, class_num: int):
     '''map continuous values to `class_num` discrete labels for `vec` using `val_range_list`

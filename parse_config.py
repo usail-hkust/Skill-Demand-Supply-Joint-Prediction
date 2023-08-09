@@ -57,8 +57,8 @@ class ConfigParser:
         if not isinstance(args, tuple):
             args, _ = args.parse_known_args()
 
-        if args.device is not None:
-            os.environ["CUDA_VISIBLE_DEVICES"] = args.device
+        # if args.device is not None:
+        #     os.environ["CUDA_VISIBLE_DEVICES"] = args.device
         if args.resume is not None:
             resume = Path(args.resume)
             cfg_fname = resume.parent / 'config.json'

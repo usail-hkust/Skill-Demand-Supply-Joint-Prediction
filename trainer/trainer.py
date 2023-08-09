@@ -59,17 +59,7 @@ class Trainer(BaseTrainer):
             (d_x_padded, s_x_padded), (d_y, s_y), l, s, t_s, t_e, gap = batch
             skill_semantic_embed = self.data_loader.skill_semantic_emb.to(self.device)
             demand_graph_input = self.data_loader.graphdata.to(self.device)
-            auxiliary_label = self.data_loader.dataset.classification.to(self.device)
-            # demand_graph_target = self.data_loader.graphdata[t_e+1].to(self.device)
-            # demand_graph_target = geo_utils.to_dense_adj(edge_index=demand_graph_target.edge_index, edge_attr=demand_graph_target.edge_attr).squeeze()
-            # supply_graph = self.data_loader.supply_graph
-            # graph = graph.to(self.device)
             comm = None
-            # comm = []
-            # print(len(comm))
-            # print(graph)
-            # print(d_x_padded.shape)
-            # break
             d_x_padded = d_x_padded.to(self.device).squeeze()
             s_x_padded = s_x_padded.to(self.device).squeeze()
             d_y = d_y.to(self.device).squeeze()
@@ -86,23 +76,12 @@ class Trainer(BaseTrainer):
             # print(demand_graph_target.shape)
             demand_loss = self.criterion(d_output, target=d_y)
             supply_loss = self.criterion(s_output, target=s_y)
-            # auxiliary_loss = self.aux_loss(pred, auxiliary_label)
             joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-8).mean()
-            joint_loss = 0
             supply_loss = supply_loss.mean()
             demand_loss = demand_loss.mean()
-            # print(demand_loss)
-            auxiliary_loss = torch.zeros(1)
-            # adj_loss_1 = torch.nn.functional.mse_loss(gen_graph[:d_x_padded.shape[0], :d_x_padded.shape[0]], demand_graph_target[:d_x_padded.shape[0],:d_x_padded.shape[0]])
-            # adj_loss_2 = torch.nn.functional.mse_loss(gen_graph[d_x_padded.shape[0]:, d_x_padded.shape[0]:], demand_graph_target[d_x_padded.shape[0]:, d_x_padded.shape[0]:])
-            # adj_loss = adj_loss_1 + adj_loss_2
-            adj_loss=0
-            # model_loss, auxiliary_loss
-            # loss = demand_loss + supply_loss + 1e-2 * auxiliary_loss
-            # print((demand_loss* supply_loss))
-            loss = (demand_loss + supply_loss).mean() + 1e-1*joint_loss
-            # + 
-            regularized_loss = loss + 1e-3 * adj_loss
+            auxiliary_loss = model_loss
+            loss = (demand_loss + supply_loss).mean()
+            regularized_loss = loss + 1e-5 * model_loss
             regularized_loss.backward()
             self.optimizer.step()
 
@@ -166,16 +145,7 @@ class Trainer(BaseTrainer):
                 # print(t_e)
                 skill_semantic_embed = self.data_loader.skill_semantic_emb.to(self.device)
                 demand_graph_input = self.data_loader.graphdata.to(self.device)
-                auxiliary_label =self.data_loader.dataset.classification.to(self.device)
-                # demand_graph_target = self.data_loader.graphdata[t_e+1].to(self.device)
-                # supply_graph = self.data_loader.supply_graph
-                # graph = graph.to(self.device)
                 comm = None
-                # comm = []
-                # print(len(comm))
-                # print(graph)
-                # print(d_x_padded.shape)
-                # break
                 d_x_padded = d_x_padded.to(self.device).squeeze()
                 s_x_padded = s_x_padded.to(self.device).squeeze()
                 d_y = d_y.to(self.device).squeeze()
@@ -185,25 +155,19 @@ class Trainer(BaseTrainer):
                 t_s = t_s.to(self.device)
                 t_e = t_e.to(self.device)
                 gap = gap.to(self.device)
-                # print(d_x_padded.shape)
                 self.optimizer.zero_grad()
+
                 (d_output, s_output) , gen_graph, model_loss, pred = self.model((d_x_padded, s_x_padded), l, s, t_s, t_e, demand_graph_input, comm, skill_semantic_embed, gap) # d_output [batch_size, 10], d_y [batch_size]
-                # print(d_output.shape)
-                # print(d_y.shape)
+
                 demand_loss = self.criterion(d_output, target=d_y)
                 supply_loss = self.criterion(s_output, target=s_y)
                 joint_loss = torch.sqrt((demand_loss-supply_loss)**2+1e-8).mean()
-                # joint_loss = 0
                 supply_loss = supply_loss.mean()
                 demand_loss = demand_loss.mean()
-                # print(demand_loss)
-                # auxiliary_loss = self.aux_loss(pred, auxiliary_label)
-                auxiliary_loss = torch.zeros(1)
-                # combined_data = torch.cat([torch.arange(d_output.shape[0],device=self.device), d_output, s_output,d_y, s_y]).T
-                
-                # adj_loss = torch.nn.functional.mse_loss(gen_graph, demand_graph_target)
+                auxiliary_loss = model_loss
+
                 adj_loss = 0
-                loss = (demand_loss + supply_loss).mean() + 1e-2*joint_loss
+                loss = (demand_loss + supply_loss).mean() + 1e-5*auxiliary_loss
                 # print(loss) 
                 # + torch.sqrt((demand_loss-supply_loss)**2)
 

@@ -105,9 +105,9 @@ class BaseTrainer:
                                      "Training stops.".format(self.early_stop))
                     break
 
-            # if epoch % self.save_period == 0:
-            #     self._save_checkpoint(epoch, save_best=best)
-            #     wandb.save(f"{epoch}_mymodel.h5")
+            if epoch % self.save_period == 0:
+                self._save_checkpoint(epoch, save_best=best)
+                
 
     def _save_checkpoint(self, epoch, save_best=False):
         """
@@ -133,6 +133,9 @@ class BaseTrainer:
             best_path = str(self.checkpoint_dir / 'model_best.pth')
             torch.save(state, best_path)
             self.logger.info("Saving current best: model_best.pth ...")
+        # artifact = wandb.Artifact('model', type='model')
+        # artifact.add_file(best_path)
+        # wandb.run.log_artifact(artifact)
 
     def _resume_checkpoint(self, resume_path):
         """
@@ -158,5 +161,6 @@ class BaseTrainer:
                                 "Optimizer parameters not being resumed.")
         else:
             self.optimizer.load_state_dict(checkpoint['optimizer'])
+        
 
         self.logger.info("Checkpoint loaded. Resume training from epoch {}".format(self.start_epoch))

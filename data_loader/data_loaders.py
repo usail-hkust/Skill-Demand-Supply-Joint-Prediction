@@ -49,18 +49,11 @@ class SingleSkillDataset(Dataset):
         # padding
         d_x_padded = F.pad(input=d_x, pad=(0, self.max_length - l))
         s_x_padded = F.pad(input=s_x, pad=(0, self.max_length - l))
-        # wave padding 
-        # d_x_padded = F.pad(input=d_x, pad=(self.max_length - l, 0))
-        # s_x_padded = F.pad(input=s_x, pad=(self.max_length - l, 0))
-        # d_x_padded = d_x
-        # s_x_padded = s_x
         return (d_x_padded, s_x_padded), (d_y, s_y), l, s, t_s, t_e, g
 
 class SkillflowDataset(SingleSkillDataset):
-#     data dir - ./data/skill_inflow_outflow
-#     graph_dir = ./data/myGraph.gpickle
     
-    def __init__(self, data_dir, graph_dir, batch_size, max_length, shuffle=True, validation_split=0.0,skill_num=16956,subgraph_num=16956, class_num=10, min_length=5, num_workers=1, training=True, *args, **kwargs):
+    def __init__(self, data_dir, graph_dir, batch_size, max_length, shuffle=True, validation_split=0.0,skill_num=16956,subgraph_num=7446, class_num=10, min_length=5, num_workers=1, training=True, *args, **kwargs):
         self.data_dir = data_dir
         subgraph_num=7446
         self.subgraph_num = subgraph_num
@@ -85,12 +78,6 @@ class SkillflowDataset(SingleSkillDataset):
             header=0,
             on_bad_lines='warn'
         ).T
-        self.classification = torch.from_numpy(pd.read_csv(
-            os.path.join(data_dir, f"classification.csv"),
-            encoding='utf-8',
-            header=0,
-            on_bad_lines='warn'
-        )[:subgraph_num]["type"].values)
         self.datasetsupply.columns = time_attr
         self.datasetsupply.drop(["time_attr"], axis=0, inplace=True, errors="ignore")
         # Set subgraph
@@ -121,20 +108,6 @@ class SkillflowDataset(SingleSkillDataset):
         print(edge_attr[(edge_index>=subgraph_num).all(0)].shape)
         weight = torch.FloatTensor(np.loadtxt("./data/embedding.txt"))
         self.skill_semantic_emb = torch.nn.Embedding.from_pretrained(weight, freeze=True)
-        # G2 = graph.to_undirected()
-        # self.graph = convert_to_stack_data(self.graph, self.disentangle)
-        # with open("/home/wchao/SkillTrendPrediction/data/skill_community", "rb") as fp:
-        #     l = pickle.load(fp)
-        # # comm =  community_louvain.best_partition(G2)
-        # # # valid_data_loader.dataset.comm
-        # # l = []
-        # # for k in comm:
-        # #     while comm[k]>=len(l):
-        # #         l.append([])
-        # #     l[comm[k]].append(k)
-        #     self.comm = l
-    
-        # self.graph = convert_to_hetero(self.graph)
         self.max_length = max_length
         
         super().__init__(self.data, self.max_length, self.demand_graph)
@@ -169,8 +142,6 @@ def convert_to_hetero(graph):
                                                                         2).nonzero()[:,0]]
     data['node', 'is_child', 'node'].edge_index =graph.edge_index[:, (graph.edge_attr.int() ==
                                                                       3).nonzero()[:,0]]
-    # data['node', 'temp', 'node'].edge_index =graph.edge_index[:, (graph.edge_attr.int() ==
-    #                                                                  3).nonzero()[:,0]]
     data['node', 'relate', 'node'].edge_index = graph.edge_index[:, (graph.edge_attr.int() ==
                                                                      4).nonzero()[:,0]]
     return data

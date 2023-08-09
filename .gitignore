@@ -139,3 +139,10 @@ saved/*
 *.out
 *.sh
 *.json
+doctest-output/*
+*.pdf
+*.png
+*.ipynb
+case_study*
+test*
+*graph_feature.ipynb
