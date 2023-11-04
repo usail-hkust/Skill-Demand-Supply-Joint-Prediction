@@ -81,8 +81,8 @@ if __name__ == '__main__':
         CustomArgs(['-epoch', '--epoch'], type=int,defaults=300, target='trainer;epochs'),
         # Data related Definition
         CustomArgs(['-bs', '--batch_size'], type=int,defaults=1, target='data_loader;args;batch_size'),
-        CustomArgs(['--data_dir'], type=str,defaults="", target='data_loader;args;data_dir'),
-        CustomArgs(['--graph_dir'], type=str,defaults="", target='data_loader;args;graph_dir'),
+        CustomArgs(['--data_dir'], type=str,defaults="/data/wchao/data/skill_inflow_outflow/", target='data_loader;args;data_dir'),
+        CustomArgs(['--graph_dir'], type=str,defaults="/data/wchao/data/graph_list/", target='data_loader;args;graph_dir'),
         CustomArgs(['--dataset'], type=str, defaults="it", target='data_loader;args;dataset'),
         CustomArgs(['-subg', '--subgraph'], type=int, defaults=7446, target='data_loader;args;subgraph_num'),
         # Model
