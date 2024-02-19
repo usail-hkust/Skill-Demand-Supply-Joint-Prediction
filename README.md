@@ -6,14 +6,13 @@
 
 <!-- code_chunk_output -->
 
-* [A Cross-View Hierarchical Graph Learning Hypernetwork for Skill Demand-Supply Joint Prediction](#cross-view-hierarchical-graph-learning-with-hypernetwork-for-skill-supply-demand-joint-prediction)
-  * [Overview](#overview)
-	* [Installation](#installation)
-	* [How to Run Model](#how-to-run-model)
-	* [Dataset](#dataset)
-  * [Citation](#citation)
-	* [License](#license)
-	* [Acknowledgements](#acknowledgements)
+| **[Overview](#overview)**
+| **[Installation](#installation)**
+| **[How to Run Model](#how-to-run-model)**
+| **[Dataset](#dataset)**
+| **[Citation](#citation)**
+| **[License](#license)**
+| **[Acknowledgements](#acknowledgements)**
 
 <!-- /code_chunk_output -->
 ## Overview
@@ -47,10 +46,10 @@ We conduct experiments on 3 datasets, i.e. IT, FIN, CONS. They have the same for
 
 ### Job Postings (Demand)
 
-|Company|Released Date|Skill List|
-|:-:|:-:|:-:|:-:|
+|Company|ReleasedDate|Skill List|
+|:-:|:-:|:-:|
 |Google|202101|Python, Statistics, Machine Learning|
-|...|...|...|...|
+|...|...|...|
 
 ### Work Experiences (Supply)
 
