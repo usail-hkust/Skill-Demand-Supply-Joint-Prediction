@@ -2,9 +2,6 @@
 ![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/license-MIT-blue)
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
 
 | **[Overview](#overview)**
 | **[Installation](#installation)**
@@ -14,7 +11,6 @@
 | **[License](#license)**
 | **[Acknowledgements](#acknowledgements)**
 
-<!-- /code_chunk_output -->
 ## Overview
 
 Official code for article "[A Cross-View Hierarchical Graph Learning Hypernetwork for Skill Demand-Supply Joint Prediction](https://arxiv.org/abs/2401.17838)".
@@ -40,7 +36,7 @@ Install library
   pip install -r ./requirements.txt
   ```
 
-## 4 Dataset
+## Dataset
 
 We conduct experiments on 3 datasets, i.e. IT, FIN, CONS. They have the same format and in this repository we provide an example of job postings (demand) and work experiences (supply) data. Due to the privacy issue, you could collect your own datasets and run our code.
 
